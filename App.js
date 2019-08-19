@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -43,27 +43,7 @@ class Home extends React.Component {
   static navigationOptions = {
     header: null
   }
-  // componentDidMount() {
-  //   Font.loadAsync({
-  //     'insta-font': require('./assets/fonts/Billabong.ttf'),
-  //   });
-  //   this.setState({ fontLoaded: true });
-  // }
-  _renderItem = ({ item }) => {
-    return (
-      <View style={styles.slide}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Image style = {styles.welcomeImages}source={item.image} />
-        <Text style={styles.text}>{item.text}</Text>
-      </View>
-    );
-  }
-  _onDone = () => {
-    // User finished the introduction. Show real app through
-    // navigation or simply by controlling state
-    this.setState({ showRealApp: true });
-    // this.props.navigation.navigate(Timeline);
-  }
+
   render() {
     if (this.state.showRealApp) {
       return <Timeline />;
@@ -75,86 +55,177 @@ class Home extends React.Component {
 
 //timeline screen
 class Timeline extends React.Component {
+  state = {
+    modalVisible: false,
+  };
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View>
          <Header
-            leftComponent={{ icon: 'camera', color: '#fff' }}
+            leftComponent={{ icon: 'camera', color: '#fff',onPress: () => alert('写真を選んでください') }}
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-            rightComponent={{ icon: 'send', color: '#fff' }}
+            rightComponent={{ icon: 'send', color: '#fff', onPress: () => navigate('Message２') }}
             containerStyle={{
               backgroundColor: 'pink',
               justifyContent: 'space-around',
             }}
           />
+
+        {/* modal timeline video */}
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+          }}>
+          <View style={{alignItems: 'center',justifyContent: 'center',backgroundColor: 'rgba(0,0,0,0.9)'}}>
+            <View style={{alignItems: 'center',justifyContent: 'center',height:'10%',width:'100%'}}>
+              <View style={{height:'75%',width:'100%',padding:5,flexDirection:'row'}}>
+                <View style={{alignItems: 'center',justifyContent: 'center',height:'100%',width:'35%',flexDirection:'row'}}>
+                <Image
+                    source={require('./assets/instagram-clone-sample.png')}
+                    //borderRadius style will help us make the Round Shape Image
+                    style={{ width: 40, height: 40, borderRadius: 40 / 2}}
+                  />
+                  <Text style={{color:'white',fontSize:12,marginLeft:8,fontWeight:'bold'}}>Ota_Queen</Text>
+                </View>
+                <View style={{height:'100%',width:'55%'}}>
+                <Text style={{color:'white',fontSize:10,marginLeft:5,fontWeight:'bold'}}>664d</Text>
+                </View>
+                <View style={{height:'100%',width:'10%',alignItems: 'center',justifyContent: 'center'}}>
+                <Icon
+                      name='more'
+                      size={12}
+                      color='white'/>
+                </View>
+              </View>
+              <View style={{height:'25%',width:'100%',padding:3,flexDirection:'row',marginLeft:'3%',marginRight:'3%'}}>
+                <View style={{backgroundColor:'white',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
+                <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
+              </View>
+            </View>
+           
+            <View style={{alignItems: 'center',justifyContent: 'center',height:'90%',width:'100%'}}>
+           <ImageBackground
+                         source={require('./assets/test-gif1.gif')}
+                         //borderRadius style will help us make the Round Shape Image
+                         style={{ width: '100%', height: '100%'}}
+                         resizeMode='contain'>
+            <Icon
+              name='next'
+              size={12}
+              color='white'
+              onPress={() => {
+                this.setModalVisible(!this.state.modalVisible);
+              }}/>
+            </ImageBackground>
+
+            <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }}>
+                <Text style={{color:'white'}}>Hide Modal</Text>
+              </TouchableHighlight>
+          </View>
+          </View>
+        </Modal>
+
         {/* Stories wrapper here */}
-        <View style={{height:130,backgroundColor:'white' }}>
+        <View style={{height:150,backgroundColor:'white' }}>
           <Text style= {{marginLeft:10, marginTop:10,fontSize:12,width:'50%'}}>Stories</Text>  
-          <ScrollView horizontal={true} style={{ backgroundColor:'white',margin:5,padding:8}}>
-            <View style = {{height:'100%'}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-              />
-                <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-            </View>
-            <View style = {{height:'100%'}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-              />
-                <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-            </View>
-            <View style = {{height:'100%'}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-              />
-                  <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-            </View>
-            <View style = {{height:'100%'}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-              />
-                <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-            </View>
-            <View style = {{height:'100%'}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-              />
-                <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-            </View>
-            <View style = {{height:'100%'}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-              />
-                <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-            </View>
-            <View style = {{height:'100%'}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-              />
-                <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-            </View>
-            <View style = {{height:'100%'}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-              />
-                <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-            </View>
+          <ScrollView horizontal={true} style={{ backgroundColor:'white',margin:5,padding:6}}>
+
+{/* first is mine */}
+            <TouchableOpacity 
+            style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}
+            onPress={() => {this.setModalVisible(true);}}>
+              <ImageBackground
+                // source={require('./assets/frame-ring1.png')}
+                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                  <Image
+                    source={require('./assets/instagram-clone-sample.png')}
+                    //borderRadius style will help us make the Round Shape Image
+                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
+                  />
+              </ImageBackground>
+                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+            </TouchableOpacity>
+
+            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
+              <ImageBackground
+                // source={require('./assets/frame-ring1.png')}
+                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                  <Image
+                    source={require('./assets/instagram-clone-sample.png')}
+                    //borderRadius style will help us make the Round Shape Image
+                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
+                  />
+              </ImageBackground>
+                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+            </TouchableOpacity>
+
+            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
+              <ImageBackground
+                // source={require('./assets/frame-ring1.png')}
+                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                  <Image
+                    source={require('./assets/instagram-clone-sample.png')}
+                    //borderRadius style will help us make the Round Shape Image
+                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
+                  />
+              </ImageBackground>
+                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+            </TouchableOpacity>
+
+            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
+              <ImageBackground
+                // source={require('./assets/frame-ring1.png')}
+                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                  <Image
+                    source={require('./assets/instagram-clone-sample.png')}
+                    //borderRadius style will help us make the Round Shape Image
+                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
+                  />
+              </ImageBackground>
+                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+            </TouchableOpacity>
+
+            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
+              <ImageBackground
+                // source={require('./assets/frame-ring1.png')}
+                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                  <Image
+                    source={require('./assets/instagram-clone-sample.png')}
+                    //borderRadius style will help us make the Round Shape Image
+                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
+                  />
+              </ImageBackground>
+                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+            </TouchableOpacity>
+
+            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
+              <ImageBackground
+                // source={require('./assets/frame-ring1.png')}
+                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                  <Image
+                    source={require('./assets/instagram-clone-sample.png')}
+                    //borderRadius style will help us make the Round Shape Image
+                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
+                  />
+              </ImageBackground>
+                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+            </TouchableOpacity>
+
+
+
+           
+      
           </ScrollView>
         </View>
         {/* #DEDEDE(87%) #BDBDBD(74%) #A3A3A3(64%) */}
@@ -339,7 +410,7 @@ class SearchScreen extends React.Component {
           </View>
           
           <ScrollView style={{backgroundColor:'white',width:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
+            <TouchableOpacity style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
               <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
               <Image
                 source={require('./assets/instagram-clone-sample.png')}
@@ -358,8 +429,8 @@ class SearchScreen extends React.Component {
                       color='gray'/>
                         
               </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
+            </TouchableOpacity>
+            <TouchableOpacity style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
               <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
               <Image
                 source={require('./assets/instagram-clone-sample.png')}
@@ -378,8 +449,8 @@ class SearchScreen extends React.Component {
                       color='gray'/>
                         
               </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
+            </TouchableOpacity>
+            <TouchableOpacity style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
               <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
               <Image
                 source={require('./assets/instagram-clone-sample.png')}
@@ -398,147 +469,7 @@ class SearchScreen extends React.Component {
                       color='gray'/>
                         
               </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width:65, height: 65, borderRadius: 65 / 2}}
-              />
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                <Text style={{color:'gray',fontSize:14}}>姫</Text>
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                <Icon
-                      name='cancel'
-                      size={12}
-                      color='gray'/>
-                        
-              </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width:65, height: 65, borderRadius: 65 / 2}}
-              />
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                <Text style={{color:'gray',fontSize:14}}>姫</Text>
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                <Icon
-                      name='cancel'
-                      size={12}
-                      color='gray'/>
-                        
-              </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width:65, height: 65, borderRadius: 65 / 2}}
-              />
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                <Text style={{color:'gray',fontSize:14}}>姫</Text>
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                <Icon
-                      name='cancel'
-                      size={12}
-                      color='gray'/>
-                        
-              </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width:65, height: 65, borderRadius: 65 / 2}}
-              />
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                <Text style={{color:'gray',fontSize:14}}>姫</Text>
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                <Icon
-                      name='cancel'
-                      size={12}
-                      color='gray'/>
-                        
-              </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width:65, height: 65, borderRadius: 65 / 2}}
-              />
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                <Text style={{color:'gray',fontSize:14}}>姫</Text>
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                <Icon
-                      name='cancel'
-                      size={12}
-                      color='gray'/>
-                        
-              </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width:65, height: 65, borderRadius: 65 / 2}}
-              />
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                <Text style={{color:'gray',fontSize:14}}>姫</Text>
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                <Icon
-                      name='cancel'
-                      size={12}
-                      color='gray'/>
-                        
-              </View>
-            </View>
-            <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-              <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width:65, height: 65, borderRadius: 65 / 2}}
-              />
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                <Text style={{color:'gray',fontSize:14}}>姫</Text>
-              </View>
-              <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                <Icon
-                      name='cancel'
-                      size={12}
-                      color='gray'/>
-                        
-              </View>
-            </View>
+            </TouchableOpacity>
 
             
 
@@ -585,20 +516,23 @@ class RankingScreen extends React.Component {
             <Text style={{color:'gray',fontSize:12,textAlign:'center'}}>全期間</Text>
           </View>
 
-          <View style={{backgroundColor:'white',width:'100%',height:300,flexDirection:'row'}}>
-            <View style={{backgroundColor:'white',width:'33.3%',height:'100%'}}>
+          <View style={{width:'100%',height:300,flexDirection:'row'}}>
+            <View style={{width:'33.3%',height:'100%'}}>
               <ImageBackground
                source={require('./assets/meidodesu_TP_V.jpg')}
-               //borderRadius style will help us make the Round Shape Image
-               style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',}}
+               style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',backgroundColor: 'rgba(0,0,0,0.4)'}}
                resizeMode='cover'
                blurRadius={3}>
+               {/* リングを重ねてみる */}
+              <ImageBackground
+              source={require('./assets/frame-ring1.png')}
+              style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
                <Image
                     source={require('./assets/meidodesu_TP_V.jpg')}
-                    //borderRadius style will help us make the Round Shape Image
                     style={{ width:110, height: 110, borderRadius: 110 / 2}}
               />
-              <Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold'}}>No.2</Text>
+             </ImageBackground>
+              <Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.2</Text>
             
               </ImageBackground>
             </View>
@@ -610,12 +544,18 @@ class RankingScreen extends React.Component {
                resizeMode='cover'
                blurRadius={3}
                >
-              <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:110, height: 110, borderRadius: 110 / 2}}
-              />
-              <View><Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold'}}>No.1</Text></View>
+                 {/* リングを重ねてみる */}
+              <ImageBackground
+              source={require('./assets/frame-ring1.png')}
+              style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
+                  <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        
+                        //borderRadius style will help us make the Round Shape Image
+                        style={{ width:110, height: 110, borderRadius: 110 / 2}}
+                  />
+              </ImageBackground>
+              <View><Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.1</Text></View>
               </ImageBackground>
             </View>
             <View style={{backgroundColor:'white',width:'33.3%',height:'100%'}}>
@@ -626,209 +566,188 @@ class RankingScreen extends React.Component {
                resizeMode='cover'
                blurRadius={3}
                >
+                   {/* リングを重ねてみる */}
+              <ImageBackground
+              source={require('./assets/frame-ring1.png')}
+              style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
             <Image
                     source={require('./assets/number-sample3.jpg')}
                     //borderRadius style will help us make the Round Shape Image
                     style={{ width:110, height: 110, borderRadius: 110 / 2}}
             />
-            <View><Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold'}}>No.3</Text></View>
+            </ImageBackground>
+            <View><Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.3</Text></View>
             </ImageBackground>
             </View>
           </View>
+
+
+      {/* ここからリスト表示 */}        
+          <ScrollView style={{backgroundColor:'white',width:'100%'}}>
+          {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
+             <View style={{width:'100%',height:80,flexDirection: 'row'}}>
+              <ImageBackground
+                source={require('./assets/instagram-clone-sample.png')}
+                //borderRadius style will help us make the Round Shape Image
+                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                resizeMode='cover'
+                blurRadius={3}>
+                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
+                      <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold'}}>1</Text>
+                    </View>
+                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
+                    <Image
+                      source={require('./assets/instagram-clone-sample.png')}
+                      //borderRadius style will help us make the Round Shape Image
+                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
+                    />
+                  </View>
+                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                    <Text style={{color:'white',fontSize:14}}>姫</Text>
+                  </View>
+                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
+                    <Icon
+                          name='add'
+                          size={12}
+                          color='gray'/>
+                            
+                  </View>
+                </ImageBackground>
+             </View>
+             {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
+             <View style={{width:'100%',height:80,flexDirection: 'row',backgroundColor:'gray'}}>
+              <ImageBackground
+                source={require('./assets/meidodesu_TP_V.jpg')}
+                //borderRadius style will help us make the Round Shape Image
+                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                resizeMode='cover'
+                blurRadius={3}>
+                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
+                      <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
+                    </View>
+                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
+                    <Image
+                      source={require('./assets/meidodesu_TP_V.jpg')}
+                      //borderRadius style will help us make the Round Shape Image
+                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
+                    />
+                  </View>
+                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                    <Text style={{color:'white',fontSize:14}}>姫</Text>
+                  </View>
+                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
+                    <Icon
+                          name='add'
+                          size={12}
+                          color='gray'/>
+                            
+                  </View>
+                </ImageBackground>
+             </View>
+              {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
+              <View style={{width:'100%',height:80,flexDirection: 'row',backgroundColor:'gray'}}>
+              <ImageBackground
+                source={require('./assets/number-sample3.jpg')}
+                //borderRadius style will help us make the Round Shape Image
+                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                resizeMode='cover'
+                blurRadius={3}>
+                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
+                      <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
+                    </View>
+                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
+                    <Image
+                      source={require('./assets/number-sample3.jpg')}
+                      //borderRadius style will help us make the Round Shape Image
+                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
+                    />
+                  </View>
+                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                    <Text style={{color:'white',fontSize:14}}>姫</Text>
+                  </View>
+                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
+                    <Icon
+                          name='add'
+                          size={12}
+                          color='gray'/>
+                            
+                  </View>
+                </ImageBackground>
+             </View>
+             {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
+             <View style={{width:'100%',height:80,flexDirection: 'row',backgroundColor:'gray'}}>
+              <ImageBackground
+                source={require('./assets/meidodesu_TP_V.jpg')}
+                //borderRadius style will help us make the Round Shape Image
+                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                resizeMode='cover'
+                blurRadius={3}>
+                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
+                      <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
+                    </View>
+                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
+                    <Image
+                      source={require('./assets/meidodesu_TP_V.jpg')}
+                      //borderRadius style will help us make the Round Shape Image
+                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
+                    />
+                  </View>
+                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                    <Text style={{color:'white',fontSize:14}}>姫</Text>
+                  </View>
+                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
+                    <Icon
+                          name='add'
+                          size={12}
+                          color='gray'/>
+                            
+                  </View>
+                </ImageBackground>
+             </View>
+              {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
+              <View style={{width:'100%',height:80,flexDirection: 'row',backgroundColor:'gray'}}>
+              <ImageBackground
+                source={require('./assets/number-sample3.jpg')}
+                //borderRadius style will help us make the Round Shape Image
+                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                resizeMode='cover'
+                blurRadius={3}>
+                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
+                      <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
+                    </View>
+                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
+                    <Image
+                      source={require('./assets/number-sample3.jpg')}
+                      //borderRadius style will help us make the Round Shape Image
+                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
+                    />
+                  </View>
+                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                    <Text style={{color:'white',fontSize:14}}>姫</Text>
+                  </View>
+                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
+                    <Icon
+                          name='add'
+                          size={12}
+                          color='gray'/>
+                            
+                  </View>
+                </ImageBackground>
+             </View>
+
+
+            
           
-          <ScrollView style={{backgroundColor:'white',width:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
-            <View style={{backgroundColor:'gold',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'pink',height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-               <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
-              </View>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                  />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
 
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='add'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-             </View>
+          
 
-             <View style={{backgroundColor:'silver',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'pink',height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-               <Text style={{fontSize:14,textAlign:'center'}}>2</Text>
-              </View>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                  />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='add'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-             </View>
+            
 
-             <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'pink',height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-               <Text style={{fontSize:14,textAlign:'center'}}>3</Text>
-              </View>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                  />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='add'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-             </View>
-
-             <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'pink',height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-               <Text style={{fontSize:14,textAlign:'center'}}>3</Text>
-              </View>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                  />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='add'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-             </View>
-
-             <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'pink',height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-               <Text style={{fontSize:14,textAlign:'center'}}>3</Text>
-              </View>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                  />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='add'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-             </View>
-
-             <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'pink',height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-               <Text style={{fontSize:14,textAlign:'center'}}>3</Text>
-              </View>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                  />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='add'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-             </View>
-
-             <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'pink',height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-               <Text style={{fontSize:14,textAlign:'center'}}>3</Text>
-              </View>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                  />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='add'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-             </View>
-
-             <View style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-              <View style={{backgroundColor:'pink',height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-               <Text style={{fontSize:14,textAlign:'center'}}>3</Text>
-              </View>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                  />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='add'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-             </View>
           </ScrollView>
      
       </View>
@@ -995,12 +914,17 @@ class ProfilesScreen extends React.Component {
             }}
           />
           <ScrollView style={{ }}>
-            <View style={{backgroundColor:'white',height:130,padding:10,flexDirection: 'row'}}>
-            <Image
-                source={require('./assets/instagram-clone-sample.png')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width: 110, height: 110, borderRadius: 110 / 2,marginRight:12 }}
-              />
+            <View style={{backgroundColor:'white',height:140,padding:10,flexDirection: 'row'}}>
+            <ImageBackground
+                // source={require('./assets/frame-ring1.png')}
+                // ring
+                style={{ width:120, height: 120, borderRadius: 120 / 2, borderColor:'pink',borderWidth:3,padding:2 }}>
+                <Image
+                    source={require('./assets/instagram-clone-sample.png')}
+                    //borderRadius style will help us make the Round Shape Image
+                    style={{ width: 110, height: 110, borderRadius: 110 / 2 }}
+                  />
+            </ImageBackground>
             <View style={{backgroundColor:'white',height:'100%',width:'65%',padding:5}}>
               <View style={{backgroundColor:'white',height:'49%',width:'100%',marginBottom:5,flexDirection:'row',padding:5}}>
                 <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
@@ -1038,13 +962,14 @@ class ProfilesScreen extends React.Component {
               </View>
             </View>
             </View>
-            <View style={{backgroundColor:'white',height:150,padding:10}}>
+            {/* //ここからプロフィール */}
+            <View style={{backgroundColor:'white',height:150,padding:10,marginLeft:'2%',marginRight:'3%'}}>
               <View style={{backgroundColor:'white',height:130}}>
                 <View style={{backgroundColor:'white',height:'100%',width:'100%'}}>
                   <Text style={{fontWeight:'bold',fontSize:16,marginBottom:5}}>ゆうこす</Text>
                   <Text style={{color:'gray',marginBottom:3}}>インフルエンサー</Text>
                   <Text style={{marginBottom:5}}>ユーチューバー、ライバー、インフルエンサーです♪　ググってみてね❤️</Text>
-                  <Text style={{marginBottom:5}}>https://google.com</Text>
+                  <Text style={{marginBottom:5,color:'blue'}}>https://google.com</Text>
                   <Text style={{marginBottom:8}}>東京都港区在住</Text>
                   <Text style={{fontSize:10}}>Followed by HIKAKIN, Fukase, SEIKIN</Text>
                 </View>
@@ -1179,6 +1104,15 @@ class ProfilesScreen extends React.Component {
   }
 }
 
+class MessageScreen extends React.Component {
+  render() {
+    return (
+      <Text>awawawaw</Text>
+    )
+  }
+}
+
+// bottom tab
 const TabNavigator = createBottomTabNavigator(
   {
   Home: Timeline,
@@ -1188,9 +1122,15 @@ const TabNavigator = createBottomTabNavigator(
   Profiles: ProfilesScreen,
 },);
 
+//move pages
+const AppNavigator = createStackNavigator({
+  Message: {
+    screen: MessageScreen
+  }
+});
 
 
-export default createAppContainer(TabNavigator);
+export default createAppContainer(TabNavigator,AppNavigator);
 
 const styles = StyleSheet.create({
   welcomeImages:{
