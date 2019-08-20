@@ -2,9 +2,11 @@ import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
+import SideSwipe from 'react-native-sideswipe';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { BottomNavigation } from 'react-native-paper';
 import * as Font from 'expo-font';
+import Carousel from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator,createMaterialTopTabNavigator } from "react-navigation";
 // import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 // import MyComponent from './bottomNavigation';
@@ -34,6 +36,7 @@ const slides = [
   }
 ];
 
+
 // log-in screen
 class Home extends React.Component {
   state = {
@@ -57,11 +60,20 @@ class Home extends React.Component {
 class Timeline extends React.Component {
   state = {
     modalVisible: false,
+    currentIndex: 0,
+
+  };
+
+  _onDone = () => {
+    // After user finished the intro slides. Show real app through
+    // navigation or simply by controlling state
+    this.setState({ showRealApp: true });
   };
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
-  }
+  }  
+
   render() {
     const {navigate} = this.props.navigation;
     return (
@@ -76,9 +88,10 @@ class Timeline extends React.Component {
             }}
           />
 
+
         {/* modal timeline video */}
         <Modal
-          animationType="slide"
+          animationType="fade"
           transparent={true}
           visible={this.state.modalVisible}
           onRequestClose={() => {
@@ -110,29 +123,32 @@ class Timeline extends React.Component {
                 <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
               </View>
             </View>
-           
+
+            {/* <TouchableHighlight */}
+                {/* // onPress={() => {this.setModalVisible(!this.state.modalVisible);}} */}
+                {/* style={{alignItems: 'center',justifyContent: 'center',height:'90%',width:'100%'}}> */}
             <View style={{alignItems: 'center',justifyContent: 'center',height:'90%',width:'100%'}}>
-           <ImageBackground
+          {/* //slider */}
+          <Carousel layout={'tinder'} layoutCardOffset={`9`} />
+
+           {/* <ImageBackground
                          source={require('./assets/test-gif1.gif')}
                          //borderRadius style will help us make the Round Shape Image
                          style={{ width: '100%', height: '100%'}}
                          resizeMode='contain'>
-            <Icon
+                          </ImageBackground> */}
+            {/* <Icon
               name='next'
               size={12}
               color='white'
               onPress={() => {
                 this.setModalVisible(!this.state.modalVisible);
-              }}/>
-            </ImageBackground>
+              }}/> */}
+           
 
-            <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                }}>
-                <Text style={{color:'white'}}>Hide Modal</Text>
-              </TouchableHighlight>
+             
           </View>
+          {/* </TouchableHighlight> */}
           </View>
         </Modal>
 
@@ -1112,6 +1128,59 @@ class MessageScreen extends React.Component {
   }
 }
 
+class MyCarousel extends Component {
+
+  // constructor(props){
+  //   super();
+  //   this.state = {
+  //     errors: []
+  //   }
+  //   this.props = props;
+  //   this._carousel = {};
+  //   this.init();
+  // }
+
+  // init(){
+    this.state = {
+      videos: [
+        {
+          id: "WpIAc9by5iU",
+          thumbnail: "https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg",
+          title: "Led Zeppelin - Stairway To Heaven"
+        }, {
+          id: "sNPnbI1arSE",
+          thumbnail: "https://img.youtube.com/vi/sNPnbI1arSE/hqdefault.jpg",
+          title: "Eminem - My Name Is"
+        }, {
+          id: "VOgFZfRVaww",
+          thumbnail: "https://img.youtube.com/vi/VOgFZfRVaww/hqdefault.jpg",
+          title: ""
+        }
+      ]
+    }
+
+  _renderItem ({item, index}) {
+      return (
+          <View style={styles.slide}>
+              <Text style={styles.title}>{ item.title }</Text>
+          </View>
+      );
+  }
+
+  render () {
+      return (
+          <Carousel
+            ref={(c) => { this._carousel = c; }}
+            data={this.state.stories}
+            renderItem={this._renderItem}
+            sliderWidth={'100%'}
+            itemWidth={'90%'}
+            firstItem={0}
+          />
+      );
+  }
+}
+
 // bottom tab
 const TabNavigator = createBottomTabNavigator(
   {
@@ -1128,9 +1197,6 @@ const AppNavigator = createStackNavigator({
     screen: MessageScreen
   }
 });
-
-
-export default createAppContainer(TabNavigator,AppNavigator);
 
 const styles = StyleSheet.create({
   welcomeImages:{
@@ -1162,10 +1228,16 @@ const styles = StyleSheet.create({
   },
   slide:{
     backgroundColor:'rgba(0,0,0,0.6)',
+  },
+  image:{
+    resizeMode: 'contain',
   }
   // image:{
   //   height: Dimensions.get('window').width, 
   //   width: Dimensions.get('window').height,
   //   resizeMode: 'stretch',
   // }
-});
+}
+);
+
+export default createAppContainer(TabNavigator,AppNavigator);
