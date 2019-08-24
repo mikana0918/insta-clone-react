@@ -61,14 +61,45 @@ class Timeline extends React.Component {
   state = {
     modalVisible: false,
     currentIndex: 0,
-
+    stories: [
+      {
+        id: "WpIAc9by5iU",
+        story: require('./assets/welcome1.jpg'),
+        title: "はじめての投稿🌟"
+      }, {
+        id: "sNPnbI1arSE",
+        story: require('./assets/insta-maid1.jpg'),
+        title: "つらたん"
+      }, {
+        id: "VOgFZfRVaww",
+        story: require('./assets/insta-loli1.jpg'),
+        title: "しぬ"
+      }
+    ]
   };
+  
+  _renderItem ({item, index}) {
+    return (
+      <View style={styles.slide}>
+     
+      <Image
+      source={ item.story}
+      style={{ width: '100%', height: '100%'}}/>
+         <Text style={styles.title}>{ item.title }</Text>
+
+  </View>
+    );
+}
 
   _onDone = () => {
     // After user finished the intro slides. Show real app through
     // navigation or simply by controlling state
     this.setState({ showRealApp: true });
   };
+
+  closehModal = () => {
+    this.setState({ modalVisible: false});
+  }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
@@ -81,7 +112,7 @@ class Timeline extends React.Component {
          <Header
             leftComponent={{ icon: 'camera', color: '#fff',onPress: () => alert('写真を選んでください') }}
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-            rightComponent={{ icon: 'send', color: '#fff', onPress: () => navigate('Message２') }}
+            rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('MessageScreen', {name: 'Jane'})}}
             containerStyle={{
               backgroundColor: 'pink',
               justifyContent: 'space-around',
@@ -112,43 +143,53 @@ class Timeline extends React.Component {
                 <Text style={{color:'white',fontSize:10,marginLeft:5,fontWeight:'bold'}}>664d</Text>
                 </View>
                 <View style={{height:'100%',width:'10%',alignItems: 'center',justifyContent: 'center'}}>
-                <Icon
-                      name='more'
-                      size={12}
-                      color='white'/>
+                  <Icon
+                        name='more'
+                        size={12}
+                        color='white'/>
+                  <TouchableOpacity
+                    onPress ={() => this.setState({modalVisible:false})}
+                    style = {{width:'100%', alignContent:'right', alignItems:'right' ,flexDirection:'row'}}>
+                        <Icon
+                        name='close'
+                        size={30}
+                        color='white'
+                        />
+                  </TouchableOpacity> 
                 </View>
+
               </View>
               <View style={{height:'25%',width:'100%',padding:3,flexDirection:'row',marginLeft:'3%',marginRight:'3%'}}>
                 <View style={{backgroundColor:'white',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
                 <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
+                <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
               </View>
             </View>
 
-            {/* <TouchableHighlight */}
-                {/* // onPress={() => {this.setModalVisible(!this.state.modalVisible);}} */}
-                {/* style={{alignItems: 'center',justifyContent: 'center',height:'90%',width:'100%'}}> */}
-            <View style={{alignItems: 'center',justifyContent: 'center',height:'90%',width:'100%'}}>
-          {/* //slider */}
-          <Carousel layout={'tinder'} layoutCardOffset={`9`} />
+          
+            <View style={{
+              // alignItems: 'center',justifyContent: 'center',
+              alignContent:'right', alignItems:'right',
+              height:'90%',width:'100%',borderRadius:10}}>
 
-           {/* <ImageBackground
-                         source={require('./assets/test-gif1.gif')}
-                         //borderRadius style will help us make the Round Shape Image
-                         style={{ width: '100%', height: '100%'}}
-                         resizeMode='contain'>
-                          </ImageBackground> */}
-            {/* <Icon
-              name='next'
-              size={12}
-              color='white'
-              onPress={() => {
-                this.setModalVisible(!this.state.modalVisible);
-              }}/> */}
-           
+              
 
-             
-          </View>
-          {/* </TouchableHighlight> */}
+{/* //slider */}
+                <Carousel
+                ref={(c) => { this._carousel = c; }}
+                data={this.state.stories}
+                renderItem={this._renderItem}
+                sliderWidth={400}
+                itemWidth={400}
+                firstItem={0}
+                layout={'tinder'} 
+                layoutCardOffset={9}>
+                 
+                </Carousel>
+
+           </View>
+
+          
           </View>
         </Modal>
 
@@ -1121,6 +1162,10 @@ class ProfilesScreen extends React.Component {
 }
 
 class MessageScreen extends React.Component {
+  constructor(props){
+    super();
+  }
+  // static router = StackRouter(routes, config);
   render() {
     return (
       <Text>awawawaw</Text>
@@ -1129,41 +1174,34 @@ class MessageScreen extends React.Component {
 }
 
 class MyCarousel extends Component {
+    constructor(props){
+      super();
+      this.state = {
+        stories: [
+          {
+            id: "WpIAc9by5iU",
+            story: require('./assets/welcome1.jpg'),
+            title: "photo1"
+          }, {
+            id: "sNPnbI1arSE",
+            story: require('./assets/insta-maid1.jpg'),
+            title: "photo2"
+          }, {
+            id: "VOgFZfRVaww",
+            story: require('./assets/insta-loli1.jpg'),
+            title: "photo3"
+          }
+        ]
+      }
 
-  // constructor(props){
-  //   super();
-  //   this.state = {
-  //     errors: []
-  //   }
-  //   this.props = props;
-  //   this._carousel = {};
-  //   this.init();
-  // }
-
-  // init(){
-    this.state = {
-      videos: [
-        {
-          id: "WpIAc9by5iU",
-          thumbnail: "https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg",
-          title: "Led Zeppelin - Stairway To Heaven"
-        }, {
-          id: "sNPnbI1arSE",
-          thumbnail: "https://img.youtube.com/vi/sNPnbI1arSE/hqdefault.jpg",
-          title: "Eminem - My Name Is"
-        }, {
-          id: "VOgFZfRVaww",
-          thumbnail: "https://img.youtube.com/vi/VOgFZfRVaww/hqdefault.jpg",
-          title: ""
-        }
-      ]
     }
+    
 
-  _renderItem ({item, index}) {
+  _renderItem ({stories, index}) {
       return (
-          <View style={styles.slide}>
-              <Text style={styles.title}>{ item.title }</Text>
-          </View>
+        <View style={styles.slide}>
+        <Text style={styles.title}>{ item.title }</Text>
+    </View>
       );
   }
 
@@ -1173,13 +1211,15 @@ class MyCarousel extends Component {
             ref={(c) => { this._carousel = c; }}
             data={this.state.stories}
             renderItem={this._renderItem}
-            sliderWidth={'100%'}
-            itemWidth={'90%'}
+            sliderWidth={300}
+            itemWidth={300}
             firstItem={0}
           />
       );
   }
 }
+
+
 
 // bottom tab
 const TabNavigator = createBottomTabNavigator(
@@ -1192,11 +1232,12 @@ const TabNavigator = createBottomTabNavigator(
 },);
 
 //move pages
+
 const AppNavigator = createStackNavigator({
-  Message: {
-    screen: MessageScreen
-  }
+  Message: {screen : MessageScreen}
 });
+
+
 
 const styles = StyleSheet.create({
   welcomeImages:{
@@ -1209,9 +1250,9 @@ const styles = StyleSheet.create({
   title:{
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'white',
+    color: 'pink',
     zIndex: 2,
-    fontSize:30,
+    fontSize:40,
     position: 'absolute',
     textAlign: 'center',
     textAlignVertical: "center",
@@ -1231,6 +1272,14 @@ const styles = StyleSheet.create({
   },
   image:{
     resizeMode: 'contain',
+  },
+  carousel:{
+    // borderRadius:10,
+  },
+  storyEnd:{
+    width:100,
+    height:100,
+    backgroundColor:"gray"
   }
   // image:{
   //   height: Dimensions.get('window').width, 
