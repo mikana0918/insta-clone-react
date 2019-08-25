@@ -1,74 +1,56 @@
 import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
-import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
-import Carousel from 'react-native-snap-carousel';
-import { createStackNavigator, createAppContainer, createBottomTabNavigator,createMaterialTopTabNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import Timeline from './Timeline';
 import SearchScreen from './SearchScreen';
 import RankingScreen from './RankingScreen';
 import FavoriteScreen from './FavoriteScreen';
 import ProfilesScreen from './ProfileScreen';
 import MessageScreen from './MessageScreen';
+import SendScreen from './SendScreen';
 
 
-class MyCarousel extends Component {
-    constructor(props){
-      super();
-      this.state = {
-        stories: [
-          {
-            id: "WpIAc9by5iU",
-            story: require('./assets/welcome1.jpg'),
-            title: "photo1"
-          }, {
-            id: "sNPnbI1arSE",
-            story: require('./assets/insta-maid1.jpg'),
-            title: "photo2"
-          }, {
-            id: "VOgFZfRVaww",
-            story: require('./assets/insta-loli1.jpg'),
-            title: "photo3"
-          }
-        ]
-      }
-    }
-    
-  _renderItem ({stories, index}) {
-      return (
-        <View style={styles.slide}>
-        <Text style={styles.title}>{ item.title }</Text>
-    </View>
-      );
-  }
-
+class App extends React.Component {
   render () {
       return (
-          <Carousel
-            ref={(c) => { this._carousel = c; }}
-            data={this.state.stories}
-            renderItem={this._renderItem}
-            sliderWidth={300}
-            itemWidth={300}
-            firstItem={0}
-          />
+          <AppStackNavigator/>
       );
   }
 }
 
-// bottom tab
-const TabNavigator = createBottomTabNavigator(
+AppNavigator = createStackNavigator(
+  { 
+  bottomNavigation:{
+    screen: createBottomTabNavigator(
   {
-  Home: Timeline,
-  Search: SearchScreen,
-  Ranking: RankingScreen,
-  Favorite: FavoriteScreen,
-  Profiles: ProfilesScreen,
-},);
-
-//move pages
-const AppNavigator = createStackNavigator({
-  Message: {screen : MessageScreen}
+      Home: Timeline,
+      Search: SearchScreen,
+      Ranking: RankingScreen,
+      Favorite: FavoriteScreen,
+      Profiles: ProfilesScreen,
+  },
+  {
+    navigationOptions: {
+      header: null,
+      headerMode: 'screen',
+      //  initialRouteName: "Send"
+    }
+  })},
+  pageNavigation:{
+    screen:createStackNavigator(
+  {
+      Message: MessageScreen,
+      Send: SendScreen
+  },
+  {
+    navigationOptions: {
+      header: null,
+      // initialRouteName: "Send"
+      
+    }
+  })},
 });
+
 
 const styles = StyleSheet.create({
   welcomeImages:{
@@ -114,4 +96,4 @@ const styles = StyleSheet.create({
 }
 );
 
-export default createAppContainer(TabNavigator,AppNavigator);
+export default createAppContainer(AppNavigator);
