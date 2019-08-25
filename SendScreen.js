@@ -22,8 +22,58 @@ class SendScreen extends React.Component {
             justifyContent: 'space-around',
           }}
         />
-        <View style={{width:'100%', height:'80%',backgroundColor:'gray'}}>
-        </View>
+        <ScrollView style={{width:'100%', height:'80%',backgroundColor:'white'}}>
+            {/* 相手 */}
+            <TouchableOpacity 
+                style={{backgroundColor:'white',height:70,flexDirection: 'row', }}>
+                    <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1, padding:10}}>
+                        <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        //borderRadius style will help us make the Round Shape Image
+                        style={{ width:40, height: 40, borderRadius: 40 / 2}}
+                        />
+                    </View>        
+                    <View 
+                        style={{backgroundColor:'white',width:'40%',paddingTop:15,paddingBottom:15,alignSelf:'flex-start',marginRight:'5%'}}>
+                        <View style={{borderColor:'gray', borderWidth:2,borderRadius:20, alignSelf:'flex-start'}}>
+                            <Text style ={{color:'gray',fontSize:14, margin:10,}}>あうあうああああああああああああああああああああああああああ</Text>
+                        </View>
+                    </View>
+            </TouchableOpacity>
+
+          {/* 自分 */}
+            <View 
+                style={{backgroundColor:'white',width:'40%%',paddingTop:18,paddingBottom:15,alignSelf:'flex-end',marginRight:'5%'}}>
+                  <View style={{borderColor:'gray', borderWidth:2,borderRadius:20, alignSelf:'flex-end', backgroundColor:'pink'}}><Text style ={{color:'gray',fontSize:14, margin:10,}}>あうあうああああああああああああああああああああああああああ</Text></View>
+            </View>
+          {/* 相手 */}
+           <TouchableOpacity 
+                style={{backgroundColor:'white',height:70,flexDirection: 'row', }}>
+                    <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1, padding:10}}>
+                        <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        //borderRadius style will help us make the Round Shape Image
+                        style={{ width:40, height: 40, borderRadius: 40 / 2}}
+                        />
+                    </View>        
+                    <View 
+                        style={{backgroundColor:'white',width:'40%',paddingTop:15,paddingBottom:15,alignSelf:'flex-start',marginRight:'5%'}}>
+                        <View style={{borderColor:'gray', borderWidth:2,borderRadius:20, alignSelf:'flex-start'}}>
+                            <Text style ={{color:'gray',fontSize:14, margin:10,}}>あうあうああああああああああああああああああああああああああ</Text>
+                        </View>
+                    </View>
+            </TouchableOpacity>
+
+
+          {/* 自分 */}
+          <View 
+                style={{backgroundColor:'white',width:'40%%',paddingTop:18,paddingBottom:15,alignSelf:'flex-end',marginRight:'5%'}}>
+                  <View style={{borderColor:'gray', borderWidth:2,borderRadius:20, alignSelf:'flex-end', backgroundColor:'pink'}}><Text style ={{color:'gray',fontSize:14, margin:10,}}>あうあうああああああああああああああああああああああああああ</Text></View>
+            </View>
+
+
+        </ScrollView>
+        
         <View style={{width:'100%', height:'10%',backgroundColor:'white', flexDirection:'row',padding:10}}>
             <View style={{backgroundColor:'white', width:'100%',height:'80%', flexDirection:'row'}}>
                 <View style={{backgroundColor:'white', width:'20%',height:'100%'}}>

@@ -131,7 +131,7 @@ class Timeline extends React.Component {
         {/* Stories wrapper here */}
         <View style={{height:150,backgroundColor:'white' }}>
           <Text style= {{marginLeft:10, marginTop:10,fontSize:12,width:'50%'}}>Stories</Text>  
-          <ScrollView horizontal={true} style={{ backgroundColor:'white',margin:5,padding:6}}>
+          <ScrollView horizontal={true} style={{ backgroundColor:'white',margin:5,padding:4}}>
 
 {/* first is mine */}
             <TouchableOpacity 
