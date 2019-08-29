@@ -1,6 +1,6 @@
 # insta-clone-react
 instagram like clone with React Native(on development)
-powered by expo.
+powered by expo.</br>
 my project for creating "crossdressor's phpto SNS"
 
 
