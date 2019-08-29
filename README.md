@@ -6,7 +6,6 @@ my project for creating "crossdressor's phpto SNS"
 「じょそすたぐらむ」プロジェクト</br>
 React Native/expoの勉強として制作。</br>
 インスタグラム風UIのみ。</br>
-ストア公開するかもなので、クローンされる際は全部同じはやめてね＞＜
 
 ## Screenshots
  <img width="20%" height="20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%20X%20-%202019-08-30%20at%2000.45.24.png?raw=true"> <img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%20X%20-%202019-08-30%20at%2000.47.17.png?raw=true"> <img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%20X%20-%202019-08-30%20at%2000.47.40.png?raw=true">|
