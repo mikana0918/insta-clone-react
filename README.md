@@ -3,6 +3,10 @@ instagram-like clone with React Native(on development)
 powered by expo.</br>
 my project for creating "crossdressor's phpto SNS"
 
+「じょそすたぐらむ」プロジェクト
+React Native/expoを筆頭に、たくさんのライブラリーでできています。
+View部分のみ完成していて、オープンソースとして開発を進めています。
+
 
 ## Screenshots
  <img width="20%" height="20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%20X%20-%202019-08-30%20at%2000.45.24.png?raw=true"> <img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%20X%20-%202019-08-30%20at%2000.47.17.png?raw=true"> <img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%20X%20-%202019-08-30%20at%2000.47.40.png?raw=true">|
