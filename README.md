@@ -3,9 +3,9 @@ instagram-like clone with React Native(on development)
 powered by expo.</br>
 my project for creating "crossdressor's phpto SNS"
 
-「じょそすたぐらむ」プロジェクト
-React Native/expoを筆頭に、たくさんのライブラリーでできています。
-View部分のみ完成していて、オープンソースとして開発を進めています。
+「じょそすたぐらむ」プロジェクト</br>
+React Native/expoを筆頭に、たくさんのライブラリーでできています。</br>
+View部分のみ完成していて、オープンソースとして開発を進めています。</br>
 
 
 ## Screenshots
