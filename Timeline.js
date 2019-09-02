@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,Touchab
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import Carousel from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
+import Story from './Story';
 
 
 class Timeline extends React.Component {
@@ -61,7 +62,7 @@ class Timeline extends React.Component {
               justifyContent: 'space-around',
             }}
           />
-
+        <Story/>
         {/* modal timeline video */}
         <Modal
           animationType="fade"
@@ -127,95 +128,7 @@ class Timeline extends React.Component {
            </View>       
           </View>
         </Modal>
-
-        {/* Stories wrapper here */}
-        <View style={{height:150,backgroundColor:'white' }}>
-          <Text style= {{marginLeft:10, marginTop:10,fontSize:12,width:'50%'}}>Stories</Text>  
-          <ScrollView horizontal={true} style={{ backgroundColor:'white',margin:5,padding:4}}>
-
-{/* first is mine */}
-            <TouchableOpacity 
-            style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}
-            onPress={() => {this.setModalVisible(true);}}>
-              <ImageBackground
-                // source={require('./assets/frame-ring1.png')}
-                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
-                  />
-              </ImageBackground>
-                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
-            </TouchableOpacity>
-
-            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
-              <ImageBackground
-                // source={require('./assets/frame-ring1.png')}
-                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
-                  />
-              </ImageBackground>
-                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
-            </TouchableOpacity>
-
-            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
-              <ImageBackground
-                // source={require('./assets/frame-ring1.png')}
-                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
-                  />
-              </ImageBackground>
-                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
-            </TouchableOpacity>
-
-            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
-              <ImageBackground
-                // source={require('./assets/frame-ring1.png')}
-                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
-                  />
-              </ImageBackground>
-                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
-            </TouchableOpacity>
-
-            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
-              <ImageBackground
-                // source={require('./assets/frame-ring1.png')}
-                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
-                  />
-              </ImageBackground>
-                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
-            </TouchableOpacity>
-
-            <TouchableOpacity style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:7}}>
-              <ImageBackground
-                // source={require('./assets/frame-ring1.png')}
-                style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
-                  <Image
-                    source={require('./assets/instagram-clone-sample.png')}
-                    //borderRadius style will help us make the Round Shape Image
-                    style={{ width: 60, height: 60, borderRadius: 60 / 2}}
-                  />
-              </ImageBackground>
-                <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
-            </TouchableOpacity>        
-      
-          </ScrollView>
-        </View>
+        
         <ScrollView style={{height:'75%'}}>
         <View style={{ height:600,backgroundColor:'white'}}>
           <View style={{height:50}}>

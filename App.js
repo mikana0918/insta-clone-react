@@ -2,12 +2,16 @@ import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import Timeline from './Timeline';
+import Story from './Story';
 import SearchScreen from './SearchScreen';
 import RankingScreen from './RankingScreen';
 import FavoriteScreen from './FavoriteScreen';
 import ProfilesScreen from './ProfileScreen';
 import MessageScreen from './MessageScreen';
 import SendScreen from './SendScreen';
+
+
+
 
 
 class App extends React.Component {
@@ -40,7 +44,8 @@ AppNavigator = createStackNavigator(
     screen:createStackNavigator(
   {
       Message: MessageScreen,
-      Send: SendScreen
+      Send: SendScreen,
+
   },
   {
     navigationOptions: {
