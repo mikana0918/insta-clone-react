@@ -6,12 +6,13 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator,crea
 
 class ProfileScreen extends React.Component {
     render() {
+      const {navigate} = this.props.navigation;
       return (
         <View>
            <Header
               leftComponent={{ icon: 'camera', color: '#fff' }}
               centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-              rightComponent={{ icon: 'send', color: '#fff' }}
+              rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
               containerStyle={{
                 backgroundColor: 'pink',
                 justifyContent: 'space-around',
@@ -44,7 +45,7 @@ class ProfileScreen extends React.Component {
                   <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>1.5M</Text>
                   </View>
                     <View style={{height:'30%',width:'100%',backgroundColor:'white'}}>
-                    <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>posts</Text>
+                    <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>Followers</Text>
                     </View>
                   </View>
                   <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
@@ -58,7 +59,7 @@ class ProfileScreen extends React.Component {
                 </View>
                 {/* //ここからメッセージボタン */}
                 <View style={{backgroundColor:'white',height:'45%',width:'100%',padding:10,flexDirection:'row'}}>
-                  <View style={{backgroundColor:'white',height:24, width:'67%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5,padding:3}}>
+                  <View style={{backgroundColor:'white',height:24, width:'67%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5,padding:3}} onPress= {navigate('Message')}>
                     <Text style={{textAlign:'center'}}>Message</Text>
                   </View>
                   <View style={{backgroundColor:'white',height:24, width:'15%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5}}></View>

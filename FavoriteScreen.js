@@ -7,12 +7,13 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator,crea
 class FavoriteScreen extends React.Component {
 
     render() {
+      const {navigate} = this.props.navigation;
       return (
         <View>
            <Header
               leftComponent={{ icon: 'camera', color: '#fff' }}
               centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-              rightComponent={{ icon: 'send', color: '#fff' }}
+              rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
               containerStyle={{
                 backgroundColor: 'pink',
                 justifyContent: 'space-around',
