@@ -2,17 +2,13 @@ import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import Timeline from './Timeline';
-import Story from './Story';
+import Icon from '@expo/vector-icons/FontAwesome';
 import SearchScreen from './SearchScreen';
 import RankingScreen from './RankingScreen';
 import FavoriteScreen from './FavoriteScreen';
 import ProfilesScreen from './ProfileScreen';
 import MessageScreen from './MessageScreen';
 import SendScreen from './SendScreen';
-
-
-
-
 
 class App extends React.Component {
   render () {
@@ -25,13 +21,19 @@ class App extends React.Component {
 AppNavigator = createStackNavigator(
   { 
   bottomNavigation:{
-    screen: createBottomTabNavigator(
+  screen: createBottomTabNavigator(
   {
       Home: Timeline,
+      
       Search: SearchScreen,
+      
       Ranking: RankingScreen,
+       
       Favorite: FavoriteScreen,
+        
       Profiles: ProfilesScreen,
+       
+      
   },
   {
     navigationOptions: {
@@ -41,10 +43,11 @@ AppNavigator = createStackNavigator(
     }
   })},
   pageNavigation:{
-    screen:createStackNavigator(
+  screen:createStackNavigator(
   {
       Message: MessageScreen,
       Send: SendScreen,
+      Profiles: ProfilesScreen,
 
   },
   {
@@ -53,7 +56,9 @@ AppNavigator = createStackNavigator(
       // initialRouteName: "Send"
       
     }
-  })},
+  }
+  )
+},
 });
 
 

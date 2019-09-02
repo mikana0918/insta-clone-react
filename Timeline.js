@@ -91,7 +91,7 @@ class Timeline extends React.Component {
                         size={12}
                         color='white'/>
                   <TouchableOpacity
-                    onPress ={() => this.setState({modalVisible:false})}
+                    onPress={() => navigate('Profile')}
                     style = {{width:'100%', alignContent:'right', alignItems:'right' ,flexDirection:'row'}}>
                         <Icon
                         name='close'
@@ -121,41 +121,47 @@ class Timeline extends React.Component {
                 itemWidth={400}
                 firstItem={0}
                 layout={'tinder'} 
-                layoutCardOffset={9}>
-                 
+                layoutCardOffset={9}>             
                 </Carousel>
 
            </View>       
           </View>
         </Modal>
-        
+
         <ScrollView style={{height:'75%'}}>
         <View style={{ height:600,backgroundColor:'white'}}>
           <View style={{height:50}}>
-            <View style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}>
+            <TouchableOpacity
+            onPress={() => navigate('Profiles')}
+            style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}>
               <Image
                     source={require('./assets/instagram-clone-sample.png')}
                     //borderRadius style will help us make the Round Shape Image
                     style={{ width: 30, height: 30, borderRadius: 30 / 2, marginLeft:5,marginTop:5}}
                   />
-                <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold'}}>ゆうこす</Text>
-                
-             </View>
+                <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold'}}>ゆうこす</Text>               
+             </TouchableOpacity>
           </View>
           <Image
                 source={require('./assets/insta-ex1.jpg')}
                 style={{ width: '100%', height: '70%', resizeMode: 'cover',}}
           />
           <View style={{ width: '100%', height: '10%', backgroundColor:'white',flexDirection: 'row',padding:10}}>
+          <TouchableOpacity>
           <Image
                 source={require('./assets/heart-shape.png')}
                 style={{ width: 30, height: 30,marginRight:16,marginLeft:8}}/>
+          </TouchableOpacity>
+          <TouchableOpacity>
           <Image
                 source={require('./assets/speech-bubble.png')}
                 style={{ width: 30, height: 30,marginRight:16}}/>
+          </TouchableOpacity>
+          <TouchableOpacity>
           <Image
                 source={require('./assets/mail.png')}
                 style={{ width: 30, height: 30,marginRight:16}}/>
+          </TouchableOpacity>
           </View>
           <View>
           <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！</Text> 

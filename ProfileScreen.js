@@ -15,21 +15,19 @@ class ProfileScreen extends React.Component {
               rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
               containerStyle={{
                 backgroundColor: 'pink',
-                justifyContent: 'space-around',
-              }}
-            />
+                justifyContent: 'space-around',}}/>
             <ScrollView style={{ }}>
               <View style={{backgroundColor:'white',height:140,padding:10,flexDirection: 'row'}}>
-              <ImageBackground
-                  // source={require('./assets/frame-ring1.png')}
-                  // ring
-                  style={{ width:120, height: 120, borderRadius: 120 / 2, borderColor:'pink',borderWidth:3,padding:2 }}>
-                  <Image
-                      source={require('./assets/instagram-clone-sample.png')}
-                      //borderRadius style will help us make the Round Shape Image
-                      style={{ width: 110, height: 110, borderRadius: 110 / 2 }}
-                    />
-              </ImageBackground>
+                <TouchableOpacity>
+                  <ImageBackground
+                      style={{ width:120, height: 120, borderRadius: 120 / 2, borderColor:'pink',borderWidth:3,padding:2 }}>
+                      <Image
+                          source={require('./assets/instagram-clone-sample.png')}
+                          style={{ width: 110, height: 110, borderRadius: 110 / 2 }}
+                        />
+                  </ImageBackground>
+                </TouchableOpacity>
+
               <View style={{backgroundColor:'white',height:'100%',width:'65%',padding:5}}>
                 <View style={{backgroundColor:'white',height:'49%',width:'100%',marginBottom:5,flexDirection:'row',padding:5}}>
                   <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>

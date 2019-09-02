@@ -16,7 +16,7 @@ class SendScreen extends React.Component {
       return (
         <View>
           <Header
-          leftComponent={{ icon: 'camera', color: '#fff', onPress:() => navigate('Message') }}
+           leftComponent={<TouchableOpacity onPress={() => navigate('Message')}><Image source={require('./assets/left-arrow.png')} style={{ width:20, height: 20, tintColor:'white'}}/></TouchableOpacity>}
           centerComponent={{ text: '【相手のなまえ】', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
           rightComponent={{ icon: 'add', color: '#fff', }}
           containerStyle={{
