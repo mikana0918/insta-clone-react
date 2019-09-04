@@ -9,6 +9,7 @@ import FavoriteScreen from './FavoriteScreen';
 import ProfilesScreen from './ProfileScreen';
 import MessageScreen from './MessageScreen';
 import SendScreen from './SendScreen';
+import ImageDetail from './ImageDetail';
 
 class App extends React.Component {
   render () {
@@ -18,42 +19,74 @@ class App extends React.Component {
   }
 }
 
+// const pageStack = createStackNavigator
+// (
+//   {
+//     Home: Timeline,  
+//     Search: SearchScreen,
+//     Ranking: RankingScreen,
+//     Fav: FavoriteScreen,
+//     Prof: ProfilesScreen,
+//     Message: MessageScreen,
+//     Send: SendScreen,
+//     ImageDetail: ImageDetail
+//   },
+//   {
+//     header: null,
+//     headerMode: 'screen',
+//     initialRouteName: "Home"
+//   }
+// )
+
+// const bottomNavStack = createBottomTabNavigator
+// (
+//   {
+//     Home: Timeline,      
+//     Search: SearchScreen,
+//     Ranking: RankingScreen,
+//     Favorite: FavoriteScreen,
+//     Profile: ProfilesScreen, 
+//   },
+//   {
+//     header: null,
+//     // headerMode: 'screen',
+//   } 
+// )
+
+
+
 AppNavigator = createStackNavigator(
   { 
   bottomNavigation:{
   screen: createBottomTabNavigator(
   {
-      Home: Timeline,
-      
+      Home: Timeline,      
       Search: SearchScreen,
-      
       Ranking: RankingScreen,
-       
       Favorite: FavoriteScreen,
-        
-      Profiles: ProfilesScreen,
-       
-      
+      Profile: ProfilesScreen,  
   },
   {
     navigationOptions: {
       header: null,
-      headerMode: 'screen',
-      //  initialRouteName: "Send"
+      // headerMode: 'screen',
     }
   })},
   pageNavigation:{
   screen:createStackNavigator(
   {
+      Search: SearchScreen,
+      Ranking: RankingScreen,
       Message: MessageScreen,
       Send: SendScreen,
-      Profiles: ProfilesScreen,
+      ImageDetail: ImageDetail
 
   },
   {
     navigationOptions: {
       header: null,
-      // initialRouteName: "Send"
+      headerMode: 'screen',
+      initialRouteName: 'TimeLine'
       
     }
   }
@@ -107,3 +140,9 @@ const styles = StyleSheet.create({
 );
 
 export default createAppContainer(AppNavigator);
+// export default createStackNavigator(
+//   {
+//     bottomTabs: bottomNavStack,
+//     stackNav: pageStack
+//   }
+// );

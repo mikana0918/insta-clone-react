@@ -15,7 +15,6 @@ class SearchScreen extends React.Component {
       this.state = {
         isBorderBottom:false,
         selectedIndex: 0
-
       };   
       this.updateIndex = this.updateIndex.bind(this)
   }
