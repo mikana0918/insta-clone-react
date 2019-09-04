@@ -36,40 +36,45 @@ class ProfileScreen extends React.Component {
 
               <View style={{backgroundColor:'white',height:'100%',width:'65%',padding:5}}>
                 <View style={{backgroundColor:'white',height:'49%',width:'100%',marginBottom:5,flexDirection:'row',padding:5}}>
-                  <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
-                    <TouchableOpacity style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%'}}>
+
+                  <TouchableOpacity style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
+                    <View style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%',alignContent:'center'}}>
                       <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>100</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{height:'30%',width:'100%',backgroundColor:'white'}}>
+                    </View>
+                    <View style={{height:'30%',width:'100%',backgroundColor:'white'}}>
                        <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>posts</Text>
-                    </TouchableOpacity>
-                  </View>
-                  <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
-                  <View style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%'}}>
-                  <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>1.5M</Text>
-                  </View>
-                    <View style={{height:'30%',width:'100%',backgroundColor:'white'}}>
-                    <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>Followers</Text>
                     </View>
-                  </View>
-                  <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
-                  <View style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%'}}>
-                  <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>347</Text>
-                  </View>
-                    <View style={{height:'30%',width:'100%',backgroundColor:'white'}}>
-                    <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>following</Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
+                    <View style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%'}}>
+                      <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>1.5M</Text>
                     </View>
-                  </View>
+                    <View style={{height:'30%',width:'100%',backgroundColor:'white'}}>
+                      <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>Followers</Text>
+                    </View>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
+                    <View style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%'}}>
+                      <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>347</Text>
+                    </View>
+                    <View style={{height:'30%',width:'100%',backgroundColor:'white'}}>
+                      <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>following</Text>
+                    </View>
+                  </TouchableOpacity>
+
                 </View>
-                {/* //ここからメッセージボタン */}
-                <View style={{backgroundColor:'white',height:'45%',width:'100%',padding:10,flexDirection:'row'}}>
-                  <View style={{backgroundColor:'white',height:24, width:'67%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5,padding:3}} onPress= {navigate('Message')}>
-                    <Text style={{textAlign:'center'}}>Message</Text>
+                  {/* //ここからメッセージボタン */}
+                  <View style={{backgroundColor:'white',height:'45%',width:'100%',padding:10,flexDirection:'row'}}>
+                      <TouchableOpacity style={{backgroundColor:'white',height:24, width:'67%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5,padding:3}} onPress={() => navigate('Message')}>
+                          <Text style={{textAlign:'center'}}>Message</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity style={{backgroundColor:'white',height:24, width:'15%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5}}></TouchableOpacity>
+                      <TouchableOpacity style={{backgroundColor:'white',height:24, width:'15%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5}}></TouchableOpacity>
                   </View>
-                  <View style={{backgroundColor:'white',height:24, width:'15%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5}}></View>
-                  <View style={{backgroundColor:'white',height:24, width:'15%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5}}></View>
-                </View>
-              </View>
+
+                 </View>
               </View>
               {/* //ここからプロフィール */}
               <View style={{backgroundColor:'white',height:150,padding:10,marginLeft:'2%',marginRight:'3%'}}>
@@ -85,10 +90,10 @@ class ProfileScreen extends React.Component {
                 </View>
               </View>
               <View style={{backgroundColor:'pink',height:100}}>
-              <View style={{height:130,backgroundColor:'white' }}>
-            <Story/>
+              <View style={{height:130,backgroundColor:'white' }}>          
           </View>
-              </View>
+        </View>
+        <Story/>
          {/* ここから画像タイル */}
               <View style={{backgroundColor:'white',flexDirection:'row',alignItems: 'flex-start',flexWrap: 'wrap',}}>
                 <Image
