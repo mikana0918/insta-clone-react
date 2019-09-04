@@ -16,15 +16,15 @@ class ImageDetail extends React.Component{
         return (
             <View>
                 <Header
-                leftComponent={ <TouchableOpacity onPress={() => navigate('Home')}><Image source={require('./assets/left-arrow.png')} style={{ width:20, height: 20, tintColor:'white'}}/></TouchableOpacity> }
-                centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-                rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
-                containerStyle={{backgroundColor: 'pink',justifyContent: 'space-around'}}/>
+                    leftComponent={ <TouchableOpacity onPress={() => navigate('Home')}><Image source={require('./assets/left-arrow.png')} style={{ width:20, height: 20, tintColor:'white'}}/></TouchableOpacity> }
+                    centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
+                    rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
+                    containerStyle={{backgroundColor: 'pink',justifyContent: 'space-around'}}/>
                 <View style={{ height:600,backgroundColor:'white'}}>
                 <View style={{height:50}}>
                     <TouchableOpacity 
                     style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}
-                    onPress={() => navigate('Profiles')}>
+                    onPress={() => navigate('Profile')}>
                     <Image
                             source={require('./assets/instagram-clone-sample.png')}
                             //borderRadius style will help us make the Round Shape Image

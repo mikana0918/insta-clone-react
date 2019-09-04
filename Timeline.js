@@ -11,25 +11,7 @@ class Timeline extends React.Component {
   static navigationOptions = ({ navigate }) => ({
     header: null
     })
-  state = {
-    modalVisible: false,
-    currentIndex: 0,
-    stories: [
-      {
-        id: "WpIAc9by5iU",
-        story: require('./assets/welcome1.jpg'),
-        title: "はじめての投稿🌟"
-      }, {
-        id: "sNPnbI1arSE",
-        story: require('./assets/insta-maid1.jpg'),
-        title: "つらたん"
-      }, {
-        id: "VOgFZfRVaww",
-        story: require('./assets/insta-loli1.jpg'),
-        title: "しぬ"
-      }
-    ]
-  };
+
   
   _renderItem ({item, index}) {
     return (

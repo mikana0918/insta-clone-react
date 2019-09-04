@@ -10,6 +10,7 @@ import ProfilesScreen from './ProfileScreen';
 import MessageScreen from './MessageScreen';
 import SendScreen from './SendScreen';
 import ImageDetail from './ImageDetail';
+import StoryModal from './StoryModal';
 
 class App extends React.Component {
   render () {
@@ -18,42 +19,6 @@ class App extends React.Component {
       );
   }
 }
-
-// const pageStack = createStackNavigator
-// (
-//   {
-//     Home: Timeline,  
-//     Search: SearchScreen,
-//     Ranking: RankingScreen,
-//     Fav: FavoriteScreen,
-//     Prof: ProfilesScreen,
-//     Message: MessageScreen,
-//     Send: SendScreen,
-//     ImageDetail: ImageDetail
-//   },
-//   {
-//     header: null,
-//     headerMode: 'screen',
-//     initialRouteName: "Home"
-//   }
-// )
-
-// const bottomNavStack = createBottomTabNavigator
-// (
-//   {
-//     Home: Timeline,      
-//     Search: SearchScreen,
-//     Ranking: RankingScreen,
-//     Favorite: FavoriteScreen,
-//     Profile: ProfilesScreen, 
-//   },
-//   {
-//     header: null,
-//     // headerMode: 'screen',
-//   } 
-// )
-
-
 
 AppNavigator = createStackNavigator(
   { 
@@ -79,7 +44,8 @@ AppNavigator = createStackNavigator(
       Ranking: RankingScreen,
       Message: MessageScreen,
       Send: SendScreen,
-      ImageDetail: ImageDetail
+      ImageDetail: ImageDetail,
+      StoryModal: StoryModal 
 
   },
   {

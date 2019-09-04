@@ -41,12 +41,7 @@ class SearchScreen extends React.Component {
               }}
             />
             <View style={{flexDirection:'row'}}>
-              <View style={{backgroundColor:'white',width:'10%',height:'100%',padding:14}}>
-                <Image
-                source={require('./assets/left-arrow.png')}
-                style={{ width: 20, height: 20,resizeMode:"contain",alignItems: 'center',justifyContent: 'center',}}/>
-              </View>
-              <View style={{width:'90%',height:'100%'}}>
+              <View style={{width:'100%',height:'100%'}}>
                 <Input
                 placeholder='検索'
                 leftIcon={
@@ -65,15 +60,16 @@ class SearchScreen extends React.Component {
               </View>
             </View>
             {/* //4Top Nav Tabs */}
-            <ButtonGroup
+
+            {/* <ButtonGroup
               onPress={this.updateIndex}
               selectedIndex={selectedIndex}
               buttons={buttons}
               containerStyle={{height: 30}}
               Style={{color:'pink'}}
               underlayColor={"pink"}
-
-            />
+            /> */}
+            
             {/* //show users */}
             <View style={{backgroundColor:'white',width:'100%',height:20,marginLeft:'3%',marginTop:10}}>
               <Text style={{color:'gray',fontSize:12,textAlign:'left'}}>Suggested</Text>
