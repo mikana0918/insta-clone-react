@@ -2,13 +2,14 @@ import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import Timeline from './Timeline';
+import Icon from '@expo/vector-icons/FontAwesome';
 import SearchScreen from './SearchScreen';
 import RankingScreen from './RankingScreen';
 import FavoriteScreen from './FavoriteScreen';
 import ProfilesScreen from './ProfileScreen';
 import MessageScreen from './MessageScreen';
 import SendScreen from './SendScreen';
-
+import ImageDetail from './ImageDetail';
 
 class App extends React.Component {
   render () {
@@ -18,37 +19,79 @@ class App extends React.Component {
   }
 }
 
+// const pageStack = createStackNavigator
+// (
+//   {
+//     Home: Timeline,  
+//     Search: SearchScreen,
+//     Ranking: RankingScreen,
+//     Fav: FavoriteScreen,
+//     Prof: ProfilesScreen,
+//     Message: MessageScreen,
+//     Send: SendScreen,
+//     ImageDetail: ImageDetail
+//   },
+//   {
+//     header: null,
+//     headerMode: 'screen',
+//     initialRouteName: "Home"
+//   }
+// )
+
+// const bottomNavStack = createBottomTabNavigator
+// (
+//   {
+//     Home: Timeline,      
+//     Search: SearchScreen,
+//     Ranking: RankingScreen,
+//     Favorite: FavoriteScreen,
+//     Profile: ProfilesScreen, 
+//   },
+//   {
+//     header: null,
+//     // headerMode: 'screen',
+//   } 
+// )
+
+
+
 AppNavigator = createStackNavigator(
   { 
   bottomNavigation:{
-    screen: createBottomTabNavigator(
+  screen: createBottomTabNavigator(
   {
-      Home: Timeline,
+      Home: Timeline,      
       Search: SearchScreen,
       Ranking: RankingScreen,
       Favorite: FavoriteScreen,
-      Profiles: ProfilesScreen,
+      Profile: ProfilesScreen,  
+  },
+  {
+    navigationOptions: {
+      header: null,
+      // headerMode: 'screen',
+    }
+  })},
+  pageNavigation:{
+  screen:createStackNavigator(
+  {
+      Search: SearchScreen,
+      Ranking: RankingScreen,
+      Message: MessageScreen,
+      Send: SendScreen,
+      ImageDetail: ImageDetail
+
   },
   {
     navigationOptions: {
       header: null,
       headerMode: 'screen',
-      //  initialRouteName: "Send"
-    }
-  })},
-  pageNavigation:{
-    screen:createStackNavigator(
-  {
-      Message: MessageScreen,
-      Send: SendScreen
-  },
-  {
-    navigationOptions: {
-      header: null,
-      // initialRouteName: "Send"
+      initialRouteName: 'TimeLine'
       
     }
-  })},
+  }
+  )
+},
 });
 
 
@@ -97,3 +140,9 @@ const styles = StyleSheet.create({
 );
 
 export default createAppContainer(AppNavigator);
+// export default createStackNavigator(
+//   {
+//     bottomTabs: bottomNavStack,
+//     stackNav: pageStack
+//   }
+// );

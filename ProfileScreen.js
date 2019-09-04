@@ -1,50 +1,55 @@
 import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
+import Story from "./Story";
 import Carousel from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator,createMaterialTopTabNavigator } from "react-navigation";
 
 class ProfileScreen extends React.Component {
+  constructor(props){
+    super();
+  }
+  static navigationOptions = ({ navigate }) => ({
+    header: null
+    })
     render() {
+      const {navigate} = this.props.navigation;
       return (
         <View>
            <Header
               leftComponent={{ icon: 'camera', color: '#fff' }}
               centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-              rightComponent={{ icon: 'send', color: '#fff' }}
+              rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
               containerStyle={{
                 backgroundColor: 'pink',
-                justifyContent: 'space-around',
-              }}
-            />
+                justifyContent: 'space-around',}}/>
             <ScrollView style={{ }}>
               <View style={{backgroundColor:'white',height:140,padding:10,flexDirection: 'row'}}>
-              <ImageBackground
-                  // source={require('./assets/frame-ring1.png')}
-                  // ring
-                  style={{ width:120, height: 120, borderRadius: 120 / 2, borderColor:'pink',borderWidth:3,padding:2 }}>
-                  <Image
-                      source={require('./assets/instagram-clone-sample.png')}
-                      //borderRadius style will help us make the Round Shape Image
-                      style={{ width: 110, height: 110, borderRadius: 110 / 2 }}
-                    />
-              </ImageBackground>
+                <TouchableOpacity>
+                  <ImageBackground
+                      style={{ width:120, height: 120, borderRadius: 120 / 2, borderColor:'pink',borderWidth:3,padding:2 }}>
+                      <Image
+                          source={require('./assets/instagram-clone-sample.png')}
+                          style={{ width: 110, height: 110, borderRadius: 110 / 2 }}/>
+                  </ImageBackground>
+                </TouchableOpacity>
+
               <View style={{backgroundColor:'white',height:'100%',width:'65%',padding:5}}>
                 <View style={{backgroundColor:'white',height:'49%',width:'100%',marginBottom:5,flexDirection:'row',padding:5}}>
                   <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
-                    <View style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%'}}>
+                    <TouchableOpacity style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%'}}>
                       <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>100</Text>
-                    </View>
-                    <View style={{height:'30%',width:'100%',backgroundColor:'white'}}>
-                    <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>posts</Text>
-                    </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{height:'30%',width:'100%',backgroundColor:'white'}}>
+                       <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>posts</Text>
+                    </TouchableOpacity>
                   </View>
                   <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
                   <View style={{height:'70%',width:'100%',backgroundColor:'white',paddingLeft:'10%',paddingRifht:'12%',paddingTop:'16%'}}>
                   <Text style={{fontWeight:'bold',fontSize:18,textAlign:'center'}}>1.5M</Text>
                   </View>
                     <View style={{height:'30%',width:'100%',backgroundColor:'white'}}>
-                    <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>posts</Text>
+                    <Text style={{fontSize:10,textAlign:'center',color:'gray'}}>Followers</Text>
                     </View>
                   </View>
                   <View style={{height:'100%',width:'32%',backgroundColor:'white',marginRight:5}}>
@@ -58,7 +63,7 @@ class ProfileScreen extends React.Component {
                 </View>
                 {/* //ここからメッセージボタン */}
                 <View style={{backgroundColor:'white',height:'45%',width:'100%',padding:10,flexDirection:'row'}}>
-                  <View style={{backgroundColor:'white',height:24, width:'67%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5,padding:3}}>
+                  <View style={{backgroundColor:'white',height:24, width:'67%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5,padding:3}} onPress= {navigate('Message')}>
                     <Text style={{textAlign:'center'}}>Message</Text>
                   </View>
                   <View style={{backgroundColor:'white',height:24, width:'15%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5}}></View>
@@ -81,72 +86,7 @@ class ProfileScreen extends React.Component {
               </View>
               <View style={{backgroundColor:'pink',height:100}}>
               <View style={{height:130,backgroundColor:'white' }}>
-            <ScrollView horizontal={true} style={{ backgroundColor:'white',margin:5,padding:8}}>
-              <View style = {{height:'100%'}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-                />
-                  <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-              </View>
-              <View style = {{height:'100%'}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-                />
-                  <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-              </View>
-              <View style = {{height:'100%'}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-                />
-                    <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-              </View>
-              <View style = {{height:'100%'}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-                />
-                  <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-              </View>
-              <View style = {{height:'100%'}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-                />
-                  <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-              </View>
-              <View style = {{height:'100%'}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-                />
-                  <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-              </View>
-              <View style = {{height:'100%'}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-                />
-                  <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-              </View>
-              <View style = {{height:'100%'}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width: 70, height: 70, borderRadius: 70 / 2,marginRight:12 }}
-                />
-                  <Text style={{color:'black',fontSize:10,textAlign:'center',width:'100%',marginRight:10,marginTop:2}}>Face Here</Text> 
-              </View>
-            </ScrollView>
+            <Story/>
           </View>
               </View>
          {/* ここから画像タイル */}

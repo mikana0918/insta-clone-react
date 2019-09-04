@@ -7,14 +7,16 @@ class SendScreen extends React.Component {
     header:null
 }
     constructor(props){
-      super();
+      super(props);
+      this.state={ 
+          text:'' };
     }
     render() {
       const {navigate} = this.props.navigation;
       return (
         <View>
           <Header
-          leftComponent={{ icon: 'camera', color: '#fff', onPress:() => navigate('Message') }}
+           leftComponent={<TouchableOpacity onPress={() => navigate('Message')}><Image source={require('./assets/left-arrow.png')} style={{ width:20, height: 20, tintColor:'white'}}/></TouchableOpacity>}
           centerComponent={{ text: '【相手のなまえ】', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
           rightComponent={{ icon: 'add', color: '#fff', }}
           containerStyle={{
@@ -43,7 +45,7 @@ class SendScreen extends React.Component {
 
           {/* 自分 */}
             <View 
-                style={{backgroundColor:'white',width:'40%%',paddingTop:18,paddingBottom:15,alignSelf:'flex-end',marginRight:'5%'}}>
+                style={{backgroundColor:'white',width:'40%',paddingTop:18,paddingBottom:15,alignSelf:'flex-end',marginRight:'5%'}}>
                   <View style={{borderColor:'gray', borderWidth:2,borderRadius:20, alignSelf:'flex-end', backgroundColor:'pink'}}><Text style ={{color:'gray',fontSize:14, margin:10,}}>あうあうああああああああああああああああああああああああああ</Text></View>
             </View>
           {/* 相手 */}
@@ -73,7 +75,7 @@ class SendScreen extends React.Component {
 
 
         </ScrollView>
-        
+
         <View style={{width:'100%', height:'10%',backgroundColor:'white', flexDirection:'row',padding:10}}>
             <View style={{backgroundColor:'white', width:'100%',height:'80%', flexDirection:'row'}}>
                 <View style={{backgroundColor:'white', width:'20%',height:'100%'}}>
@@ -83,20 +85,19 @@ class SendScreen extends React.Component {
                             color='pink'/>
                 </View>
                 <View style={{width:'80%',height:'90%', flexDirection:'row',borderRadius:30,borderColor:'gray',borderWidth:2}}>
+                    <TouchableOpacity>
                     <Input
                         placeholder='メッセージを入力'
-                        // leftIcon={
-                        //   <Icon
-                        //     name='search'
-                        //     size={18}
-                        //     color='gray'/>
-                        //     }
                         rightIcon={
                             <Icon
-                            name='photo'
+                            name='send'
                             size={20}
-                            color='gray'/>}
+                            color='gray'/>
+                            }
+                        value={this.state.text}
+                        onChangeText={(text) => this.setState({text})}
                     /> 
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
