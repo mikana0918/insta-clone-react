@@ -10,7 +10,10 @@ import ProfilesScreen from './ProfileScreen';
 import MessageScreen from './MessageScreen';
 import SendScreen from './SendScreen';
 import ImageDetail from './ImageDetail';
-import StoryModal from './StoryModal';
+import MyPosts from './MyPosts';
+import Following from './Following';
+import Followers from './Followers';
+
 
 class App extends React.Component {
   render () {
@@ -41,18 +44,33 @@ AppNavigator = createStackNavigator(
   screen:createStackNavigator(
   {
       Search: SearchScreen,
-      Ranking: RankingScreen,
-      Message: MessageScreen,
-      Send: SendScreen,
+      Ranking: RankingScreen, 
       ImageDetail: ImageDetail,
-      StoryModal: StoryModal 
+      MyPosts: MyPosts,
+      Following: Following,
+      Followers: Followers
 
   },
   {
     navigationOptions: {
       header: null,
       headerMode: 'screen',
-      initialRouteName: 'TimeLine'
+
+    }
+  }
+  )
+},
+profileMessageNavigation:{
+  screen:createStackNavigator(
+  {
+      Message: MessageScreen,
+      Send: SendScreen,
+  },
+  {
+    navigationOptions: {
+      header: null,
+      headerMode: 'screen',
+      initialRouteName: 'Profile'
       
     }
   }
