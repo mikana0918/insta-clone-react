@@ -80,35 +80,6 @@ profileMessageNavigation:{
     }
   )
 },
-// searchPageNavigation: {
-//   screen: createMaterialTopTabNavigator
-//   (
-//     {
-//       //ここに検索タブの画面
-//       User: User,
-//       NearBy: NearBy,
-//       Tags: Tags,
-//       Ranking: Ranking
-//     },
-//     {
-//     tabBarOptions: {
-//       scrollEnabled: true,
-//       labelStyle: {
-//         fontSize: 12,
-//       },
-//       style: {
-//         backgroundColor: 'red',
-//       },
-//       indicatorStyle: {
-//         backgroundColor: '#fff'
-//       },
-//       defaultNavigationOptions:{
-//         // header:null
-//         }
-//       }
-//     }
-//   )
-// },
 });
 
 

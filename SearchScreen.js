@@ -7,7 +7,7 @@ import PeopleScreen from './PeopleScreen';
 import TagsScreen from './TagsScreen';
 import PlacesScreen from './PlacesScreen';
 import { TabView, SceneMap } from 'react-native-tab-view';
-
+import RankingScreen from './RankingScreen';
 
 
 class SearchScreen extends React.Component {
@@ -21,8 +21,6 @@ class SearchScreen extends React.Component {
         isBorderBottom:false,
         selectedIndex: 0,
         search: '',
-
-
       };   
       this.updateIndex = this.updateIndex.bind(this);
       // this.searchContents = this.searchContents.bind(this);
@@ -182,11 +180,13 @@ class SearchScreen extends React.Component {
 
   class Ranking extends React.Component{
     render(){
-      // const { search } = this.state
-      // const { selectedIndex } = this.state
-  
+
       return (
-        <View><Text>Ranking</Text></View>
+        <View>
+          <RankingScreen/>
+        </View>
+       
+
       );
     }
   }
