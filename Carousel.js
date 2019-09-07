@@ -1,8 +1,11 @@
+import React ,{Component} from 'react';
+import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 
 export class MyCarousel extends Component {
 
-  constructor(props){
+  constructor(props)
+  {
     super();
     this.state = {
       stories: [
@@ -22,6 +25,7 @@ export class MyCarousel extends Component {
       ]
     }
   }
+  
     _renderItem ({item, index}) {
         return (
             <View style={styles.slide}>
