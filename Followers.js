@@ -11,12 +11,12 @@ class MessageScreen extends React.Component {
     }
     render() {
       const {navigate} = this.props.navigation;
-      console.warn(this.constructor.name);  
+    //   console.warn(this.constructor.name);  
       return (
         <View>
           <Header
           leftComponent={<TouchableOpacity onPress={() => navigate('Profile')}><Image source={require('./assets/left-arrow.png')} style={{ width:20, height: 20, tintColor:'white'}}/></TouchableOpacity>}
-          centerComponent={{ text: 'メッセージ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
+          centerComponent={{ text: 'フォロワー', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
           rightComponent={{ icon: 'add', color: '#fff', }}
           containerStyle={{
             backgroundColor: 'pink',

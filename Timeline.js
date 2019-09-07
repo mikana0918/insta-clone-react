@@ -4,14 +4,23 @@ import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import Carousel from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import Story from './Story';
+
 // import App from './App';
 
 
 class Timeline extends React.Component {
-  static navigationOptions = ({ navigate }) => ({
+  static navigationOptions = ({ navigate }) => 
+  ({
     header: null
     })
-
+    constructor(props) 
+    {
+      super(props);
+      this.state = {    
+        modalVisible: false,
+        currentIndex: 0,
+      }
+    }
   
   _renderItem ({item, index}) {
     return (
@@ -26,7 +35,7 @@ class Timeline extends React.Component {
     );
 }
 
-  closehModal = () => {
+  closeModal = () => {
     this.setState({ modalVisible: false});
   }
 
@@ -48,6 +57,7 @@ class Timeline extends React.Component {
               justifyContent: 'space-around',
             }}
           />
+
         <Story/>
         
         <ScrollView style={{height:'75%'}}>

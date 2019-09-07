@@ -14,7 +14,9 @@ class SearchScreen extends React.Component {
       super(props);
       this.state = {
         isBorderBottom:false,
-        selectedIndex: 0
+        selectedIndex: 0,
+        search: '',
+
       };   
       this.updateIndex = this.updateIndex.bind(this)
   }
@@ -22,12 +24,30 @@ class SearchScreen extends React.Component {
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
   }
-    state = {
-      search: '',
-    };
+
+  _openTab1(){
+    return(   
+      <View><Text>111</Text></View>);
+  }
+
+  _openTab2(){
+    return(   
+      <View><Text>222</Text></View>);
+  }
+
+  _openTab3(){
+    return(   
+      <View><Text>333</Text></View>);
+  }
+
+  _openTab4(){
+    return(   
+      <View><Text>444</Text></View>);
+  }
+
+
     render() {
       const { search } = this.state;
-      const buttons = ['TOP', 'PEOPLE', 'TAGS', 'PLACES']
       const { selectedIndex } = this.state
       return (
         <View>
@@ -40,6 +60,23 @@ class SearchScreen extends React.Component {
                 justifyContent: 'space-around',
               }}
             />
+      
+            {/* //4Top Nav Tabs */}
+            <View style={{backgroundColor:'white',width:'100%',height:45,flexDirection:'row'}}>
+              <TouchableOpacity style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderBottomColor:'pink',borderBottomWidth:3}} >
+                <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>#ユーザー</Text>  
+              </TouchableOpacity>
+              <TouchableOpacity style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%'}}>
+                <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#近くの人</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%'}}>
+                 <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>＃タグ</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%'}}>
+                 <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#注目順</Text>
+              </TouchableOpacity>
+            </View>
+
             <View style={{flexDirection:'row'}}>
               <View style={{width:'100%',height:'100%'}}>
                 <Input
@@ -50,80 +87,13 @@ class SearchScreen extends React.Component {
                     size={18}
                     color='gray'/>
                     }
-                  rightIcon={
-                    <Icon
-                      name='cancel'
-                      size={18}
-                      color='gray'/>
-                      }
-                  />  
+                  />
               </View>
             </View>
-            {/* //4Top Nav Tabs */}
-
-            {/* <ButtonGroup
-              onPress={this.updateIndex}
-              selectedIndex={selectedIndex}
-              buttons={buttons}
-              containerStyle={{height: 30}}
-              Style={{color:'pink'}}
-              underlayColor={"pink"}
-            /> */}
-            
-            {/* //show users */}
-            <View style={{backgroundColor:'white',width:'100%',height:20,marginLeft:'3%',marginTop:10}}>
-              <Text style={{color:'gray',fontSize:12,textAlign:'left'}}>Suggested</Text>
-            </View>
+                        
             
             <ScrollView style={{backgroundColor:'white',width:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
-              <TouchableOpacity style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon
-                        name='cancel'
-                        size={12}
-                        color='gray'/>
-                          
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                <Image
-                  source={require('./assets/instagram-clone-sample.png')}
-                  //borderRadius style will help us make the Round Shape Image
-                  style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                />
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon name='cancel' size={12} color='gray'/>                
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
-                <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
-                <Image source={require('./assets/instagram-clone-sample.png')} style={{ width:65, height: 65, borderRadius: 65 / 2}}/>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'68%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                  <Text style={{color:'black',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                  <Text style={{color:'gray',fontSize:14}}>姫</Text>
-                </View>
-                <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                  <Icon　name='cancel'　size={12}color='gray'/>                    
-                </View>
-              </TouchableOpacity>           
+                    <View style ={{ alignItems: 'center',justifyContent: 'center',}}><Text style ={{alignSelf:'center', textAlignVertical:'center', fontSize:20, color:'gray'}}>何も表示するものがありません</Text></View>
             </ScrollView>
         </View>
       );
