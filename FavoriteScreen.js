@@ -12,6 +12,8 @@ class FavoriteScreen extends React.Component {
     super();
   }
 
+  // TODO プロフィールからのみの遷移へ変更
+
     render() {
       const {navigate} = this.props.navigation;
       return (
