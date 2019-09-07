@@ -1,7 +1,7 @@
 import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
-import Carousel from 'react-native-snap-carousel';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import Story from './Story';
 
@@ -13,35 +13,69 @@ class Timeline extends React.Component {
   ({
     header: null
     })
-    constructor(props) 
-    {
-      super(props);
-      this.state = {    
+
+  constructor(props) 
+  {
+    super(props);
+    this.state = {    
         modalVisible: false,
         currentIndex: 0,
+        stories: [
+          {
+            id: "WpIAc9by5iU",
+            story: require('./assets/welcome1.jpg'),
+            title: "はじめての投稿🌟"
+          }, {
+            id: "sNPnbI1arSE",
+            story: require('./assets/insta-maid1.jpg'),
+            title: "つらたん"
+          }, {
+            id: "VOgFZfRVaww",
+            story: require('./assets/insta-loli1.jpg'),
+            title: "しぬ"
+          }
+        ]
       }
-    }
-  
-  _renderItem ({item, index}) {
-    return (
-      <View style={styles.slide}>
-     
-      <Image
-      source={ item.story}
-      style={{ width: '100%', height: '100%'}}/>
-         <Text style={styles.title}>{ item.title }</Text>
-
-  </View>
-    );
-}
-
-  closeModal = () => {
-    this.setState({ modalVisible: false});
   }
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }  
+  _renderItem ({item, index}) 
+  {
+    return (
+      <View style={styles.slide}>  
+        <Image
+        source={ item.story}
+        style={{ width: '100%', height: '100%'}}/>
+          <Text style={styles.title}>{ item.title }</Text>
+      </View>
+    );
+  }
+
+  //impl pagenation
+  get pagination () 
+  {
+    const { stories, activeSlide } = this.state;
+    return (
+        <Pagination
+          dotsLength={stories.length}
+          activeDotIndex={activeSlide}
+          containerStyle={{alignSelf:'center',position: 'absolute', bottom:-20 }}
+          dotStyle={
+            {
+              width: 10,
+              height: 10,
+              borderRadius: 10,
+              // marginHorizontal: 8,
+              backgroundColor: 'rgba(255, 255, 255, 0.9)'
+            }
+        }
+          inactiveDotStyle={{
+              // Define styles for inactive dots here
+          }}
+          inactiveDotOpacity={0.3}
+          inactiveDotScale={0.6}
+        />
+    );
+  }
 
   render() {
 
@@ -57,7 +91,7 @@ class Timeline extends React.Component {
         <Story/>
         
        <ScrollView style={{height:'75%'}}>
-          <View style={{ height:600,backgroundColor:'white'}}>
+          <View style={{backgroundColor:'white'}}>
             <View style={{height:50}}>
               <TouchableOpacity
                 onPress={() => navigate('Profiles')}
@@ -66,7 +100,23 @@ class Timeline extends React.Component {
                   <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold'}}>ゆうこす</Text>               
               </TouchableOpacity>
             </View>
-            <Image source={require('./assets/insta-ex1.jpg')} style={{ width: '100%', height: '70%', resizeMode: 'cover',}}/>
+           
+            <View style={{width:'100%',height:400}}>
+              <Carousel
+                      ref={(c) => { this._carousel = c; }}
+                      data={this.state.stories}
+                      renderItem={this._renderItem}
+                      sliderWidth={400}
+                      itemWidth={400}
+                      firstItem={0}
+                      layout={'stack'}
+                      layoutCardOffset={9}
+                      onSnapToItem={(index) => this.setState({ activeSlide: index }) }
+                      >          
+              </Carousel>
+              { this.pagination }
+            </View>
+              
             <View style={{ width: '100%', height: '10%', backgroundColor:'white',flexDirection: 'row',padding:10}}>
               <TouchableOpacity>
                 <Image source={require('./assets/heart-shape.png')} style={{ width: 30, height: 30,marginRight:16,marginLeft:8}}/>
@@ -86,56 +136,6 @@ class Timeline extends React.Component {
               </View>
             </View>     
           </View>
-
-        <View style={{ height:600,backgroundColor:'white'}}>
-          <View style={{height:50}}>
-              <TouchableOpacity 
-                style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}
-                onPress={() => navigate('Profiles')}>
-                <Image source={require('./assets/instagram-clone-sample.png')} style={{ width: 30, height: 30, borderRadius: 30 / 2, marginLeft:5,marginTop:5}}/>
-                  <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold'}}>みゅう</Text>
-              </TouchableOpacity>
-          </View>
-          <Image source={require('./assets/insta-maid1.jpg')} style={{ width: '100%', height: '70%', resizeMode: 'cover',}}/>
-          <View style={{ width: '100%', height: '10%', backgroundColor:'white',flexDirection: 'row',padding:10}}>
-            <Image source={require('./assets/heart-shape.png')} style={{ width: 30, height: 30,marginRight:16,marginLeft:8}}/>
-            <Image source={require('./assets/speech-bubble.png')} style={{ width: 30, height: 30,marginRight:16}}/>
-            <Image source={require('./assets/mail.png')} style={{ width: 30, height: 30,marginRight:16}}/>
-          </View>
-          <View>
-            <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！</Text> 
-            <View style={{flexDirection: 'row',marginTop:5}}>         
-              <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>完全で瀟洒なメイド</Text> 
-              <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日もお給仕しちゃいますにゃん❤️</Text>
-            </View>
-          </View>     
-        </View>
-
-        <View style={{ height:600,backgroundColor:'white'}}>
-          <View style={{height:50}}>
-              <TouchableOpacity 
-                style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}
-                onPress={() => navigate('Profiles')}>
-                <Image source={require('./assets/instagram-clone-sample.png')} style={{ width: 30, height: 30, borderRadius: 30 / 2, marginLeft:5,marginTop:5}}/>
-                  <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold'}}>みゅう</Text>    
-              </TouchableOpacity>
-          </View>
-          <Image source={require('./assets/insta-loli1.jpg')} style={{ width: '100%', height: '70%', resizeMode: 'cover',}}/>
-          <View style={{ width: '100%', height: '10%', backgroundColor:'white',flexDirection: 'row',padding:10}}>
-            <Image source={require('./assets/heart-shape.png')} style={{ width: 30, height: 30,marginRight:16,marginLeft:8}}/>
-            <Image source={require('./assets/speech-bubble.png')} style={{ width: 30, height: 30,marginRight:16}}/>
-            <Image source={require('./assets/mail.png')} style={{ width: 30, height: 30,marginRight:16}}/>
-          </View>
-          <View>
-            <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！</Text> 
-            <View style={{flexDirection: 'row',marginTop:5}}>         
-              <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>みゅう</Text> 
-              <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日はちょーいい天気⭐️</Text>
-            </View>
-          </View>     
-        </View>
-
-
       </ScrollView>
     </View>
     );
@@ -171,6 +171,12 @@ const styles = StyleSheet.create({
   },
   slide:{
     backgroundColor:'rgba(0,0,0,0.6)',
+    // shadowColor: '#000',
+    shadowColor: 'pink',
+    shadowOffset: { width: 4, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 2,
   },
   image:{
     resizeMode: 'contain',

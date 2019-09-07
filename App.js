@@ -29,11 +29,11 @@ AppNavigator = createStackNavigator(
   bottomNavigation:{
   screen: createBottomTabNavigator(
   {
-      Home: Timeline,      
-      Search: SearchScreen,
-      Post: Post,
-      Notification: Notification,
-      Profile: ProfilesScreen,  
+      ホーム: Timeline,      
+      検索: SearchScreen,
+      投稿: Post,
+      通知: Notification,
+    　プロフィール: ProfilesScreen,  
   },
   {
     navigationOptions: {
@@ -49,7 +49,8 @@ AppNavigator = createStackNavigator(
       ImageDetail: ImageDetail,
       MyPosts: MyPosts,
       Following: Following,
-      Followers: Followers
+      Followers: Followers,
+
 
   },
   {

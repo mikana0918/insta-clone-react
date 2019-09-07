@@ -63,7 +63,7 @@ class Story extends React.Component
               containerStyle={{alignSelf:'center',backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
               dotStyle={
                 {
-                  width: 20,
+                  width: 10,
                   height: 10,
                   borderRadius: 5,
                   // marginHorizontal: 8,
@@ -77,7 +77,7 @@ class Story extends React.Component
               inactiveDotScale={0.6}
             />
         );
-    }
+      }
 
 
     render(){
