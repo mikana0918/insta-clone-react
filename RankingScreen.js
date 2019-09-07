@@ -5,6 +5,13 @@ import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 
 class RankingScreen extends React.Component {
 
+  // TODO 検索ページへ移動
+  static navigationOptions = ({ navigate }) => ({
+    header: null
+    })
+  constructor(props){
+    super();
+  }
     render() {
       return (
         <View>

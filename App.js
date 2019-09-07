@@ -13,7 +13,8 @@ import ImageDetail from './ImageDetail';
 import MyPosts from './MyPosts';
 import Following from './Following';
 import Followers from './Followers';
-
+import Notification from './Notification';
+import Post from './Post';
 
 class App extends React.Component {
   render () {
@@ -30,8 +31,8 @@ AppNavigator = createStackNavigator(
   {
       Home: Timeline,      
       Search: SearchScreen,
-      Ranking: RankingScreen,
-      Favorite: FavoriteScreen,
+      Post: Post,
+      Notification: Notification,
       Profile: ProfilesScreen,  
   },
   {
