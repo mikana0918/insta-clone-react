@@ -15,7 +15,7 @@ class MessageScreen extends React.Component {
       return (
         <View>
           <Header
-          leftComponent={<TouchableOpacity onPress={() => navigate('Profile')}><Image source={require('./assets/left-arrow.png')} style={{ width:20, height: 20, tintColor:'white'}}/></TouchableOpacity>}
+          leftComponent={<TouchableOpacity onPress={() => navigate('ProfilesScreen')}><Image source={require('./assets/left-arrow.png')} style={{ width:20, height: 20, tintColor:'white'}}/></TouchableOpacity>}
           centerComponent={{ text: 'メッセージ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
           rightComponent={{ icon: 'add', color: '#fff', }}
           containerStyle={{

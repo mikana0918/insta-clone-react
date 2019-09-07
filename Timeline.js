@@ -87,8 +87,8 @@ class Timeline extends React.Component {
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
             rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
             containerStyle={{backgroundColor: 'pink', justifyContent: 'space-around',}}/>
-
-        <Story/>
+      {/* //Timeline Story Component */}
+      <Story/>
         
        <ScrollView style={{height:'75%'}}>
           <View style={{backgroundColor:'white'}}>
