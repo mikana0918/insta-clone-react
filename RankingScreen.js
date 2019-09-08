@@ -20,15 +20,7 @@ class RankingScreen extends React.Component {
       //   <User/>, <NearBy/>, <Tags/>, <Ranking/>
       // ]
       <View>
-          <Header
-            leftComponent={{ icon: 'camera', color: '#fff' }}
-            centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-            rightComponent={{ icon: 'send', color: '#fff' }}
-            containerStyle={{
-              backgroundColor: 'pink',
-              justifyContent: 'space-around',
-            }}
-          />
+
           {/* //4Top Nav Tabs */}
           <View style={{backgroundColor:'white',width:'100%',height:45,flexDirection:'row'}}>
             <TouchableOpacity style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderBottomColor:'pink',borderBottomWidth:3}} >
