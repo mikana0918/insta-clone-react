@@ -9,7 +9,7 @@ import PlacesScreen from './PlacesScreen';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import RankingScreen from './RankingScreen';
 
-
+//TODO navバーにスタイルのピンクがついていくようにする
 class SearchScreen extends React.Component {
 
     constructor(props) 
@@ -17,7 +17,9 @@ class SearchScreen extends React.Component {
       super(props);
       this.state = {
         index: 0,
-        nav: 0,
+        nav: 0,   
+        navDefault: {backgroundColor:'white',width:'25%',height:'100%',padding:'3%'},
+        navSelect: {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderBottomColor:'pink',borderBottomWidth:3},
         isBorderBottom:false,
         selectedIndex: 0,
         search: '',
@@ -35,10 +37,8 @@ class SearchScreen extends React.Component {
     // const { selectedIndex } = this.state
     const {navigate} = this.props.navigation;
     // const { nav } = this.state.nav;
-    this.searchContents = [
-      <User/>, <NearBy/>, <Tags/>, <Ranking/>
-    ]
-
+    this.searchContents = [<User/>, <NearBy/>, <Tags/>, <Ranking/>];
+    // console.warn(this.state.nav);
 
     return (
       <View>
@@ -55,28 +55,29 @@ class SearchScreen extends React.Component {
           {/* //4Top Nav Tabs */}
           <View style={{backgroundColor:'white',width:'100%',height:45,flexDirection:'row'}}>
             <TouchableOpacity 
-              style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderBottomColor:'pink',borderBottomWidth:3}} 
+              key = {0}
+              style={this.state.navDefault} 
               onPress={() =>  {this.setState({nav: 0})}}
             >
               <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>#ユーザー</Text>  
             </TouchableOpacity>
             <TouchableOpacity 
-              style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%'}}
-              // onPress={() => navigate('NearBy')}
+              key = {1}
+              style={this.state.navSelect}
               onPress={() =>  {this.setState({nav: 1})}}
             >
               <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#近くの人</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-              style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%'}}
-              // onPress={() => navigate('Tags')}
+              key = {2}
+              style={this.state.navDefault}
               onPress={() =>  {this.setState({nav: 2})}}
             >
                 <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>＃タグ</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-              style={{backgroundColor:'white',width:'25%',height:'100%',padding:'3%'}}
-              // onPress={() => navigate('Ranking')}
+              key = {3}
+              style={this.state.navSelect}
               onPress={() =>  {this.setState({nav: 3})}}
             >
                 <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#注目順</Text>
@@ -89,15 +90,80 @@ class SearchScreen extends React.Component {
             </View>
           </View>
 
-          <ScrollView style={{backgroundColor:'white',width:'100%',height:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
+
           
               {this.searchContents[this.state.nav]}
             
-          </ScrollView>
+          
         </View>
     );
   }
 }
+
+  
+  class User extends React.Component{
+    render(){
+
+      return (
+        //card 
+        <ScrollView style={{backgroundColor:'white',paddingLeft:'3%',paddingRight:'3%',paddingTop:'3%', marginTop:5,flexDirection:'row'}}>
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
+              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
+              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
+              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            </TouchableOpacity>
+       
+        </ScrollView>
+        
+       
+      );
+    }
+  }
+
+  class NearBy extends React.Component{
+    render(){
+      // const { search } = this.state
+      // const { selectedIndex } = this.state
+  
+      return (
+        <View><Text>NearBy</Text></View>
+      );
+    }
+  }
+
+  class Tags extends React.Component{
+    render(){
+      // const { search } = this.state
+      // const { selectedIndex } = this.state
+  
+      return (
+        <View><Text>Tags</Text></View>
+      );
+    }
+  }
+
+  class Ranking extends React.Component{
+    render(){
+
+      return (
+        <View>
+          <RankingScreen/>
+        </View>
+       
+
+      );
+    }
+  }
+
 
   const styles = StyleSheet.create({
     welcomeImages:{
@@ -143,55 +209,20 @@ class SearchScreen extends React.Component {
     scene: {
       flex: 1,
     },
+    card: {
+      width:'42%', 
+      aspectRatio:0.9, 
+      backgroundColor:'pink', 
+      margin:'4%', 
+      borderRadius:18, 
+      position:'relative', 
+      shadowColor: 'gray', 
+      shadowOffset: { width: 12, height: 12 }, 
+      shadowOpacity: 0.4, 
+      shadowRadius: 3, 
+      elevation: 2,
+    },
   }
   );
-  class User extends React.Component{
-    render(){
-      // const { search } = this.state
-      // const { selectedIndex } = this.state
-  
-      return (
-        <View><Text>User</Text></View>
-      );
-    }
-  }
-
-  class NearBy extends React.Component{
-    render(){
-      // const { search } = this.state
-      // const { selectedIndex } = this.state
-  
-      return (
-        <View><Text>NearBy</Text></View>
-      );
-    }
-  }
-
-  class Tags extends React.Component{
-    render(){
-      // const { search } = this.state
-      // const { selectedIndex } = this.state
-  
-      return (
-        <View><Text>Tags</Text></View>
-      );
-    }
-  }
-
-  class Ranking extends React.Component{
-    render(){
-
-      return (
-        <View>
-          <RankingScreen/>
-        </View>
-       
-
-      );
-    }
-  }
-
-
-
   
   export default SearchScreen;

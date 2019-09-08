@@ -69,6 +69,7 @@ profileMessageNavigation:{
     {
         Message: MessageScreen,
         Send: SendScreen,
+        Profile: ProfilesScreen,
     },
     {
       navigationOptions: {
