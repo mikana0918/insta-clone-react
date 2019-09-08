@@ -1,8 +1,7 @@
 import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
-import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator } from "react-navigation";
 import Timeline from './Timeline';
-import Icon from '@expo/vector-icons/FontAwesome';
 import SearchScreen from './SearchScreen';
 import RankingScreen from './RankingScreen';
 import FavoriteScreen from './FavoriteScreen';
@@ -15,6 +14,10 @@ import Following from './Following';
 import Followers from './Followers';
 import Notification from './Notification';
 import Post from './Post';
+// import User from './SearchScreen';
+// import NearBy from './SearchScreen';
+// import Tags from './SearchScreen';
+// import Ranking from './SearchScreen';
 
 class App extends React.Component {
   render () {
@@ -24,8 +27,7 @@ class App extends React.Component {
   }
 }
 
-AppNavigator = createStackNavigator(
-  { 
+AppNavigator = createStackNavigator({ 
   bottomNavigation:{
   screen: createBottomTabNavigator(
   {
@@ -51,7 +53,6 @@ AppNavigator = createStackNavigator(
       Following: Following,
       Followers: Followers,
 
-
   },
   {
     navigationOptions: {
@@ -63,19 +64,21 @@ AppNavigator = createStackNavigator(
   )
 },
 profileMessageNavigation:{
-  screen:createStackNavigator(
-  {
-      Message: MessageScreen,
-      Send: SendScreen,
-  },
-  {
-    navigationOptions: {
-      header: null,
-      headerMode: 'screen',
-      initialRouteName: 'Profile'
-      
+  screen:createStackNavigator
+  (
+    {
+        Message: MessageScreen,
+        Send: SendScreen,
+        Profile: ProfilesScreen,
+    },
+    {
+      navigationOptions: {
+        header: null,
+        headerMode: 'screen',
+        initialRouteName: 'Profile'
+        
+      }
     }
-  }
   )
 },
 });

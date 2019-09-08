@@ -20,6 +20,7 @@ class Timeline extends React.Component {
     this.state = {    
         modalVisible: false,
         currentIndex: 0,
+        activeSlide: 0,
         stories: [
           {
             id: "WpIAc9by5iU",
@@ -57,7 +58,7 @@ class Timeline extends React.Component {
     return (
         <Pagination
           dotsLength={stories.length}
-          activeDotIndex={activeSlide}
+          activeDotIndex={this.state.activeSlide}
           containerStyle={{alignSelf:'center',position: 'absolute', bottom:-20 }}
           dotStyle={
             {
@@ -87,8 +88,8 @@ class Timeline extends React.Component {
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
             rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
             containerStyle={{backgroundColor: 'pink', justifyContent: 'space-around',}}/>
-
-        <Story/>
+      {/* //Timeline Story Component */}
+      <Story/>
         
        <ScrollView style={{height:'75%'}}>
           <View style={{backgroundColor:'white'}}>
@@ -111,8 +112,7 @@ class Timeline extends React.Component {
                       firstItem={0}
                       layout={'stack'}
                       layoutCardOffset={9}
-                      onSnapToItem={(index) => this.setState({ activeSlide: index }) }
-                      >          
+                      onSnapToItem={(index) => this.setState({ activeSlide: index }) }>          
               </Carousel>
               { this.pagination }
             </View>

@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 
+
 class Notification extends React.Component {
   static navigationOptions = {
     header:null
@@ -22,6 +23,7 @@ class Notification extends React.Component {
             justifyContent: 'space-around',
           }}
         />
+
          <ScrollView style={{backgroundColor:'white',width:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
               <TouchableOpacity 
               style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}
