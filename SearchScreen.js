@@ -37,8 +37,7 @@ class SearchScreen extends React.Component {
     // const { selectedIndex } = this.state
     const {navigate} = this.props.navigation;
     // const { nav } = this.state.nav;
-    this.searchContents = [<User/>, <NearBy/>, <Tags/>, <Ranking/>];
-    // console.warn(this.state.nav);
+    // this.searchContents = [<User/>, <NearBy/>, <Tags/>, <Ranking/>];
 
     return (
       <View>
@@ -89,11 +88,24 @@ class SearchScreen extends React.Component {
               <Input placeholder='検索'　leftIcon={<Icon name='search' size={18} color='gray'/>}/>
             </View>
           </View>
+{/* 
+          <ScrollView style={{backgroundColor:'white',paddingLeft:'3%',paddingRight:'3%',paddingTop:'3%', marginTop:5,flexDirection:'row'}}>
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
+              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            </TouchableOpacity>
 
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
+              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            </TouchableOpacity>
 
-          
-              {this.searchContents[this.state.nav]}
-            
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
+              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            </TouchableOpacity>
+        </ScrollView> */}
+        
           
         </View>
     );
@@ -106,24 +118,7 @@ class SearchScreen extends React.Component {
 
       return (
         //card 
-        <ScrollView style={{backgroundColor:'white',paddingLeft:'3%',paddingRight:'3%',paddingTop:'3%', marginTop:5,flexDirection:'row'}}>
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%', position:'absolute'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
-            </TouchableOpacity>
-       
-        </ScrollView>
-        
+        <View><Text>aaaa</Text></View>
        
       );
     }
@@ -156,7 +151,8 @@ class SearchScreen extends React.Component {
 
       return (
         <View>
-          <RankingScreen/>
+          {/* <RankingScreen/> */}
+          <View><Text>Ranking</Text></View>
         </View>
        
 

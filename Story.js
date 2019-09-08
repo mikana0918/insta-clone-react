@@ -15,6 +15,7 @@ class Story extends React.Component
     
       modalVisible: false,
       currentIndex: 0,
+      activeSlide: 0,
       stories: [
         {
           id: "WpIAc9by5iU",
@@ -59,7 +60,7 @@ class Story extends React.Component
         return (
             <Pagination
               dotsLength={stories.length}
-              activeDotIndex={activeSlide}
+              activeDotIndex={this.state.activeSlide}
               containerStyle={{alignSelf:'center',backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
               dotStyle={
                 {
@@ -122,7 +123,6 @@ class Story extends React.Component
                     sliderWidth={400}
                     itemWidth={400}
                     firstItem={0}
-                    // layout={'tinder'} 
                     layout={'stack'}
                     layoutCardOffset={9}
                     onSnapToItem={(index) => this.setState({ activeSlide: index }) }>     
