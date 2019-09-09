@@ -17,7 +17,7 @@ class SearchScreen extends React.Component {
       super(props);
       this.state = {
         index: 0,
-        nav: 0,   
+        nav: 'default',   
         pressStatus: false,
         isBorderBottom:false,
         selectedIndex: 0,
@@ -45,6 +45,7 @@ class SearchScreen extends React.Component {
     const {navigate} = this.props.navigation;
     // const { nav } = this.state.nav;
     this.searchContents = {
+      default : <SearchDefault/>,
       user : <SearchUser/>,
       nearby : <SearchNearBy/>,
       tags : <SearchTags/>,
@@ -101,8 +102,6 @@ class SearchScreen extends React.Component {
             </TouchableOpacity>
           </View>
 
-
-
           {/* <ScrollView style={{backgroundColor:'white',paddingLeft:'3%',paddingRight:'3%',paddingTop:'3%', marginTop:5,flexDirection:'row'}}> */}
             {this.searchContents[this.state.nav]}
           {/* </ScrollView> */}
@@ -112,53 +111,105 @@ class SearchScreen extends React.Component {
   }
 }
 
+  class SearchDefault extends React.Component{
+    render(){
+      return(
+        <View style={{ alignItems: 'center',justifyContent: 'center', width:'100%', height:'80%'}}>
+          <Text style ={{fontSize: 16, fontWeight:'bold', color:'gray'}}>メニューから選択</Text>
+        </View>
+      );
+    }
+  }
+
   
   class SearchUser extends React.Component{
     render(){
 
       return (
 
-        <ScrollView style={{height: '100%'}}>
+        <ScrollView style={{}}>
           <View style={{flexDirection:'row'}}>
             <View style={{width:'100%',height:'100%'}}>
               <Input placeholder='検索'　leftIcon={<Icon name='search' size={18} color='gray'/>}/>
             </View>
           </View>
 
-          <View style={{flexDirection:'row', alignItems: 'flex-start',flexWrap: 'wrap'}}>
-            <TouchableOpacity style={styles.card}>
-               <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ height:'80%',width:'100%'}}/>
-               <View style={{top:'80%', height:'20%',width:'100%'}}>
-                 <Text style={{ alignSelf: 'center', color:'white', fontWeight:'bold'}}> ONLINE</Text>
-               </View>   
-            </TouchableOpacity>
+          <View style={{flexDirection:'row', alignItems: 'flex-start',flexWrap: 'wrap', width:'100%', height:'100%'}}>
 
-            <TouchableOpacity style={styles.card}>
-               <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
-               <View style={{top:'80%', height:'20%',width:'100%'}}>
-                 <Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text>
-               </View>
-             </TouchableOpacity>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text>●オンライン</Text>
+            </View>
+          </ImageBackground>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text>●オンライン</Text>
+            </View>
+          </ImageBackground>
+          </TouchableOpacity>
 
-             <TouchableOpacity style={styles.card}>
-               <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ height:'80%',width:'100%'}}/>
-               <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
-             </TouchableOpacity>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text>●オンライン</Text>
+            </View>
+          </ImageBackground>
+          </TouchableOpacity>
 
-             <TouchableOpacity style={styles.card}>
-               <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ height:'80%',width:'100%'}}/>
-               <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
-             </TouchableOpacity>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text>●オンライン</Text>
+            </View>
+          </ImageBackground>
+          </TouchableOpacity>
 
-             <TouchableOpacity style={styles.card}>
-               <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ height:'80%',width:'100%'}}/>
-               <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
-             </TouchableOpacity>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text>●オンライン</Text>
+            </View>
+          </ImageBackground>
+          </TouchableOpacity>
 
-             <TouchableOpacity style={styles.card}>
-               <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ height:'80%',width:'100%'}}/>
-               <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
-             </TouchableOpacity>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text>●オンライン</Text>
+            </View>
+          </ImageBackground>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text>●オンライン</Text>
+            </View>
+          </ImageBackground>
+          </TouchableOpacity>
+
+
+
+                {/* <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
+                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
+                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
+                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
+                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
+                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/> */}
+
+
+          
+              {/* <TouchableOpacity style={styles.card}>
+                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'100%',width:'100%', borderRadius:18, }}/>
+              </TouchableOpacity> */}
+
+
+
+           
           </View>
         </ScrollView>
        
@@ -173,41 +224,57 @@ class SearchScreen extends React.Component {
   
       return (
         <ScrollView style={{height:'100%'}}>
-          <View style={{flexDirection:'row'}}>
-            <View style={{width:'100%',height:'100%'}}>
-              <Input placeholder='検索'　leftIcon={<Icon name='search' size={18} color='gray'/>}/>
-            </View>
-          </View>
-          <View style={{flexDirection:'row', alignItems: 'flex-start',flexWrap: 'wrap'}}>
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/insta-loli1.jpg')} style={{ height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{ alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+          <View style={{flexDirection:'row', alignItems: 'flex-start',flexWrap: 'wrap', width:'100%', height:'100%'}}>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/meidodesu_TP_V.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text>●オンライン</Text>
+              </View>
+            </ImageBackground>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/insta-loli1.jpg')} style={{position:'absolute', height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text>●オンライン</Text>
+              </View>
+            </ImageBackground>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/insta-loli1.jpg')} style={{ height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-ex1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text>●オンライン</Text>
+              </View>
+            </ImageBackground>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/insta-loli1.jpg')} style={{ height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/meidodesu_TP_V.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text>●オンライン</Text>
+              </View>
+            </ImageBackground>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/insta-loli1.jpg')} style={{ height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text>●オンライン</Text>
+              </View>
+            </ImageBackground>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/insta-loli1.jpg')} style={{ height:'80%',width:'100%'}}/>
-              <View style={{top:'80%', height:'20%',width:'100%'}}><Text style={{alignSelf: 'center', color:'white', fontWeight:'bold'}}>ONLINE</Text></View>
+            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-ex1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text>●オンライン</Text>
+              </View>
+            </ImageBackground>
             </TouchableOpacity>
+
+
+            
           </View>
          </ScrollView>
       );
@@ -220,7 +287,13 @@ class SearchScreen extends React.Component {
       // const { selectedIndex } = this.state
   
       return (
-        <View><Text>Tags</Text></View>
+        <ScrollView>
+          <View style={{flexDirection:'row'}}>
+            <View style={{width:'100%',height:'100%'}}>
+              <Input placeholder='検索'　leftIcon={<Icon name='search' size={18} color='gray'/>}/>
+            </View>
+          </View>
+        </ScrollView>
       );
     }
   }
@@ -285,7 +358,7 @@ class SearchScreen extends React.Component {
       flex: 1,
     },
     card: {
-      width:'40%', 
+      width:'40%',
       aspectRatio:0.9, 
       backgroundColor:'pink', 
       margin:'4%', 
@@ -294,8 +367,9 @@ class SearchScreen extends React.Component {
       shadowColor: 'gray', 
       shadowOffset: { width: 12, height: 12 }, 
       shadowOpacity: 0.4, 
-      shadowRadius: 3, 
+      shadowRadius: 5, 
       elevation: 2,
+
     },
   }
   );

@@ -50,52 +50,47 @@ class RankingScreen extends React.Component {
                 blurRadius={3}>
                 {/* リングを重ねてみる */}
                   <ImageBackground
-                  source={require('./assets/frame-ring1.png')}
-                  style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
-                    <Image
-                        source={require('./assets/meidodesu_TP_V.jpg')}
-                        style={{ width:110, height: 110, borderRadius: 110 / 2}}
-                  />
+                    source={require('./assets/frame-ring1.png')}
+                    style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
+                    <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:110, height: 110, borderRadius: 110 / 2}}/>
                   </ImageBackground>
                   <Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.2</Text>     
               </ImageBackground>
             </View>
+
             <View style={{backgroundColor:'white',width:'33.3%',height:'100%'}}>
               <ImageBackground
                   source={require('./assets/instagram-clone-sample.png')}
                   style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center'}}
                   resizeMode='cover'
-                  blurRadius={3}
-                  >
+                  blurRadius={3}>
                     {/* リングを重ねてみる */}
                 <ImageBackground
-                source={require('./assets/frame-ring1.png')}
-                style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
-                    <Image
-                          source={require('./assets/instagram-clone-sample.png')}
-                          style={{ width:110, height: 110, borderRadius: 110 / 2}}
-                    />
+                  source={require('./assets/frame-ring1.png')}
+                  style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
+                    <Image source={require('./assets/instagram-clone-sample.png')} style={{ width:110, height: 110, borderRadius: 110 / 2}}/>
                 </ImageBackground>
-                <View><Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.1</Text></View>
-                </ImageBackground>
+                <View>
+                  <Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.1</Text>
+                </View>
+              </ImageBackground>
             </View>
+
             <View style={{backgroundColor:'white',width:'33.3%',height:'100%'}}>
             <ImageBackground
                 source={require('./assets/number-sample3.jpg')}
                 style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center'}}
                 resizeMode='cover'
-                blurRadius={3}
-                >
+                blurRadius={3}>
                     {/* リングを重ねてみる */}
               <ImageBackground
-              source={require('./assets/frame-ring1.png')}
-              style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
-            <Image
-                    source={require('./assets/number-sample3.jpg')}
-                    style={{ width:110, height: 110, borderRadius: 110 / 2}}
-            />
-            </ImageBackground>
-            <View><Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.3</Text></View>
+                source={require('./assets/frame-ring1.png')}
+                style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
+                  <Image source={require('./assets/number-sample3.jpg')} style={{ width:110, height: 110, borderRadius: 110 / 2}}/>
+              </ImageBackground>
+              <View>
+                <Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.3</Text>
+              </View>
             </ImageBackground>
             </View>
           </View>
