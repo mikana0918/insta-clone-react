@@ -3,11 +3,14 @@ import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,Touchab
 import { Header,Icon,SearchBar,Input,Button,ButtonGroup, Badge} from 'react-native-elements';
 import Carousel from 'react-native-snap-carousel';
 import { createMaterialTopTabNavigator, createAppContainer } from "react-navigation";
-import PeopleScreen from './PeopleScreen';
-import TagsScreen from './TagsScreen';
-import PlacesScreen from './PlacesScreen';
+// import PeopleScreen from './PeopleScreen';
+// import TagsScreen from './TagsScreen';
+// import PlacesScreen from './PlacesScreen';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import RankingScreen from './RankingScreen';
+import NavUser from './NavUser';
+import NavNearBy from './NavNearBy';
+import NavTag from './NavTag';
 
 //TODO navバーにスタイルのピンクがついていくようにする
 class SearchScreen extends React.Component {
@@ -56,9 +59,9 @@ class SearchScreen extends React.Component {
     this.navSelect = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderBottomColor:'pink',borderBottomWidth:3};
 
     return (
-      <View>
+        <View>
           <Header
-            leftComponent={{ icon: 'camera', color: '#fff' }}
+            leftComponent={{ icon: 'menu', color: '#fff' }}
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
             rightComponent={{ icon: 'send', color: '#fff' }}
             containerStyle={{
@@ -72,39 +75,30 @@ class SearchScreen extends React.Component {
             <TouchableOpacity 
               key = {0}
               style={this.state.nav == 'user' ? this.navSelect : this.navDefault} 
-              onPress={() =>  {this.setState({nav: 'user'})}}
-   
-            >
+              onPress={() =>  {this.setState({nav: 'user'})}}>
               <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>#ユーザー</Text>  
             </TouchableOpacity>
             <TouchableOpacity 
               key = {1}
               style={this.state.nav == 'nearby' ? this.navSelect : this.navDefault}
-              onPress={() =>  {this.setState({nav: 'nearby'})}}
-
-            >
+              onPress={() =>  {this.setState({nav: 'nearby'})}}>
               <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#近くの人</Text>
             </TouchableOpacity>
             <TouchableOpacity 
               key = {2}
               style={this.state.nav == 'tags' ? this.navSelect : this.navDefault}
-              onPress={() =>  {this.setState({nav: 'tags'})}}
-            >
+              onPress={() =>  {this.setState({nav: 'tags'})}}>
                 <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>＃タグ</Text>
             </TouchableOpacity>
             <TouchableOpacity 
               key = {3}
               style={this.state.nav == 'ranking' ? this.navSelect : this.navDefault}
-              onPress={() =>  {this.setState({nav: 'ranking'})}}
-
-            >
+              onPress={() =>  {this.setState({nav: 'ranking'})}}>
                 <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#注目順</Text>
             </TouchableOpacity>
           </View>
-
-          {/* <ScrollView style={{backgroundColor:'white',paddingLeft:'3%',paddingRight:'3%',paddingTop:'3%', marginTop:5,flexDirection:'row'}}> */}
+         
             {this.searchContents[this.state.nav]}
-          {/* </ScrollView> */}
           
         </View>
     );
@@ -124,102 +118,10 @@ class SearchScreen extends React.Component {
   
   class SearchUser extends React.Component{
     render(){
-
       return (
-
-        <ScrollView style={{}}>
-          <View style={{flexDirection:'row'}}>
-            <View style={{width:'100%',height:'100%'}}>
-              <Input placeholder='検索'　leftIcon={<Icon name='search' size={18} color='gray'/>}/>
-            </View>
-          </View>
-
-          <View style={{flexDirection:'row', alignItems: 'flex-start',flexWrap: 'wrap', width:'100%', height:'100%'}}>
-
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text><Text style={{color:'green'}}>●</Text>名前</Text>     
-              </View>
-            </ImageBackground>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text><Text style={{color:'red'}}>●</Text>名前</Text>   
-              </View>
-            </ImageBackground>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text><Text style={{color:'green'}}>●</Text>名前</Text>     
-              </View>
-            </ImageBackground>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text><Text style={{color:'red'}}>●</Text>名前</Text>   
-              </View>
-            </ImageBackground>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text><Text style={{color:'green'}}>●</Text>名前</Text>     
-              </View>
-            </ImageBackground>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text><Text style={{color:'red'}}>●</Text>名前</Text>   
-              </View>
-            </ImageBackground>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text><Text style={{color:'green'}}>●</Text>名前</Text>     
-              </View>
-            </ImageBackground>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text><Text style={{color:'red'}}>●</Text>名前</Text>   
-              </View>
-            </ImageBackground>
-          </TouchableOpacity>
-
-
-                {/* <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
-                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
-                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
-                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
-                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
-                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/> */}
-
-
-          
-              {/* <TouchableOpacity style={styles.card}>
-                <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{position:'absolute', height:'100%',width:'100%', borderRadius:18, }}/>
-              </TouchableOpacity> */}
-
-
-
-           
-          </View>
-        </ScrollView>
-       
+        <View>
+          <NavUser/>
+        </View> 
       );
     }
   }
@@ -228,93 +130,41 @@ class SearchScreen extends React.Component {
     render(){
       // const { search } = this.state
       // const { selectedIndex } = this.state
-  
       return (
-        <ScrollView style={{height:'100%'}}>
-          <View style={{flexDirection:'row', alignItems: 'flex-start',flexWrap: 'wrap', width:'100%', height:'100%'}}>
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/meidodesu_TP_V.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text>●オンライン</Text>
-              </View>
-            </ImageBackground>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text>●オンライン</Text>
-              </View>
-            </ImageBackground>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-ex1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text>●オンライン</Text>
-              </View>
-            </ImageBackground>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/meidodesu_TP_V.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text>●オンライン</Text>
-              </View>
-            </ImageBackground>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text>●オンライン</Text>
-              </View>
-            </ImageBackground>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-            <ImageBackground source={require('./assets/insta-ex1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-                <Text>●オンライン</Text>
-              </View>
-            </ImageBackground>
-            </TouchableOpacity>
-
-
-            
-          </View>
-         </ScrollView>
+        <View>
+          <NavNearBy/>
+        </View>
       );
     }
   }
 
   class SearchTags extends React.Component{
     render(){
+      // const {navigate} = this.props.navigation;
       // const { search } = this.state
-      // const { selectedIndex } = this.state
-  
       return (
-        <ScrollView>
-          <View style={{flexDirection:'row'}}>
-            <View style={{width:'100%',height:'100%'}}>
-              <Input placeholder='検索'　leftIcon={<Icon name='search' size={18} color='gray'/>}/>
-            </View>
+      <View style={{height:'100%'}}>
+        <View style={{flexDirection:'row'}}>
+          <View style={{width:'100%',height:'100%'}}>
+            <Input placeholder='検索'　leftIcon={<Icon name='search' size={18} color='gray'/>}/>
+          </View>
+        </View>
+        <ScrollView >  
+          <View style={{}}>
+            <NavTag/>
           </View>
         </ScrollView>
+      </View>
       );
     }
   }
 
   class SearchRanking extends React.Component{
     render(){
-
       return (
         <View>
-          <RankingScreen/>
-         
+          <RankingScreen/>     
         </View>
-       
-
       );
     }
   }

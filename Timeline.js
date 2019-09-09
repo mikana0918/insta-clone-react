@@ -84,7 +84,7 @@ class Timeline extends React.Component {
     return (
       <View>
          <Header
-            leftComponent={{ icon: 'camera', color: '#fff',onPress: () => alert('写真を選んでください') }}
+            leftComponent={{ icon: 'menu', color: '#fff',onPress: () => alert('写真を選んでください') }}
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
             rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
             containerStyle={{backgroundColor: 'pink', justifyContent: 'space-around',}}/>
