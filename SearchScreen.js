@@ -136,62 +136,69 @@ class SearchScreen extends React.Component {
 
           <View style={{flexDirection:'row', alignItems: 'flex-start',flexWrap: 'wrap', width:'100%', height:'100%'}}>
 
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text>●オンライン</Text>
-            </View>
-          </ImageBackground>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text><Text style={{color:'green'}}>●</Text>名前</Text>     
+              </View>
+            </ImageBackground>
           </TouchableOpacity>
           
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text>●オンライン</Text>
-            </View>
-          </ImageBackground>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text><Text style={{color:'red'}}>●</Text>名前</Text>   
+              </View>
+            </ImageBackground>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text>●オンライン</Text>
-            </View>
-          </ImageBackground>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text><Text style={{color:'green'}}>●</Text>名前</Text>     
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text><Text style={{color:'red'}}>●</Text>名前</Text>   
+              </View>
+            </ImageBackground>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text>●オンライン</Text>
-            </View>
-          </ImageBackground>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text><Text style={{color:'green'}}>●</Text>名前</Text>     
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text><Text style={{color:'red'}}>●</Text>名前</Text>   
+              </View>
+            </ImageBackground>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text>●オンライン</Text>
-            </View>
-          </ImageBackground>
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+                <Text><Text style={{color:'green'}}>●</Text>名前</Text>     
+              </View>
+            </ImageBackground>
           </TouchableOpacity>
-
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text>●オンライン</Text>
-            </View>
-          </ImageBackground>
+          
+          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'white', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
+            <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
+              <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
+              <Text><Text style={{color:'red'}}>●</Text>名前</Text>   
+              </View>
+            </ImageBackground>
           </TouchableOpacity>
-
-          <TouchableOpacity style={{width:'42%',aspectRatio:1.0, borderRadius:18, margin:'4%', backgroundColor:'pink', padding:10,  shadowColor: 'gray', shadowOffset: { width: 12, height: 12 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2,}}>   
-          <ImageBackground source={require('./assets/insta-loli1.jpg')} style={{width:'100%',aspectRatio:1.0, borderRadius:18,}} >
-            <View style={{backgroundColor:'white', width:'100%', height:'30%',top:'70%',opacity:0.5, alignItems: 'center', justifyContent: 'center',}}>
-              <Text>●オンライン</Text>
-            </View>
-          </ImageBackground>
-          </TouchableOpacity>
-
 
 
                 {/* <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:'40%',aspectRatio:1.0, borderRadius:18, marginTop:'4%',marginLeft:'4%', marginRight:'4%'}}/>
