@@ -133,7 +133,9 @@ class Story extends React.Component
         </Modal>
         <View style={{height:120,backgroundColor:'white'}}>
            <Text style= {{marginLeft:10, marginTop:10,fontSize:12,width:'50%'}}>Stories</Text>  
-             <ScrollView horizontal={true} style={{ backgroundColor:'white',margin:5}}>
+             <ScrollView 
+              horizontal={true} 
+              style={{ backgroundColor:'white',margin:5}}>
               <TouchableOpacity 
                 style = {{height:'90%',backgroundColor:'white',padding:5,marginRight:7}}
                 onPress={() => {this.setModalVisible(true);}}>
@@ -141,7 +143,6 @@ class Story extends React.Component
                          style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
                       <Image
                         source={require('./assets/instagram-clone-sample.png')}
-                        //borderRadius style will help us make the Round Shape Image
                         style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
                   </ImageBackground>
                   <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
@@ -153,7 +154,6 @@ class Story extends React.Component
                     <ImageBackground style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
                       <Image
                         source={require('./assets/instagram-clone-sample.png')}
-                        //borderRadius style will help us make the Round Shape Image
                         style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
                   </ImageBackground>
                   <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
@@ -165,7 +165,6 @@ class Story extends React.Component
                     <ImageBackground  style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
                       <Image
                         source={require('./assets/instagram-clone-sample.png')}
-                        //borderRadius style will help us make the Round Shape Image
                         style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
                     </ImageBackground>
                     <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 

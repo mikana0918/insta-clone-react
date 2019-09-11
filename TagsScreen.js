@@ -10,10 +10,8 @@ class SearchScreen extends React.Component {
       super(props);
       this.state = {
         isBorderBottom:false,
-
       };   
   }
-
 
     state = {
       search: '',
@@ -76,7 +74,9 @@ class SearchScreen extends React.Component {
               <Text style={{color:'gray',fontSize:12,textAlign:'left'}}>Suggested</Text>
             </View>
             
-            <ScrollView style={{backgroundColor:'white',width:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
+            <ScrollView 
+            style={{backgroundColor:'white',width:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}
+            >
               <TouchableOpacity style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}>
                 <View style={{backgroundColor:'white',height:'100%',aspectRatio: 1,padding:2}}>
                 <Image

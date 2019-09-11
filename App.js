@@ -14,10 +14,7 @@ import Following from './Following';
 import Followers from './Followers';
 import Notification from './Notification';
 import Post from './Post';
-// import User from './SearchScreen';
-// import NearBy from './SearchScreen';
-// import Tags from './SearchScreen';
-// import Ranking from './SearchScreen';
+
 
 class App extends React.Component {
   render () {
