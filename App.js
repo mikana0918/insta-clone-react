@@ -14,9 +14,13 @@ import Following from './Following';
 import Followers from './Followers';
 import Notification from './Notification';
 import Post from './Post';
+// import Ionicons from '@expo/vector-icons';
+import { Icon } from 'react-native-elements';
+
 
 
 class App extends React.Component {
+  
   render () {
       return (
           <AppStackNavigator/>
@@ -28,11 +32,63 @@ AppNavigator = createStackNavigator({
   bottomNavigation:{
   screen: createBottomTabNavigator(
   {
-      ホーム: Timeline,      
-      検索: SearchScreen,
-      投稿: Post,
-      通知: Notification,
-    　プロフィール: ProfilesScreen,  
+      ホーム: {
+        screen: Timeline,
+        activeTintColor: 'pink',
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) =>           
+          <Icon
+          name='home'
+          size={24}
+          color={tintColor}/>      
+        }    
+      },
+      検索: {
+        screen: SearchScreen,
+        activeTintColor: 'pink',
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) =>           
+          <Icon
+          name='search'
+          size={24}
+          color={tintColor}/>      
+        }    
+      },
+      投稿: {
+        screen: Post,
+        activeTintColor: 'pink',
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) =>           
+          <Icon
+          name='add-to-photos'
+          size={24}
+          color={tintColor}/>      
+        }   
+      },
+      通知: {
+        screen: Notification,
+        activeTintColor: 'pink',
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) =>           
+          <Icon
+          name='notifications'
+          size={24}
+          color={tintColor}
+          type='Ionicons'/>      
+        }
+      },
+    　プロフィール: {
+      screen: ProfilesScreen,
+      activeTintColor: 'pink',
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) =>           
+        <Icon
+        name= 'user'
+        type= {'font-awesome'}
+        size={22}
+        color={tintColor}
+        />      
+      }  }
   },
   {
     navigationOptions: {
@@ -40,16 +96,17 @@ AppNavigator = createStackNavigator({
       // headerMode: 'screen',
     },
     tabBarOptions:{
-      activeTintColor: 'pink',
-      labelStyle: {
-        fontSize: 12,
-      },
+      showIcon: true,
+      showLabel: false,
+      activeTintColor: 'white',
+      activeBackgroundColor:'pink',
+      tintColor:'pink',
       style: {
         backgroundColor: 'white',
       },
     },
-
-  }
+  },
+   
   )},
   pageNavigation:{
   screen:createStackNavigator(
@@ -89,6 +146,7 @@ profileMessageNavigation:{
     }
   )
 },
+
 });
 
 

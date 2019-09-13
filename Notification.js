@@ -12,7 +12,7 @@ class Notification extends React.Component {
     }
     render() {
       const {navigate} = this.props.navigation;
-      console.warn(this.constructor.name);  
+ 
       return (
         <View>
           <Header
