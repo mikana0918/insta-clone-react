@@ -61,7 +61,7 @@ class SearchScreen extends React.Component {
     return (
         <View>
           <Header
-            leftComponent={{ icon: 'menu', color: '#fff' }}
+            leftComponent={{ icon: 'settings', color: '#fff' }}
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
             rightComponent={{ icon: 'send', color: '#fff' }}
             containerStyle={{
