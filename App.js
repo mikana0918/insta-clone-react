@@ -14,9 +14,13 @@ import Following from './Following';
 import Followers from './Followers';
 import Notification from './Notification';
 import Post from './Post';
+// import Ionicons from '@expo/vector-icons';
+import { Icon } from 'react-native-elements';
+
 
 
 class App extends React.Component {
+  
   render () {
       return (
           <AppStackNavigator/>
@@ -28,11 +32,63 @@ AppNavigator = createStackNavigator({
   bottomNavigation:{
   screen: createBottomTabNavigator(
   {
-      ホーム: Timeline,      
-      検索: SearchScreen,
-      投稿: Post,
-      通知: Notification,
-    　プロフィール: ProfilesScreen,  
+      ホーム: {
+        screen: Timeline,
+        activeTintColor: 'pink',
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) =>           
+          <Icon
+          name='home'
+          size={24}
+          color={tintColor}/>      
+        }    
+      },
+      検索: {
+        screen: SearchScreen,
+        activeTintColor: 'pink',
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) =>           
+          <Icon
+          name='search'
+          size={24}
+          color={tintColor}/>      
+        }    
+      },
+      投稿: {
+        screen: Post,
+        activeTintColor: 'pink',
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) =>           
+          <Icon
+          name='add-to-photos'
+          size={24}
+          color={tintColor}/>      
+        }   
+      },
+      通知: {
+        screen: Notification,
+        activeTintColor: 'pink',
+        navigationOptions: {
+          tabBarIcon: ({ tintColor }) =>           
+          <Icon
+          name='notifications'
+          size={24}
+          color={tintColor}
+          type='Ionicons'/>      
+        }
+      },
+    　プロフィール: {
+      screen: ProfilesScreen,
+      activeTintColor: 'pink',
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) =>           
+        <Icon
+        name= 'user'
+        type= {'font-awesome'}
+        size={22}
+        color={tintColor}
+        />      
+      }  }
   },
   {
     navigationOptions: {
@@ -40,16 +96,41 @@ AppNavigator = createStackNavigator({
       // headerMode: 'screen',
     },
     tabBarOptions:{
-      activeTintColor: 'pink',
-      labelStyle: {
-        fontSize: 12,
-      },
+      showIcon: true,
+      showLabel: false,
+      activeTintColor: 'white',
+      activeBackgroundColor:'pink',
+      tintColor:'pink',
       style: {
         backgroundColor: 'white',
       },
     },
-
-  }
+      // defaultNavigationOptions:({navigation}) => ({
+      //   tabBarIcon:({focused, horizontal, tintColor}) => {
+      //     const {routeName} = navigation.state;
+      //     let IconComponent = Icon;
+      //     let iconName;
+      //     if (routeName === 'Timeline'){
+      //       // iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+      //       iconName = 'home'
+      //       // IconComponent = HomeIconWithBadge;
+      //     } else if (routeName === 'SearchScreen') {
+      //       iconName = `search`;
+      //     } else if (routeName === 'Post') {
+      //       iconName = 'post';
+      //       //with Badge
+      //     } else if (routeName === 'Notification') {
+      //       // with Badge
+      //       iconName = 'Notification';
+      //     } else if (routeName === 'ProfilesScreen') {
+      //       iconName = 'profile';
+      //     }
+      //      // You can return any component that you like here!
+      //      return <IconComponent name={iconName} size={10} color={'pink'} />;
+      //     },
+      //   })
+    },
+   
   )},
   pageNavigation:{
   screen:createStackNavigator(
@@ -89,6 +170,7 @@ profileMessageNavigation:{
     }
   )
 },
+
 });
 
 
