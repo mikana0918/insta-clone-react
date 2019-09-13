@@ -91,7 +91,7 @@ class Timeline extends React.Component {
       {/* //Timeline Story Component */}
       <Story/>
         
-       <ScrollView style={{height:'75%'}}>
+       <ScrollView style={{}}>
           <View style={{backgroundColor:'white'}}>
             <View style={{height:50}}>
               <TouchableOpacity
@@ -102,7 +102,97 @@ class Timeline extends React.Component {
               </TouchableOpacity>
             </View>
            
-            <View style={{width:'100%',height:400}}>
+            <View style={{width:'100%',height:300}}>
+              <Carousel
+                      ref={(c) => { this._carousel = c; }}
+                      data={this.state.stories}
+                      renderItem={this._renderItem}
+                      sliderWidth={400}
+                      itemWidth={400}
+                      firstItem={0}
+                      layout={'stack'}
+                      layoutCardOffset={9}
+                      onSnapToItem={(index) => this.setState({ activeSlide: index }) }>          
+              </Carousel>
+              { this.pagination }
+            </View>
+              
+            <View style={{ width: '100%', height: '10%', backgroundColor:'white',flexDirection: 'row',padding:10}}>
+              <TouchableOpacity>
+                <Image source={require('./assets/heart-shape.png')} style={{ width: 30, height: 30,marginRight:16,marginLeft:8}}/>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image source={require('./assets/speech-bubble.png')} style={{ width: 30, height: 30,marginRight:16}}/>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image source={require('./assets/mail.png')} style={{ width: 30, height: 30,marginRight:16}}/>
+              </TouchableOpacity>
+            </View>
+            <View>
+              <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！</Text> 
+              <View style={{flexDirection: 'row',marginTop:5}}>         
+                <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>ゆうこす</Text> 
+                <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日はフォロワー少なすぎて泣いた(^◇^;)</Text>
+              </View>
+            </View>     
+          </View>
+
+          <View style={{backgroundColor:'white'}}>
+            <View style={{height:50}}>
+              <TouchableOpacity
+                onPress={() => navigate('Profiles')}
+                style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}>
+                <Image source={require('./assets/instagram-clone-sample.png')} style={{ width: 30, height: 30, borderRadius: 30 / 2, marginLeft:5,marginTop:5}}/>
+                  <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold'}}>ゆうこす</Text>               
+              </TouchableOpacity>
+            </View>
+           
+            <View style={{width:'100%',height:300}}>
+              <Carousel
+                      ref={(c) => { this._carousel = c; }}
+                      data={this.state.stories}
+                      renderItem={this._renderItem}
+                      sliderWidth={400}
+                      itemWidth={400}
+                      firstItem={0}
+                      layout={'stack'}
+                      layoutCardOffset={9}
+                      onSnapToItem={(index) => this.setState({ activeSlide: index }) }>          
+              </Carousel>
+              { this.pagination }
+            </View>
+              
+            <View style={{ width: '100%', backgroundColor:'white',flexDirection: 'row',padding:10}}>
+              <TouchableOpacity>
+                <Image source={require('./assets/heart-shape.png')} style={{ width: 30, height: 30,marginRight:16,marginLeft:8}}/>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image source={require('./assets/speech-bubble.png')} style={{ width: 30, height: 30,marginRight:16}}/>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image source={require('./assets/mail.png')} style={{ width: 30, height: 30,marginRight:16}}/>
+              </TouchableOpacity>
+            </View>
+            <View>
+              <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！</Text> 
+              <View style={{flexDirection: 'row',marginTop:5}}>         
+                <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>ゆうこす</Text> 
+                <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日はフォロワー少なすぎて泣いた(^◇^;)</Text>
+              </View>
+            </View>     
+          </View>
+
+          <View style={{backgroundColor:'white'}}>
+            <View style={{height:50}}>
+              <TouchableOpacity
+                onPress={() => navigate('Profiles')}
+                style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}>
+                <Image source={require('./assets/instagram-clone-sample.png')} style={{ width: 30, height: 30, borderRadius: 30 / 2, marginLeft:5,marginTop:5}}/>
+                  <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold'}}>ゆうこす</Text>               
+              </TouchableOpacity>
+            </View>
+           
+            <View style={{width:'100%',height:300}}>
               <Carousel
                       ref={(c) => { this._carousel = c; }}
                       data={this.state.stories}

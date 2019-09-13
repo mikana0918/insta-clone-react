@@ -92,7 +92,6 @@ class Story extends React.Component
                 <View style={{alignItems: 'center',justifyContent: 'center',height:'100%',width:'35%',flexDirection:'row'}}>
                     <Image
                         source={require('./assets/instagram-clone-sample.png')}
-                        //borderRadius style will help us make the Round Shape Image
                         style={{ width: 40, height: 40, borderRadius: 40 / 2}}/>
                     <Text style={{color:'white',fontSize:12,marginLeft:8,fontWeight:'bold'}}>Ota_Queen</Text>
                 </View>
@@ -108,12 +107,6 @@ class Story extends React.Component
                     </TouchableOpacity> 
             </View>
             </View>      
-            {/* insta clone bar style */}
-                {/* <View style={{width:'100%'}}> */}
-                    {/* <View style={{backgroundColor:'white',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
-                    <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
-                    <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View> */}
-                {/* </View> */}
             </View>     
             <View style={{alignContent:'right', alignItems:'right',height:'90%',width:'100%',borderRadius:10}}>
                 <Carousel
@@ -131,36 +124,17 @@ class Story extends React.Component
             </View>       
         </View>
         </Modal>
-        <View style={{height:120,backgroundColor:'white'}}>
-           <Text style= {{marginLeft:10, marginTop:10,fontSize:12,width:'50%'}}>Stories</Text>  
+
+        
+        <View style={{height:Dimensions.get('window').width*0.27 ,backgroundColor:'white'}}> 
+           {/* <Text style= {{marginLeft:10, marginTop:5,fontSize:12,width:'50%'}}>Stories</Text>   */}
              <ScrollView 
               horizontal={true} 
-              style={{ backgroundColor:'white',margin:5}}>
-              <TouchableOpacity 
-                style = {{height:'90%',backgroundColor:'white',padding:5,marginRight:7}}
-                onPress={() => {this.setModalVisible(true);}}>
-                      <ImageBackground
-                         style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
-                      <Image
-                        source={require('./assets/instagram-clone-sample.png')}
-                        style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
-                  </ImageBackground>
-                  <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
-              </TouchableOpacity>
+              style={{ backgroundColor:'white',marginLeft:5, marginRight:4, marginTop: 5}}
+              showsHorizontalScrollIndicator={false}>
 
               <TouchableOpacity 
-                style = {{height:'90%',backgroundColor:'white',padding:5,marginRight:7}}
-                onPress={() => {this.setModalVisible(true);}}>
-                    <ImageBackground style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
-                      <Image
-                        source={require('./assets/instagram-clone-sample.png')}
-                        style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
-                  </ImageBackground>
-                  <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
-              </TouchableOpacity>
-
-              <TouchableOpacity 
-                style = {{height:'90%',backgroundColor:'white',padding:5,marginRight:7}}
+                style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:4}}
                 onPress={() => {this.setModalVisible(true);}}>
                     <ImageBackground  style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
                       <Image
@@ -169,7 +143,72 @@ class Story extends React.Component
                     </ImageBackground>
                     <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
               </TouchableOpacity>
-   
+
+             
+
+            
+              <TouchableOpacity 
+                style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:4}}
+                onPress={() => {this.setModalVisible(true);}}>
+                    <ImageBackground  style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                      <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
+                    </ImageBackground>
+                    <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+              </TouchableOpacity>
+
+
+              <TouchableOpacity 
+                style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:4}}
+                onPress={() => {this.setModalVisible(true);}}>
+                    <ImageBackground  style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                      <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
+                    </ImageBackground>
+                    <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+              </TouchableOpacity>
+
+
+              <TouchableOpacity 
+                style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:4}}
+                onPress={() => {this.setModalVisible(true);}}>
+                    <ImageBackground  style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                      <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
+                    </ImageBackground>
+                    <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+              </TouchableOpacity>
+
+
+
+              <TouchableOpacity 
+                style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:4}}
+                onPress={() => {this.setModalVisible(true);}}>
+                    <ImageBackground  style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                      <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
+                    </ImageBackground>
+                    <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+              </TouchableOpacity>
+
+
+
+              <TouchableOpacity 
+                style = {{height:'100%',backgroundColor:'white',padding:5,marginRight:4}}
+                onPress={() => {this.setModalVisible(true);}}>
+                    <ImageBackground  style={{ width:70, height: 70, borderRadius: 70 / 2, borderColor:'pink',borderWidth:3,padding:3 }}>
+                      <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
+                    </ImageBackground>
+                    <Text style={{color:'black',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+              </TouchableOpacity>
+
+
           </ScrollView>
           </View>
         </View>
