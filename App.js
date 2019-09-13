@@ -38,8 +38,19 @@ AppNavigator = createStackNavigator({
     navigationOptions: {
       header: null,
       // headerMode: 'screen',
-    }
-  })},
+    },
+    tabBarOptions:{
+      activeTintColor: 'pink',
+      labelStyle: {
+        fontSize: 12,
+      },
+      style: {
+        backgroundColor: 'white',
+      },
+    },
+
+  }
+  )},
   pageNavigation:{
   screen:createStackNavigator(
   {
