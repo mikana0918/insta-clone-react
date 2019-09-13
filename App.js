@@ -105,31 +105,7 @@ AppNavigator = createStackNavigator({
         backgroundColor: 'white',
       },
     },
-      // defaultNavigationOptions:({navigation}) => ({
-      //   tabBarIcon:({focused, horizontal, tintColor}) => {
-      //     const {routeName} = navigation.state;
-      //     let IconComponent = Icon;
-      //     let iconName;
-      //     if (routeName === 'Timeline'){
-      //       // iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-      //       iconName = 'home'
-      //       // IconComponent = HomeIconWithBadge;
-      //     } else if (routeName === 'SearchScreen') {
-      //       iconName = `search`;
-      //     } else if (routeName === 'Post') {
-      //       iconName = 'post';
-      //       //with Badge
-      //     } else if (routeName === 'Notification') {
-      //       // with Badge
-      //       iconName = 'Notification';
-      //     } else if (routeName === 'ProfilesScreen') {
-      //       iconName = 'profile';
-      //     }
-      //      // You can return any component that you like here!
-      //      return <IconComponent name={iconName} size={10} color={'pink'} />;
-      //     },
-      //   })
-    },
+  },
    
   )},
   pageNavigation:{
