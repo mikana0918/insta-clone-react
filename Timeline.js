@@ -128,8 +128,7 @@ class Timeline extends React.Component {
                 <Image source={require('./assets/mail.png')} style={{ width: 30, height: 30,marginRight:16}}/>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={{backgroundColor:'white',   justifyContent: 'center',
-    alignItems: 'center'}}>
+            <TouchableOpacity style={{backgroundColor:'white',   justifyContent: 'center',alignItems: 'center'}}>
               <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！ 1200 kawaii</Text> 
               {/* reply */}
               {/* TODO コメント欄の続きを表示　もしくは　モーダル風に上レイヤーで出したい */}
@@ -183,21 +182,22 @@ class Timeline extends React.Component {
               </TouchableOpacity>
             </View>
             <TouchableOpacity style={{backgroundColor:'white'}}>
-              <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！ 1200 kawaii</Text> 
-              {/* reply */}
-              {/* TODO コメント欄の続きを表示　もしくは　モーダル風に上レイヤーで出したい */}
-              <View style={{flexDirection: 'row',marginTop:5}}>         
-                <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>ゆうこす</Text> 
-                <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日はフォロワー少なすぎて泣いた(^◇^;)</Text>
-              </View>
-              <View style={{flexDirection: 'row',marginTop:5}}>         
-                <Text style={{color:'pink',marginLeft:16,fontWeight:'bold'}}>応援さんA</Text> 
-                <Text style={{color:'black',marginLeft:12,fontSize:14}}>は応援中です📣</Text>
-              </View>
-              <View style={{flexDirection: 'row',marginTop:5}}>         
-                <Text style={{color:'pink',marginLeft:16,fontWeight:'bold'}}>応援さんB</Text> 
-                <Text style={{color:'black',marginLeft:12,fontSize:14}}>は「女子か！」といっています</Text>
-              </View>
+                <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！ 1200 kawaii</Text> 
+                {/* reply */}
+                {/* TODO コメント欄の続きを表示　もしくは　モーダル風に上レイヤーで出したい */}
+                <View style={{flexDirection: 'row',marginTop:5}}>         
+                  <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>ゆうこす</Text> 
+                  <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日はフォロワー少なすぎて泣いた(^◇^;)</Text>
+                </View>
+                <View style={{flexDirection: 'row',marginTop:5}}>         
+                  <Text style={{color:'pink',marginLeft:16,fontWeight:'bold'}}>応援さんA</Text> 
+                  <Text style={{color:'black',marginLeft:12,fontSize:14}}>は応援中です📣</Text>
+                </View>
+                <View style={{flexDirection: 'row',marginTop:5}}>         
+                  <Text style={{color:'pink',marginLeft:16,fontWeight:'bold'}}>応援さんB</Text> 
+                  <Text style={{color:'black',marginLeft:12,fontSize:14}}>は「女子か！」といっています</Text>
+                </View>
+
             </TouchableOpacity>     
           </View>
 

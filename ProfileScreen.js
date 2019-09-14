@@ -76,48 +76,48 @@ class ProfileScreen extends React.Component {
       const {navigate} = this.props.navigation;
       return (
         <View>
-  <Modal animationType="fade" transparent={true} visible={this.state.modalVisible}>
-          <View style={{alignItems: 'center',justifyContent: 'center',backgroundColor: 'rgba(0,0,0,0.9)'}}>
-          <View style={{alignItems: 'center',justifyContent: 'center',height:'10%',width:'100%'}}>
-           <View style={{height:'75%',width:'100%',padding:5,flexDirection:'row'}}>
-              <View style={{alignItems: 'center',justifyContent: 'center',height:'100%',width:'35%',flexDirection:'row'}}>
-                  <Image
-                      source={require('./assets/instagram-clone-sample.png')}
-                      style={{ width: 40, height: 40, borderRadius: 40 / 2}}/>
-                   <Text style={{color:'white',fontSize:12,marginLeft:8,fontWeight:'bold'}}>Ota_Queen</Text>
+          <Modal animationType="fade" transparent={true} visible={this.state.modalVisible}>
+            <View style={{alignItems: 'center',justifyContent: 'center',backgroundColor: 'rgba(0,0,0,0.9)'}}>
+            <View style={{alignItems: 'center',justifyContent: 'center',height:'10%',width:'100%'}}>
+            <View style={{height:'75%',width:'100%',padding:5,flexDirection:'row'}}>
+                <View style={{alignItems: 'center',justifyContent: 'center',height:'100%',width:'35%',flexDirection:'row'}}>
+                    <Image
+                        source={require('./assets/instagram-clone-sample.png')}
+                        style={{ width: 40, height: 40, borderRadius: 40 / 2}}/>
+                    <Text style={{color:'white',fontSize:12,marginLeft:8,fontWeight:'bold'}}>Ota_Queen</Text>
+                </View>
+              <View style={{height:'100%',width:'55%'}}>
+                  <Text style={{color:'white',fontSize:10,marginLeft:5,fontWeight:'bold'}}>664d</Text>
               </View>
-            <View style={{height:'100%',width:'55%'}}>
-                <Text style={{color:'white',fontSize:10,marginLeft:5,fontWeight:'bold'}}>664d</Text>
-            </View>
-            <View style={{height:'100%',width:'10%',alignItems: 'center',justifyContent: 'center'}}>
-                <Icon name='more' size={12} color='white'/>
-                  <TouchableOpacity 
-                  onPress={() => {this.setModalVisible(false);}}
-                    style = {{width:'100%', alignContent:'right', alignItems:'right' ,flexDirection:'row'}}>
-                        <Icon name='close' size={30} color='white'/>
-                  </TouchableOpacity> 
-            </View>
-          </View> 
-              <View style={{height:'25%',width:'100%',padding:3,flexDirection:'row',marginLeft:'3%',marginRight:'3%'}}>
-                  <View style={{backgroundColor:'white',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
-                  <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
-                  <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
+              <View style={{height:'100%',width:'10%',alignItems: 'center',justifyContent: 'center'}}>
+                  <Icon name='more' size={12} color='white'/>
+                    <TouchableOpacity 
+                    onPress={() => {this.setModalVisible(false);}}
+                      style = {{width:'100%', alignContent:'right', alignItems:'right' ,flexDirection:'row'}}>
+                          <Icon name='close' size={30} color='white'/>
+                    </TouchableOpacity> 
               </View>
-          </View>     
-          <View style={{alignContent:'right', alignItems:'right',height:'90%',width:'100%',borderRadius:10}}>
-              <Carousel
-                  ref={(c) => { this._carousel = c; }}
-                  data={this.state.stories}
-                  renderItem={this._renderItem}
-                  sliderWidth={400}
-                  itemWidth={400}
-                  firstItem={0}
-                  layout={'tinder'} 
-                  layoutCardOffset={9}>     
-              </Carousel>
-          </View>       
-      </View>
-      </Modal>
+            </View> 
+                <View style={{height:'25%',width:'100%',padding:3,flexDirection:'row',marginLeft:'3%',marginRight:'3%'}}>
+                    <View style={{backgroundColor:'white',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
+                    <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
+                    <View style={{backgroundColor:'gray',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
+                </View>
+            </View>     
+            <View style={{alignContent:'right', alignItems:'right',height:'90%',width:'100%',borderRadius:10}}>
+                <Carousel
+                    ref={(c) => { this._carousel = c; }}
+                    data={this.state.stories}
+                    renderItem={this._renderItem}
+                    sliderWidth={400}
+                    itemWidth={400}
+                    firstItem={0}
+                    layout={'tinder'} 
+                    layoutCardOffset={9}>     
+                </Carousel>
+            </View>       
+        </View>
+        </Modal>
 
            <Header
               leftComponent={{ icon: 'settings', color: '#fff' }}
@@ -128,7 +128,6 @@ class ProfileScreen extends React.Component {
                 justifyContent: 'space-around',}}/>
 
             <Story/>
-
 
             <ScrollView style={{ }}>
               <View style={{backgroundColor:'white',height:140,padding:10,flexDirection: 'row'}}>

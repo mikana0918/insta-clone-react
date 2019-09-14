@@ -20,11 +20,13 @@ class Notification extends React.Component {
         default : <NotificationDefault/>,
         activity : <NotificationActivity/>,
         message  : <NotificationMessage/>,
-        etc : <NotificationEtc/>,
       };
 
       this.navDefault = {width:'25%',height:'100%',padding:'3%'};
       this.navSelect = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderTopRightRadius:20, borderTopLeftRadius:20};
+  
+      this.navDefaultText = {color:'white',fontSize:14,textAlign:'center', fontWeight:'bold'};
+      this.navSelectText = {color:'gray',fontSize:14,textAlign:'center'};
  
       return (
         <View>
@@ -38,39 +40,45 @@ class Notification extends React.Component {
         />
 
          {/* //4Top Nav Tabs */}
-          <View style={{backgroundColor:'pink',width:'100%',height:45,flexDirection:'row', borderBottomLeftRadius:20, borderBottomRightRadius:20}}>
+          <View style={{backgroundColor:'pink',width:'100%',height:45,flexDirection:'row', borderBottomLeftRadius:20, borderBottomRightRadius:20, alignContent:'center'}}>
           <TouchableOpacity 
               key = {0}
               style={this.state.nav == 'default' ? this.navSelect : this.navDefault} 
               onPress={() =>  {this.setState({nav: 'default'})}}>
-              <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>#通知</Text>  
+              <Text style={this.state.nav == 'default' ? this.navSelectText : this.navDefaultText}>#通知</Text>  
             </TouchableOpacity>
             <TouchableOpacity 
               key = {1}
               style={this.state.nav == 'activity' ? this.navSelect : this.navDefault} 
               onPress={() =>  {this.setState({nav: 'activity'})}}>
-              <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>#アクティビティ</Text>  
+              <Text style={this.state.nav == 'activity' ? this.navSelectText : this.navDefaultText}>#アクティビティ</Text>  
             </TouchableOpacity>
             <TouchableOpacity 
               key = {2}
               style={this.state.nav == 'message' ? this.navSelect : this.navDefault}
               onPress={() =>  {this.setState({nav: 'message'})}}>
-              <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#メッセージ</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-              key = {3}
-              style={this.state.nav == 'etc' ? this.navSelect : this.navDefault}
-              onPress={() =>  {this.setState({nav: 'etc'})}}>
-                <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>＃お知らせ</Text>
+              <Text style={this.state.nav == 'message' ? this.navSelectText : this.navDefaultText}>#メッセージ</Text>
             </TouchableOpacity>
           </View>
          
-            {this.searchContents[this.state.nav]}
           
 
 
-         <ScrollView style={{backgroundColor:'white',width:'100%', height:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
-              <TouchableOpacity 
+          <ScrollView style={{backgroundColor:'white',width:'100%', height:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
+          {this.searchContents[this.state.nav]}
+          </ScrollView>
+        
+        </View>
+      )
+    }
+  }
+
+
+  class NotificationDefault extends React.Component{
+    render(){
+      return (
+        <View>
+                     <TouchableOpacity 
               style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}
 //メッセージの繋ぎこみが一方通行
               onPress={() => this.props.navigation.navigate('Send')}
@@ -142,19 +150,6 @@ class Notification extends React.Component {
                 <View style={{backgroundColor:'white',height:'100%',width:'10%',paddingTop:20,paddingBottom:20}}>
                 </View>
               </TouchableOpacity>
-            </ScrollView>
-        
-        </View>
-      )
-    }
-  }
-
-
-  class NotificationDefault extends React.Component{
-    render(){
-      return (
-        <View>
-         <Text>defaultaaa</Text>
         </View>
       );
     }
@@ -180,15 +175,6 @@ class Notification extends React.Component {
     }
   }
 
-  class NotificationEtc extends React.Component{
-    render(){
-      return (
-        <View>
-         <Text>etc</Text>
-        </View>
-      );
-    }
-  }
   
   const styles = StyleSheet.create({
     welcomeImages:{

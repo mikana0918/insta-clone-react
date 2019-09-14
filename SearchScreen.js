@@ -19,7 +19,7 @@ class SearchScreen extends React.Component {
       super(props);
       this.state = {
         index: 0,
-        nav: 'default',   
+        nav: 'user',   
         pressStatus: false,
         isBorderBottom:false,
         selectedIndex: 0,
@@ -56,6 +56,9 @@ class SearchScreen extends React.Component {
     this.navDefault = {width:'25%',height:'100%',padding:'3%'};
     this.navSelect = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderTopRightRadius:20, borderTopLeftRadius:20};
 
+    this.navDefaultText = {color:'white',fontSize:14,textAlign:'center', fontWeight:'bold'};
+    this.navSelectText = {color:'gray',fontSize:14,textAlign:'center'};
+
     return (
         <View>
           <Header
@@ -74,25 +77,25 @@ class SearchScreen extends React.Component {
               key = {0}
               style={this.state.nav == 'user' ? this.navSelect : this.navDefault} 
               onPress={() =>  {this.setState({nav: 'user'})}}>
-              <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>#ユーザー</Text>  
+              <Text style={this.state.nav == 'user' ? this.navSelectText : this.navDefaultText}>#ユーザー</Text>  
             </TouchableOpacity>
             <TouchableOpacity 
               key = {1}
               style={this.state.nav == 'nearby' ? this.navSelect : this.navDefault}
               onPress={() =>  {this.setState({nav: 'nearby'})}}>
-              <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#近くの人</Text>
+              <Text style={this.state.nav == 'nearby' ? this.navSelectText : this.navDefaultText}>#近くの人</Text>
             </TouchableOpacity>
             <TouchableOpacity 
               key = {2}
               style={this.state.nav == 'tags' ? this.navSelect : this.navDefault}
               onPress={() =>  {this.setState({nav: 'tags'})}}>
-                <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>＃タグ</Text>
+                <Text style={this.state.nav == 'tags' ? this.navSelectText : this.navDefaultText}>＃タグ</Text>
             </TouchableOpacity>
             <TouchableOpacity 
               key = {3}
               style={this.state.nav == 'ranking' ? this.navSelect : this.navDefault}
               onPress={() =>  {this.setState({nav: 'ranking'})}}>
-                <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#注目順</Text>
+                <Text style={this.state.nav == 'ranking' ? this.navSelectText : this.navDefaultText}>#注目順</Text>
             </TouchableOpacity>
           </View>
          
