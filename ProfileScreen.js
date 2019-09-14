@@ -118,13 +118,16 @@ class ProfileScreen extends React.Component {
           </View>       
       </View>
       </Modal>
+
            <Header
-              leftComponent={{ icon: 'camera', color: '#fff' }}
+              leftComponent={{ icon: 'settings', color: '#fff' }}
               centerComponent={{ text: 'プロフィール', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
               rightComponent={{ icon: 'edit', color: '#fff',  onPress:() => navigate('Message')}}
               containerStyle={{
                 backgroundColor: 'pink',
                 justifyContent: 'space-around',}}/>
+
+            <Story/>
 
 
             <ScrollView style={{ }}>
@@ -209,8 +212,7 @@ class ProfileScreen extends React.Component {
                   </View>
                 </View>
               </View>
-  
-        <Story/>
+
          {/* ここから画像タイル */}
               <View style={{backgroundColor:'white',flexDirection:'row',alignItems: 'flex-start',flexWrap: 'wrap',}}>
                 <Image

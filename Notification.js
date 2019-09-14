@@ -9,9 +9,22 @@ class Notification extends React.Component {
 }
     constructor(props){
       super();
+      this.state = {
+        index: 0,
+        nav: 'default',   
+      };  
     }
     render() {
       const {navigate} = this.props.navigation;
+      this.searchContents = {
+        default : <NotificationDefault/>,
+        activity : <NotificationActivity/>,
+        message  : <NotificationMessage/>,
+        etc : <NotificationEtc/>,
+      };
+
+      this.navDefault = {width:'25%',height:'100%',padding:'3%'};
+      this.navSelect = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderTopRightRadius:20, borderTopLeftRadius:20};
  
       return (
         <View>
@@ -24,7 +37,39 @@ class Notification extends React.Component {
           }}
         />
 
-         <ScrollView style={{backgroundColor:'white',width:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
+         {/* //4Top Nav Tabs */}
+          <View style={{backgroundColor:'pink',width:'100%',height:45,flexDirection:'row', borderBottomLeftRadius:20, borderBottomRightRadius:20}}>
+          <TouchableOpacity 
+              key = {0}
+              style={this.state.nav == 'default' ? this.navSelect : this.navDefault} 
+              onPress={() =>  {this.setState({nav: 'default'})}}>
+              <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>#通知</Text>  
+            </TouchableOpacity>
+            <TouchableOpacity 
+              key = {1}
+              style={this.state.nav == 'activity' ? this.navSelect : this.navDefault} 
+              onPress={() =>  {this.setState({nav: 'activity'})}}>
+              <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>#アクティビティ</Text>  
+            </TouchableOpacity>
+            <TouchableOpacity 
+              key = {2}
+              style={this.state.nav == 'message' ? this.navSelect : this.navDefault}
+              onPress={() =>  {this.setState({nav: 'message'})}}>
+              <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>#メッセージ</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              key = {3}
+              style={this.state.nav == 'etc' ? this.navSelect : this.navDefault}
+              onPress={() =>  {this.setState({nav: 'etc'})}}>
+                <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>＃お知らせ</Text>
+            </TouchableOpacity>
+          </View>
+         
+            {this.searchContents[this.state.nav]}
+          
+
+
+         <ScrollView style={{backgroundColor:'white',width:'100%', height:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
               <TouchableOpacity 
               style={{backgroundColor:'white',width:'100%',height:80,marginBottom:5,flexDirection: 'row',padding:5}}
 //メッセージの繋ぎこみが一方通行
@@ -101,6 +146,47 @@ class Notification extends React.Component {
         
         </View>
       )
+    }
+  }
+
+
+  class NotificationDefault extends React.Component{
+    render(){
+      return (
+        <View>
+         <Text>defaultaaa</Text>
+        </View>
+      );
+    }
+  }
+
+  class NotificationActivity extends React.Component{
+    render(){
+      return (
+        <View>
+         <Text>activity</Text>
+        </View>
+      );
+    }
+  }
+
+  class NotificationMessage extends React.Component{
+    render(){
+      return (
+        <View>
+         <Text>message</Text>
+        </View>
+      );
+    }
+  }
+
+  class NotificationEtc extends React.Component{
+    render(){
+      return (
+        <View>
+         <Text>etc</Text>
+        </View>
+      );
     }
   }
   

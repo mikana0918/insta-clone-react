@@ -70,7 +70,7 @@ class RankingScreen extends React.Component {
       return(
         <View style={{ alignItems: 'center',justifyContent: 'center', width:'100%', height:'100%'}}>
    
-           <ScrollView style={{backgroundColor:'white',width:'100%'}}>
+           <ScrollView style={{backgroundColor:'white',width:'100%', borderRadius:20}}>
 
               <TouchableOpacity style={{width:'100%',height:80,flexDirection: 'row', marginBottom:5, marginTop:1}}>
                 <ImageBackground
