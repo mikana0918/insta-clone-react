@@ -100,7 +100,6 @@ AppNavigator = createStackNavigator({
       showLabel: false,
       activeTintColor: 'white',
       activeBackgroundColor:'pink',
-      tintColor:'pink',
       style: {
         backgroundColor: 'white',
       },
@@ -195,9 +194,3 @@ const styles = StyleSheet.create({
 );
 
 export default createAppContainer(AppNavigator);
-// export default createStackNavigator(
-//   {
-//     bottomTabs: bottomNavStack,
-//     stackNav: pageStack
-//   }
-// );
