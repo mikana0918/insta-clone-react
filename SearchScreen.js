@@ -12,7 +12,6 @@ import NavUser from './NavUser';
 import NavNearBy from './NavNearBy';
 import NavTag from './NavTag';
 
-//TODO navバーにスタイルのピンクがついていくようにする
 class SearchScreen extends React.Component {
 
     constructor(props) 
@@ -44,7 +43,6 @@ class SearchScreen extends React.Component {
 
   render(){
     // const { search } = this.state
-    // const { selectedIndex } = this.state
     const {navigate} = this.props.navigation;
     // const { nav } = this.state.nav;
     this.searchContents = {
