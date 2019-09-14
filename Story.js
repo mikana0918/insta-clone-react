@@ -143,11 +143,6 @@ class Story extends React.Component
                     </ImageBackground>
                     <Text style={{color:'gray',fontSize:10,textAlign:'center'}}>Face Here</Text> 
               </TouchableOpacity>
-
-             
-
-
-
               </ScrollView>
           </View>
         </View>

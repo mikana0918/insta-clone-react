@@ -87,13 +87,16 @@ class Timeline extends React.Component {
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
             rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
             containerStyle={{backgroundColor: 'pink', justifyContent: 'space-around',}}/>
-
+        {/* timeline */}
+         <Story/>
         
         {/* //headerのしたのぶらさがりが下レイヤーになって重なりあったら楽しい */}
-       <ScrollView style={{height:'100%',backgroundColor:'#FF5289'}}>
-         {/* timeline */}
-         <Story/>
-          <View style={{backgroundColor:'white', height:500,borderRadius:20}}>
+       <View 
+       style={{height:'100%',backgroundColor:'white'}}>
+         <ScrollView   
+>
+
+          <View style={{backgroundColor:'white', width:'90%',height:460,borderRadius:20, margin:'5%', shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
             <View style={{height:50,  justifyContent: 'center',alignItems: 'center'}}>
               <TouchableOpacity
                 onPress={() => navigate('Profiles')}
@@ -108,7 +111,7 @@ class Timeline extends React.Component {
                       ref={(c) => { this._carousel = c; }}
                       data={this.state.stories}
                       renderItem={this._renderItem}
-                      sliderWidth={400}
+                      sliderWidth={'100%'}
                       itemWidth={400}
                       firstItem={0}
                       layout={'stack'}
@@ -130,78 +133,11 @@ class Timeline extends React.Component {
             </View>
             <TouchableOpacity style={{backgroundColor:'white',   justifyContent: 'center',alignItems: 'center'}}>
               <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！ 1200 kawaii</Text> 
-              {/* reply */}
-              {/* TODO コメント欄の続きを表示　もしくは　モーダル風に上レイヤーで出したい */}
-              {/* <View style={{flexDirection: 'row',marginTop:5}}>         
-                <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>ゆうこす</Text> 
-                <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日はフォロワー少なすぎて泣いた(^◇^;)</Text>
-              </View>
-              <View style={{flexDirection: 'row',marginTop:5}}>         
-                <Text style={{color:'pink',marginLeft:16,fontWeight:'bold'}}>応援さんA</Text> 
-                <Text style={{color:'black',marginLeft:12,fontSize:14}}>は応援中です📣</Text>
-              </View>
-              <View style={{flexDirection: 'row',marginTop:5}}>         
-                <Text style={{color:'pink',marginLeft:16,fontWeight:'bold'}}>応援さんB</Text> 
-                <Text style={{color:'black',marginLeft:12,fontSize:14}}>は「女子か！」といっています</Text>
-              </View> */}
             </TouchableOpacity>     
           </View>
 
-          <View style={{backgroundColor:'white', height:500,borderRadius:20}}>
-            <View style={{height:50}}>
-              <TouchableOpacity
-                onPress={() => navigate('Profiles')}
-                style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}>
-                <Image source={require('./assets/instagram-clone-sample.png')} style={{ width: 30, height: 30, borderRadius: 30 / 2, marginLeft:5,marginTop:5}}/>
-                  <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold', color:'gray'}}>ゆうこす</Text>               
-              </TouchableOpacity>
-            </View>    
-            <View style={{width:'100%',height:300}}>
-              <Carousel
-                      ref={(c) => { this._carousel = c; }}
-                      data={this.state.stories}
-                      renderItem={this._renderItem}
-                      sliderWidth={400}
-                      itemWidth={400}
-                      firstItem={0}
-                      layout={'stack'}
-                      layoutCardOffset={9}
-                      onSnapToItem={(index) => this.setState({ activeSlide: index }) }>          
-              </Carousel>
-              { this.pagination }
-            </View>
-            <View style={{ width: '100%', height: '10%', backgroundColor:'white',flexDirection: 'row',padding:10}}>
-              <TouchableOpacity>
-                <Image source={require('./assets/heart-shape.png')} style={{ width: 30, height: 30,marginRight:16,marginLeft:8}}/>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image source={require('./assets/speech-bubble.png')} style={{ width: 30, height: 30,marginRight:16}}/>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image source={require('./assets/mail.png')} style={{ width: 30, height: 30,marginRight:16}}/>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity style={{backgroundColor:'white'}}>
-                <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！ 1200 kawaii</Text> 
-                {/* reply */}
-                {/* TODO コメント欄の続きを表示　もしくは　モーダル風に上レイヤーで出したい */}
-                <View style={{flexDirection: 'row',marginTop:5}}>         
-                  <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>ゆうこす</Text> 
-                  <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日はフォロワー少なすぎて泣いた(^◇^;)</Text>
-                </View>
-                <View style={{flexDirection: 'row',marginTop:5}}>         
-                  <Text style={{color:'pink',marginLeft:16,fontWeight:'bold'}}>応援さんA</Text> 
-                  <Text style={{color:'black',marginLeft:12,fontSize:14}}>は応援中です📣</Text>
-                </View>
-                <View style={{flexDirection: 'row',marginTop:5}}>         
-                  <Text style={{color:'pink',marginLeft:16,fontWeight:'bold'}}>応援さんB</Text> 
-                  <Text style={{color:'black',marginLeft:12,fontSize:14}}>は「女子か！」といっています</Text>
-                </View>
-
-            </TouchableOpacity>     
-          </View>
-
-          <View style={{backgroundColor:'white', height:500,borderRadius:20}}>
+        {/* old card style */}
+          {/* <View style={{backgroundColor:'white', height:500,borderRadius:20}}>
             <View style={{height:50}}>
               <TouchableOpacity
                 onPress={() => navigate('Profiles')}
@@ -239,7 +175,7 @@ class Timeline extends React.Component {
               <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！ 1200 kawaii</Text> 
               {/* reply */}
               {/* TODO コメント欄の続きを表示　もしくは　モーダル風に上レイヤーで出したい */}
-              <View style={{flexDirection: 'row',marginTop:5}}>         
+              {/* <View style={{flexDirection: 'row',marginTop:5}}>         
                 <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>ゆうこす</Text> 
                 <Text style={{color:'black',marginLeft:12,fontSize:14}}>今日はフォロワー少なすぎて泣いた(^◇^;)</Text>
               </View>
@@ -252,8 +188,9 @@ class Timeline extends React.Component {
                 <Text style={{color:'black',marginLeft:12,fontSize:14}}>は「女子か！」といっています</Text>
               </View>
             </TouchableOpacity>     
-          </View>
-      </ScrollView>
+          </View> */} 
+        </ScrollView>
+      </View>
     </View>
     );
   }
