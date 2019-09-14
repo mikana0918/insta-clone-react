@@ -53,13 +53,13 @@ class SearchScreen extends React.Component {
       ranking : <SearchRanking/>
     };
 
-    this.navDefault = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%'};
-    this.navSelect = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderBottomColor:'pink',borderBottomWidth:3};
+    this.navDefault = {width:'25%',height:'100%',padding:'3%'};
+    this.navSelect = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderTopRightRadius:20, borderTopLeftRadius:20};
 
     return (
         <View>
           <Header
-            leftComponent={{ icon: 'settings', color: '#fff' }}
+            leftComponent={{ color: '#fff' }}
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
             rightComponent={{ icon: 'send', color: '#fff' }}
             containerStyle={{
@@ -69,7 +69,7 @@ class SearchScreen extends React.Component {
           />
     
           {/* //4Top Nav Tabs */}
-          <View style={{backgroundColor:'white',width:'100%',height:45,flexDirection:'row'}}>
+          <View style={{backgroundColor:'pink',width:'100%',height:45,flexDirection:'row', borderBottomLeftRadius:20, borderBottomRightRadius:20}}>
             <TouchableOpacity 
               key = {0}
               style={this.state.nav == 'user' ? this.navSelect : this.navDefault} 
