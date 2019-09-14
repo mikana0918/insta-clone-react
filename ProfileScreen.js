@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image,Dimensions, Linking, StatusBar, ScrollVie
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import Story from "./Story";
 import Carousel from 'react-native-snap-carousel';
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator,createMaterialTopTabNavigator } from "react-navigation";
 
 class ProfileScreen extends React.Component {
@@ -55,6 +56,22 @@ class ProfileScreen extends React.Component {
     this.setState({modalVisible: visible});
   }  
 
+  //material menu 
+  _menu = null;
+ 
+  setMenuRef = ref => {
+    this._menu = ref;
+  };
+ 
+  hideMenu = () => {
+    this._menu.hide();
+  };
+ 
+  showMenu = () => {
+    this._menu.show();
+  };
+
+
     render() {
       const {navigate} = this.props.navigation;
       return (
@@ -66,21 +83,20 @@ class ProfileScreen extends React.Component {
               <View style={{alignItems: 'center',justifyContent: 'center',height:'100%',width:'35%',flexDirection:'row'}}>
                   <Image
                       source={require('./assets/instagram-clone-sample.png')}
-                      //borderRadius style will help us make the Round Shape Image
                       style={{ width: 40, height: 40, borderRadius: 40 / 2}}/>
                    <Text style={{color:'white',fontSize:12,marginLeft:8,fontWeight:'bold'}}>Ota_Queen</Text>
               </View>
-          <View style={{height:'100%',width:'55%'}}>
-              <Text style={{color:'white',fontSize:10,marginLeft:5,fontWeight:'bold'}}>664d</Text>
-          </View>
-          <View style={{height:'100%',width:'10%',alignItems: 'center',justifyContent: 'center'}}>
-              <Icon name='more' size={12} color='white'/>
+            <View style={{height:'100%',width:'55%'}}>
+                <Text style={{color:'white',fontSize:10,marginLeft:5,fontWeight:'bold'}}>664d</Text>
+            </View>
+            <View style={{height:'100%',width:'10%',alignItems: 'center',justifyContent: 'center'}}>
+                <Icon name='more' size={12} color='white'/>
                   <TouchableOpacity 
-                 onPress={() => {this.setModalVisible(false);}}
-                  style = {{width:'100%', alignContent:'right', alignItems:'right' ,flexDirection:'row'}}>
-                      <Icon name='close' size={30} color='white'/>
+                  onPress={() => {this.setModalVisible(false);}}
+                    style = {{width:'100%', alignContent:'right', alignItems:'right' ,flexDirection:'row'}}>
+                        <Icon name='close' size={30} color='white'/>
                   </TouchableOpacity> 
-          </View>
+            </View>
           </View> 
               <View style={{height:'25%',width:'100%',padding:3,flexDirection:'row',marginLeft:'3%',marginRight:'3%'}}>
                   <View style={{backgroundColor:'white',height:'30%',width:'48%',marginLeft:5,borderRadius:20}}></View>
@@ -168,7 +184,13 @@ class ProfileScreen extends React.Component {
                         <Image source={require('./assets/user-shape.png')} style={{height:12, width: 12, alignSelf: 'center' }}/>
                       </TouchableOpacity>
                       <TouchableOpacity style={{backgroundColor:'white',height:24, width:'15%',borderRadius:4, borderWidth: 0.5,borderColor:'black',marginRight:5, padding:7}}>
-                      <Image source={require('./assets/sort-down.png')} style={{height:10, width: 10, alignSelf: 'center' }}/>
+                        <Menu
+                          ref={this.setMenuRef}
+                          button={<Image source={require('./assets/sort-down.png')} style={{height:10, width: 10, alignSelf: 'center' }}/>}>
+                              <MenuItem onPress={this.hideMenu}>MenuItem 1</MenuItem>
+                              <MenuItem onPress={this.hideMenu}>MenuItem 2</MenuItem>
+                              <MenuItem onPress={this.hideMenu} disabled>MenuItem 3</MenuItem>
+                        </Menu>
                       </TouchableOpacity>
                   </View>
 

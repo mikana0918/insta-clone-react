@@ -16,259 +16,250 @@ class RankingScreen extends React.Component {
   }
   render() {
     this.searchContents = {
-      // default : <SearchDefault/>,
-      // user : <SearchUser/>,
-      // nearby : <SearchNearBy/>,
-      // tags : <SearchTags/>,
-      // ranking : <SearchRanking/>
+      default : <RankingDefault/>,
+      daily : <RankingDaily/>,
+      weekly : <RankingWeekly/>,
+      monthly : <RankingMonthly/>
     };
 
     this.navDefault = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%'};
     this.navSelect = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderBottomColor:'pink',borderBottomWidth:3};
+
     return (
-      // this.searchContents = [
-      //   <User/>, <NearBy/>, <Tags/>, <Ranking/>
-      // ]
+
       <View>
 
           {/* //4Top Nav Tabs */}
           <View style={{backgroundColor:'white',width:'100%',height:45,flexDirection:'row'}}>
             <TouchableOpacity 
               key = {0}
-              style={this.state.nav == 'user' ? this.navSelect : this.navDefault} 
-              onPress={() =>  {this.setState({nav: 'user'})}}>
+              style={this.state.nav == 'default' ? this.navSelect : this.navDefault} 
+              onPress={() =>  {this.setState({nav: 'default'})}}>
               <Text style={{color:'gray',fontSize:14,textAlign:'center',textAlignVertical:'bottom'}}>All</Text>  
             </TouchableOpacity>
             <TouchableOpacity 
               key = {1}
-              style={this.state.nav == 'nearby' ? this.navSelect : this.navDefault}
-              onPress={() =>  {this.setState({nav: 'nearby'})}}>
+              style={this.state.nav == 'daily' ? this.navSelect : this.navDefault}
+              onPress={() =>  {this.setState({nav: 'daily'})}}>
               <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>Daily</Text>
             </TouchableOpacity>
             <TouchableOpacity 
               key = {2}
-              style={this.state.nav == 'tags' ? this.navSelect : this.navDefault}
-              onPress={() =>  {this.setState({nav: 'tags'})}}>
+              style={this.state.nav == 'weekly' ? this.navSelect : this.navDefault}
+              onPress={() =>  {this.setState({nav: 'weekly'})}}>
                 <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>Weekly</Text>
             </TouchableOpacity>
             <TouchableOpacity 
               key = {3}
-              style={this.state.nav == 'ranking' ? this.navSelect : this.navDefault}
-              onPress={() =>  {this.setState({nav: 'ranking'})}}>
+              style={this.state.nav == 'monthly' ? this.navSelect : this.navDefault}
+              onPress={() =>  {this.setState({nav: 'monthly'})}}>
                 <Text style={{color:'gray',fontSize:14,textAlign:'center'}}>Monthly</Text>
             </TouchableOpacity>
           </View>
 
-          {/* //show users */}
-          <View style={{backgroundColor:'white',width:'100%',height:20,marginLeft:'3%',marginTop:10}}>
-            <Text style={{color:'gray',fontSize:12,textAlign:'center'}}>全期間</Text>
-          </View>
-
-          <View style={{width:'100%',height:300,flexDirection:'row'}}>
-            <View style={{width:'33.3%',height:'100%'}}>
-              <ImageBackground
-                source={require('./assets/meidodesu_TP_V.jpg')}
-                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',backgroundColor: 'rgba(0,0,0,0.4)'}}
-                resizeMode='cover'
-                blurRadius={3}>
-                {/* リングを重ねてみる */}
-                  <ImageBackground
-                    source={require('./assets/frame-ring1.png')}
-                    style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
-                    <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:110, height: 110, borderRadius: 110 / 2}}/>
-                  </ImageBackground>
-                  <Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.2</Text>     
-              </ImageBackground>
-            </View>
-
-            <View style={{backgroundColor:'white',width:'33.3%',height:'100%'}}>
-              <ImageBackground
-                  source={require('./assets/instagram-clone-sample.png')}
-                  style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center'}}
-                  resizeMode='cover'
-                  blurRadius={3}>
-                    {/* リングを重ねてみる */}
-                <ImageBackground
-                  source={require('./assets/frame-ring1.png')}
-                  style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
-                    <Image source={require('./assets/instagram-clone-sample.png')} style={{ width:110, height: 110, borderRadius: 110 / 2}}/>
-                </ImageBackground>
-                <View>
-                  <Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.1</Text>
-                </View>
-              </ImageBackground>
-            </View>
-
-            <View style={{backgroundColor:'white',width:'33.3%',height:'100%'}}>
-            <ImageBackground
-                source={require('./assets/number-sample3.jpg')}
-                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center'}}
-                resizeMode='cover'
-                blurRadius={3}>
-                    {/* リングを重ねてみる */}
-              <ImageBackground
-                source={require('./assets/frame-ring1.png')}
-                style={{ width:160, height: 160, borderRadius: 160 / 2, justifyContent: 'center',alignItems: 'center'}}>
-                  <Image source={require('./assets/number-sample3.jpg')} style={{ width:110, height: 110, borderRadius: 110 / 2}}/>
-              </ImageBackground>
-              <View>
-                <Text style={{fontSize:16,marginTop:5,textAlign:"center",fontWeight:'bold',color:'pink'}}>No.3</Text>
-              </View>
-            </ImageBackground>
-            </View>
-          </View>
-      {/* ここからリスト表示 */}        
-          <ScrollView style={{backgroundColor:'white',width:'100%'}}>
-          {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
-              <View style={{width:'100%',height:80,flexDirection: 'row'}}>
-              <ImageBackground
-                source={require('./assets/instagram-clone-sample.png')}
-                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
-                resizeMode='cover'
-                blurRadius={3}>
-                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-                      <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold'}}>1</Text>
-                    </View>
-                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
-                    <Image
-                      source={require('./assets/instagram-clone-sample.png')}
-                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                    />
-                  </View>
-                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                    <Text style={{color:'white',fontSize:14}}>姫</Text>
-                  </View>
-                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                    <Icon
-                          name='add'
-                          size={12}
-                          color='gray'/>
-                            
-                  </View>
-                </ImageBackground>
-              </View>
-              {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
-              <View style={{width:'100%',height:80,flexDirection: 'row',backgroundColor:'gray'}}>
-              <ImageBackground
-                source={require('./assets/meidodesu_TP_V.jpg')}
-                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
-                resizeMode='cover'
-                blurRadius={3}>
-                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-                      <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
-                    </View>
-                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
-                    <Image
-                      source={require('./assets/meidodesu_TP_V.jpg')}
-                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                    />
-                  </View>
-                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                    <Text style={{color:'white',fontSize:14}}>姫</Text>
-                  </View>
-                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                    <Icon
-                          name='add'
-                          size={12}
-                          color='gray'/>
-                            
-                  </View>
-                </ImageBackground>
-              </View>
-              {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
-              <View style={{width:'100%',height:80,flexDirection: 'row',backgroundColor:'gray'}}>
-              <ImageBackground
-                source={require('./assets/number-sample3.jpg')}
-                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
-                resizeMode='cover'
-                blurRadius={3}>
-                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-                      <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
-                    </View>
-                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
-                    <Image
-                      source={require('./assets/number-sample3.jpg')}
-                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                    />
-                  </View>
-                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                    <Text style={{color:'white',fontSize:14}}>姫</Text>
-                  </View>
-                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                    <Icon
-                          name='add'
-                          size={12}
-                          color='gray'/>
-                            
-                  </View>
-                </ImageBackground>
-              </View>
-              {/* 横幅いっぱいで、画像を後ろにいれて統一感だす */}
-              <View style={{width:'100%',height:80,flexDirection: 'row',backgroundColor:'gray'}}>
-              <ImageBackground
-                source={require('./assets/meidodesu_TP_V.jpg')}
-                //borderRadius style will help us make the Round Shape Image
-                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
-                resizeMode='cover'
-                blurRadius={3}>
-                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-                      <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
-                    </View>
-                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
-                    <Image
-                      source={require('./assets/meidodesu_TP_V.jpg')}
-                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                    />
-                  </View>
-                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                    <Text style={{color:'white',fontSize:14}}>姫</Text>
-                  </View>
-                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                    <Icon
-                          name='add'
-                          size={12}
-                          color='gray'/>
-                            
-                  </View>
-                </ImageBackground>
-              </View>
-              {/* TODO 横幅いっぱいで、画像を後ろにいれて統一感だす */}
-              <View style={{width:'100%',height:80,flexDirection: 'row',backgroundColor:'gray'}}>
-              <ImageBackground
-                source={require('./assets/number-sample3.jpg')}
-                style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
-                resizeMode='cover'
-                blurRadius={3}>
-                    <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25}}>
-                      <Text style={{fontSize:14,textAlign:'center'}}>1</Text>
-                    </View>
-                    <View style={{height:'100%',aspectRatio: 1,padding:2}}>
-                    <Image
-                      source={require('./assets/number-sample3.jpg')}
-                      style={{ width:65, height: 65, borderRadius: 65 / 2}}
-                    />
-                  </View>
-                  <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
-                    <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
-                    <Text style={{color:'white',fontSize:14}}>姫</Text>
-                  </View>
-                  <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30}}>
-                    <Icon
-                          name='add'
-                          size={12}
-                          color='gray'/>
-                            
-                  </View>
-                </ImageBackground>
-              </View>
-          </ScrollView>
+          {this.searchContents[this.state.nav]}
+        
+     
       </View>
     );
   }
+  }
+
+  class RankingDefault extends React.Component{
+    render(){
+      return(
+        <View style={{ alignItems: 'center',justifyContent: 'center', width:'100%', height:'100%'}}>
+   
+           <ScrollView style={{backgroundColor:'white',width:'100%'}}>
+
+              <TouchableOpacity style={{width:'100%',height:80,flexDirection: 'row', marginBottom:5, marginTop:1}}>
+                <ImageBackground
+                  source={require('./assets/instagram-clone-sample.png')}
+                  style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row', }}
+                  resizeMode='cover'
+                  blurRadius={4}>
+                      <TouchableOpacity style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25, backgroundColor:'pink', opacity:1.0}}>
+                        <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold', color:'gray'}}>1</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity style={{height:'100%',aspectRatio: 1,padding:8 }}>
+                        <Image source={require('./assets/instagram-clone-sample.png')} style={{ width:65, height: 65, borderRadius: 65 / 2,alignSelf:'center'}} />
+                      </TouchableOpacity>
+                      <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                        <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                        <Text style={{color:'white',fontWeight:'bold',fontSize:14}}>姫</Text>
+                      </View>
+                      <TouchableOpacity style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30, backgroundColor:'white'}}>
+                        <Icon name='add' size={12} color='gray'/>                          
+                      </TouchableOpacity>
+                </ImageBackground>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{width:'100%',height:80,flexDirection: 'row', marginBottom:5, marginTop:1}}>
+                <ImageBackground
+                  source={require('./assets/instagram-clone-sample.png')}
+                  style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                  resizeMode='cover'
+                  blurRadius={4}>
+                      <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25, backgroundColor:'pink', opacity:1.0}}>
+                        <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold', color:'gray'}}>1</Text>
+                      </View>
+                      <View style={{height:'100%',aspectRatio: 1,padding:8 }}>
+                        <Image source={require('./assets/instagram-clone-sample.png')} style={{ width:65, height: 65, borderRadius: 65 / 2,alignSelf:'center'}} />
+                      </View>
+                      <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                        <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                        <Text style={{color:'white',fontSize:14}}>姫</Text>
+                      </View>
+                      <TouchableOpacity style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30, backgroundColor:'white'}}>
+                        <Icon name='add' size={12} color='gray'/>                          
+                      </TouchableOpacity>
+                </ImageBackground>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{width:'100%',height:80,flexDirection: 'row', marginBottom:5, marginTop:1}}>
+                <ImageBackground
+                  source={require('./assets/instagram-clone-sample.png')}
+                  style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                  resizeMode='cover'
+                  blurRadius={4}>
+                      <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25, backgroundColor:'pink', opacity:1.0}}>
+                        <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold', color:'gray'}}>1</Text>
+                      </View>
+                      <View style={{height:'100%',aspectRatio: 1,padding:8 }}>
+                        <Image source={require('./assets/instagram-clone-sample.png')} style={{ width:65, height: 65, borderRadius: 65 / 2,alignSelf:'center'}} />
+                      </View>
+                      <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                        <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                        <Text style={{color:'white',fontSize:14}}>姫</Text>
+                      </View>
+                      <TouchableOpacity style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30, backgroundColor:'white'}}>
+                        <Icon name='add' size={12} color='gray'/>                          
+                      </TouchableOpacity>
+                </ImageBackground>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{width:'100%',height:80,flexDirection: 'row', marginBottom:5, marginTop:1}}>
+                <ImageBackground
+                  source={require('./assets/meidodesu_TP_V.jpg')}
+                  style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                  resizeMode='cover'
+                  blurRadius={4}>
+                      <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25, backgroundColor:'pink', opacity:1.0}}>
+                        <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold', color:'gray'}}>1</Text>
+                      </View>
+                      <View style={{height:'100%',aspectRatio: 1,padding:8 }}>
+                        <Image source={require('./assets/meidodesu_TP_V.jpg')} style={{ width:65, height: 65, borderRadius: 65 / 2,alignSelf:'center'}} />
+                      </View>
+                      <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                        <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                        <Text style={{color:'white',fontSize:14}}>姫</Text>
+                      </View>
+                      <TouchableOpacity style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30, backgroundColor:'white'}}>
+                        <Icon name='add' size={12} color='gray'/>                          
+                      </TouchableOpacity>
+                </ImageBackground>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{width:'100%',height:80,flexDirection: 'row', marginBottom:5, marginTop:1}}>
+                <ImageBackground
+                  source={require('./assets/insta-loli1.jpg')}
+                  style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                  resizeMode='cover'
+                  blurRadius={4}>
+                      <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25, backgroundColor:'pink', opacity:1.0}}>
+                        <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold', color:'gray'}}>1</Text>
+                      </View>
+                      <View style={{height:'100%',aspectRatio: 1,padding:8 }}>
+                        <Image source={require('./assets/insta-loli1.jpg')} style={{ width:65, height: 65, borderRadius: 65 / 2,alignSelf:'center'}} />
+                      </View>
+                      <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                        <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                        <Text style={{color:'white',fontSize:14}}>姫</Text>
+                      </View>
+                      <TouchableOpacity style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30, backgroundColor:'white'}}>
+                        <Icon name='add' size={12} color='gray'/>                          
+                      </TouchableOpacity>
+                </ImageBackground>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{width:'100%',height:80,flexDirection: 'row', marginBottom:5, marginTop:1}}>
+                <ImageBackground
+                  source={require('./assets/insta-ex1.jpg')}
+                  style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                  resizeMode='cover'
+                  blurRadius={4}>
+                      <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25, backgroundColor:'pink', opacity:1.0}}>
+                        <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold', color:'gray'}}>1</Text>
+                      </View>
+                      <View style={{height:'100%',aspectRatio: 1,padding:8 }}>
+                        <Image source={require('./assets/insta-ex1.jpg')} style={{ width:65, height: 65, borderRadius: 65 / 2,alignSelf:'center'}} />
+                      </View>
+                      <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                        <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                        <Text style={{color:'white',fontSize:14}}>姫</Text>
+                      </View>
+                      <TouchableOpacity style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30, backgroundColor:'white'}}>
+                        <Icon name='add' size={12} color='gray'/>                          
+                      </TouchableOpacity>
+                </ImageBackground>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{width:'100%',height:80,flexDirection: 'row', marginBottom:5, marginTop:1}}>
+                <ImageBackground
+                  source={require('./assets/splash.png')}
+                  style={{ width:'100%', height: '100%', justifyContent: 'center',alignItems: 'center',flexDirection: 'row'}}
+                  resizeMode='cover'
+                  blurRadius={4}>
+                      <View style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:25, backgroundColor:'pink', opacity:1.0}}>
+                        <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold', color:'gray'}}>1</Text>
+                      </View>
+                      <View style={{height:'100%',aspectRatio: 1,padding:8 }}>
+                        <Image source={require('./assets/splash.png')} style={{ width:65, height: 65, borderRadius: 65 / 2,alignSelf:'center'}} />
+                      </View>
+                      <View style={{height:'100%',width:'58%',paddingTop:20,paddingBottom:20,paddingLeft:10}}>
+                        <Text style={{color:'pink',fontWeight:'bold',fontSize:14}}>Otaku_Queen</Text>
+                        <Text style={{color:'white',fontSize:14}}>姫</Text>
+                      </View>
+                      <TouchableOpacity style={{height:'100%',width:'10%',paddingTop:30,paddingBottom:30, backgroundColor:'white'}}>
+                        <Icon name='add' size={12} color='gray'/>                          
+                      </TouchableOpacity>
+                </ImageBackground>
+              </TouchableOpacity>
+          </ScrollView>
+        </View>
+      );
+    }
+  }
+
+
+  class RankingDaily extends React.Component{
+    render(){
+      return(
+        <View style={{ alignItems: 'center',justifyContent: 'center', width:'100%', height:'80%'}}>
+          <Text style ={{fontSize: 16, fontWeight:'bold', color:'gray'}}>Daiy</Text>
+        </View>
+      );
+    }
+  }
+
+  class RankingWeekly extends React.Component{
+    render(){
+      return(
+        <View style={{ alignItems: 'center',justifyContent: 'center', width:'100%', height:'80%'}}>
+          <Text style ={{fontSize: 16, fontWeight:'bold', color:'gray'}}>weekly</Text>
+        </View>
+      );
+    }
+  }
+
+  class RankingMonthly extends React.Component{
+    render(){
+      return(
+        <View style={{ alignItems: 'center',justifyContent: 'center', width:'100%', height:'80%'}}>
+          <Text style ={{fontSize: 16, fontWeight:'bold', color:'gray'}}>monthly</Text>
+        </View>
+      );
+    }
   }
 
   const styles = StyleSheet.create({
