@@ -11,7 +11,6 @@ import RankingScreen from './RankingScreen';
 import NavUser from './NavUser';
 import NavNearBy from './NavNearBy';
 import NavTag from './NavTag';
-import { LinearGradient } from 'expo-linear-gradient';
 
 class SearchScreen extends React.Component {
 
@@ -55,17 +54,14 @@ class SearchScreen extends React.Component {
     };
 
     this.navDefault = {width:'25%',height:'100%',padding:'3%'};
-    this.navSelect = {backgroundColor:'rgba(0,0,0,0.1)',width:'25%',height:'100%',padding:'3%',borderTopRightRadius:20, borderTopLeftRadius:20};
+    this.navSelect = {backgroundColor:'white',width:'25%',height:'100%',padding:'3%',borderTopRightRadius:20, borderTopLeftRadius:20};
 
     this.navDefaultText = {color:'white',fontSize:14,textAlign:'center', fontWeight:'bold'};
-    this.navSelectText = {color:'white',fontSize:14,textAlign:'center'};
+    this.navSelectText = {color:'gray',fontSize:14,textAlign:'center'};
 
     return (
-      <LinearGradient
-      colors={['#ddd6f3', '#faaca8']}
-      style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
         <View>
-          {/* <Header
+          <Header
             leftComponent={{ color: '#fff' }}
             centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
             rightComponent={{ icon: 'send', color: '#fff' }}
@@ -73,10 +69,10 @@ class SearchScreen extends React.Component {
               backgroundColor: 'pink',
               justifyContent: 'space-around',
             }}
-          /> */}
+          />
     
           {/* //4Top Nav Tabs */}
-          <View style={{marginTop:20,width:'100%',height:45,flexDirection:'row', borderBottomLeftRadius:20, borderBottomRightRadius:20}}>
+          <View style={{backgroundColor:'pink',width:'100%',height:45,flexDirection:'row', borderBottomLeftRadius:20, borderBottomRightRadius:20}}>
             <TouchableOpacity 
               key = {0}
               style={this.state.nav == 'user' ? this.navSelect : this.navDefault} 
@@ -106,7 +102,6 @@ class SearchScreen extends React.Component {
             {this.searchContents[this.state.nav]}
           
         </View>
-        </LinearGradient>
     );
   }
 }
