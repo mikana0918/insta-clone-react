@@ -34,7 +34,7 @@ AppNavigator = createStackNavigator({
   {
       ホーム: {
         screen: Timeline,
-        activeTintColor: 'pink',
+        activeTintColor: '#faaca8',
         navigationOptions: {
           tabBarIcon: ({ tintColor }) =>           
           <Icon
