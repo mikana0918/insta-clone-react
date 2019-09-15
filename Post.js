@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,Touchab
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import Carousel from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator,createMaterialTopTabNavigator } from "react-navigation";
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 class Post extends React.Component {
 
@@ -12,25 +14,16 @@ class Post extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View>
-         <Header
-            leftComponent={{ icon: 'camera', color: '#fff' }}
-            centerComponent={{ text: '投稿', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-            rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
-            containerStyle={{
-              backgroundColor: 'pink',
-              justifyContent: 'space-around',
-            }}
-          />  
-      </View>
-    
-    //TODO モーダルか固定か
-    //   <Modal>
-    //       <View></View>
-    //   </Modal>
-    );
+      <LinearGradient
+      colors={['#ddd6f3', '#faaca8']}
+      style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
+      <View style={{height:'100%'}}></View>
+      </LinearGradient>
+      
+    )
   }
   }
+
   
   const styles = StyleSheet.create({
     welcomeImages:{

@@ -1,10 +1,13 @@
 import React ,{Component} from 'react';
-import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight, Animated } from 'react-native';
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import Story from './Story';
 import { LinearGradient } from 'expo-linear-gradient';
+
+
+
 
 // import App from './App';
 
@@ -36,7 +39,7 @@ class Timeline extends React.Component {
             story: require('./assets/insta-loli1.jpg'),
             title: "しぬ"
           }
-        ]
+        ],
       }
   }
 
@@ -79,6 +82,7 @@ class Timeline extends React.Component {
     );
   }
 
+
   render() {
     const {navigate} = this.props.navigation;
     return (
@@ -86,28 +90,22 @@ class Timeline extends React.Component {
       <LinearGradient
       colors={['#ddd6f3', '#faaca8']}
       style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
-      <View>
-     
-         {/* <Header
-            leftComponent={{ icon: 'menu', color: '#fff',onPress: () => alert('写真を選んでください') }}
-            centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-            rightComponent={{ icon: 'send', color: '#fff',  onPress:() => navigate('Message')}}
-            containerStyle={{backgroundColor: 'pink', justifyContent: 'space-around',}}/> */}
-        {/* timeline */}
-        <View style={{height:Dimensions.get('window').width*0.27, borderRadius:20, shadowColor: 'pink', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}> 
+
+      <View style ={{marginTop:20,}}>
+        <View style={{height:Dimensions.get('window').width*0.27, borderRadius:20, }}> 
              <ScrollView 
               horizontal={true} 
               style={{ marginLeft:5, marginRight:4, marginTop: 5}}
               showsHorizontalScrollIndicator={false}>
                 <TouchableOpacity 
-                  style = {{height:'100%',padding:5,marginRight:4}}
+                  style = {{height:'100%',padding:5,marginRight:4, shadowColor: 'pink', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}
                   onPress={() => {this.setModalVisible(true);}}>            
-                      <ImageBackground  style={{ width:72, height: 72, borderRadius: 72 / 2, borderColor:'white',borderWidth:3,padding:3 }}>
+                      <ImageBackground  style={{ width:72, height: 72, borderRadius: 72 / 2, borderColor:'white',borderWidth:3,padding:3, shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2 }}>
                         <Image
                           source={require('./assets/instagram-clone-sample.png')}
                           style={{ width: 60, height: 60, borderRadius: 60 / 2}}/>
                       </ImageBackground>
-                      <Text style={{color:'gray',fontSize:10,textAlign:'center'}}>Face Here</Text> 
+                      <Text style={{color:'white',fontSize:10,textAlign:'center', fontWeight:'bold'}}>Face Here</Text> 
                 </TouchableOpacity>
               </ScrollView>
           </View>
@@ -117,8 +115,9 @@ class Timeline extends React.Component {
     
          <ScrollView>
            {/* PARENT? */}
-          <View style={{backgroundColor:'white', width:'90%',height:460,borderRadius:20, margin:'5%', shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
-            <View style={{height:50,  justifyContent: 'center',alignItems: 'center'}}>
+        
+                       <View style={{backgroundColor:'white', width:'90%',height:460,borderRadius:20, margin:'5%', shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+            <View style={{height:50, justifyContent: 'center',alignItems: 'center'}}>
               <TouchableOpacity
                 onPress={() => navigate('Profiles')}
                 style={{backgroundColor:'white',marginLeft:10,marginTop:4,marginRight:10,height:'80%',flexDirection: 'row'}}>
@@ -127,7 +126,7 @@ class Timeline extends React.Component {
                   <Text style={{fontSize:14,marginLeft:12,marginTop:12,fontWeight:'bold', color:'gray'}}>ゆうこす</Text>               
               </TouchableOpacity>
             </View>    
-            <View style={{width:'100%',height:300}}>
+            <View style={{width:'100%',height:300, paddingLeft:'3%', paddingRight:'3%'}}>
               <Carousel
                       ref={(c) => { this._carousel = c; }}
                       data={this.state.stories}
@@ -141,7 +140,7 @@ class Timeline extends React.Component {
               </Carousel>
               { this.pagination }
             </View>
-            <View style={{ width: '100%', height: '10%', backgroundColor:'white',flexDirection: 'row',padding:10,  justifyContent: 'center',alignItems: 'center'}}>
+            <View style={{marginTop:10,  width: '100%', height: '10%', backgroundColor:'white',flexDirection: 'row',padding:10,  justifyContent: 'center',alignItems: 'center'}}>
               <TouchableOpacity>
                 <Image source={require('./assets/heart-shape.png')} style={{ width: 30, height: 30,marginRight:16,marginLeft:8}}/>
               </TouchableOpacity>
@@ -152,10 +151,12 @@ class Timeline extends React.Component {
                 <Image source={require('./assets/mail.png')} style={{ width: 30, height: 30,marginRight:16}}/>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={{backgroundColor:'white',   justifyContent: 'center',alignItems: 'center'}}>
+            <TouchableOpacity style={{marginTop:10, backgroundColor:'white',   justifyContent: 'center',alignItems: 'center'}}>
               <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！ 1200 kawaii</Text> 
             </TouchableOpacity>     
           </View>
+
+          
 
           <View style={{backgroundColor:'white', width:'90%',height:460,borderRadius:20, margin:'5%', shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
             <View style={{height:50,  justifyContent: 'center',alignItems: 'center'}}>
@@ -196,6 +197,8 @@ class Timeline extends React.Component {
               <Text style={{color:'black',marginLeft:16,fontWeight:'bold'}}>100 いいね！ 1200 kawaii</Text> 
             </TouchableOpacity>     
           </View>
+
+         
 
           <View style={{backgroundColor:'white', width:'90%',height:460,borderRadius:20, margin:'5%', shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
             <View style={{height:50,  justifyContent: 'center',alignItems: 'center'}}>

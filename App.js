@@ -101,7 +101,7 @@ AppNavigator = createStackNavigator({
       activeTintColor: 'white',
       activeBackgroundColor:'pink',
       style: {
-        backgroundColor: 'white',
+        backgroundColor: 'transparent',
       },
     },
   },
