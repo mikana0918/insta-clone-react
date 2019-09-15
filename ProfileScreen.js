@@ -34,7 +34,6 @@ class ProfileScreen extends React.Component {
             title: "しぬ"
           }
         ]
-  
       };   
   }
 
