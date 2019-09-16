@@ -1,6 +1,20 @@
+<h1 align="center">
+<img
+		width="250"
+		alt="Tinder Clone - React Native"
+		src="https://github.com/mikana0918/insta-clone-react/blob/master/スクリーンショット 2019-09-16 21.56.31.png">
+</h1>
+<h3 align="center">
+	instagram like photo SNS - React Native
+</h3>
+
 ## Screenshots
-<img width="20%" height="20%" style="width:100%, height:100%" src="https://github.com/mikana0918/insta-clone-react/blob/master/スクリーンショット 2019-09-16 21.56.31.png">
-<img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS1.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS2.png.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS3.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS4.png">
+<p align="center">
+	<img src="https://github.com/mikana0918/insta-clone-react/blob/master/SS1.png" width="300">
+	<img src="https://github.com/mikana0918/insta-clone-react/blob/master/SS2.png.png" width="300">
+	<img src="https://github.com/mikana0918/insta-clone-react/blob/master/SS3.png" width="300">
+	<img src="https://github.com/mikana0918/insta-clone-react/blob/master/SS4.png" width="300">
+</p>
 
 ## Install
 git clone https://github.com/mikana0918/insta-clone-react.git</br>
