@@ -1,6 +1,6 @@
 import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, Linking, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
-import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
+import { Header,Icon, SearchBar,Input,Button } from 'react-native-elements';
 import Story from "./Story";
 import Carousel from 'react-native-snap-carousel';
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
@@ -37,17 +37,6 @@ class ProfileScreen extends React.Component {
       };   
   }
 
-  _renderItem ({item, index}) {
-    return (
-      <View style={styles.slide}>  
-      <Image
-        source={require('./assets/mitsuamigirl001_TP_V.jpg')}
-        style={{ width: '100%', height: '100%'}}/>
-        
-  </View>
-    );
-}
-
   closeModal = () => {
     this.setState({ modalVisible: false});
   }
@@ -76,20 +65,92 @@ class ProfileScreen extends React.Component {
       const {navigate} = this.props.navigation;
       return (
         <LinearGradient
-        colors={['#ddd6f3', '#faaca8']}
-        style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
-        <View style={{height:'100%'}}>
+          colors={['#ddd6f3', '#faaca8']}
+          style={{}}>
+          <View style={{height:'100%', width:'100%'}}>
+              <View style={{width:'100%', height:'60%', bordertRadius:50  }}>
+                <Image
+                  source={require('./assets/mitsuaminagetemina_TP_V.jpg')}
+                  style={{width:'100%', height:'100%', alignItems:'flex-start', backgroundColor: 'red' }}
+                  resizeMode={'cover'}/>
+              </View>
+              {/* top card  */}
+              <View style={{flexDirection: 'row-reverse', top:'5%', borderRadius: 20, alignSelf:'center', width:'86%', height:'8%',  position:'absolute' }}>
+                <Icon name='settings' size={36} color={'white'} style={{alignSelf:'right'}}/>
+              </View>
+              {/* mid card */}
+              <View style={{borderRadius: 20, alignSelf:'center', width:'86%', height:'40%', backgroundColor:'white', position:'absolute', top:'45%', shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                <View style={{backgroundColor:'white', width:'100%', height:'50%', alignContents:'center',}}>
+                  <View style={{top:'20%',backgroundColor:'white', height:'50%', alignContent:'center' }}>
+                    <Image
+                        source={require('./assets/mitsuaminagetemina_TP_V.jpg')}
+                        style={{ width:60, height: 60, borderRadius: 60 / 2, alignSelf:'center', marginBottom:'1%'}}
+                      />
+                      <Text style={{textAlign:'center', fontSize:18, fontWeight:'bold', color:'gray'}}>curling girl</Text>
+                      <Text style={{textAlign:'center', fontSize:16, color:'gray'}}>Akihabara, JP</Text>
+                  </View>
+                </View>
+                <View style={{ width:'100%', height:'40%', padding:'5%', backgroundColor:'white'}}>
+                  <View style={{height:'50%'}}>
+                    <View style={{flexDirection:'row', backgroundColor:'white', width:'100%', height:'100%', padding:1}}>
+                      <View style={{backgroundColor:'white', height:'100%', width:'33%', marginRight:5}}>
+                        <Text style={{textAlign:'center', fontSize:18, fontWeight:'bold', color:'gray'}}>Posts</Text>
+                        <Text style={{textAlign:'center', fontSize:14, fontWeight:'bold', color:'gray'}}>200</Text>
+                      </View>
+                      <View style={{backgroundColor:'white', height:'100%', width:'33%', marginRight:5}}>
+                        <Text style={{textAlign:'center', fontSize:18, fontWeight:'bold', color:'gray'}}>Views</Text>
+                        <Text style={{textAlign:'center', fontSize:14, fontWeight:'bold', color:'gray'}}>400</Text>
+                      </View>
+                      <View style={{backgroundColor:'white', height:'100%', width:'33%', marginRight:5}}>
+                        <Text style={{textAlign:'center', fontSize:18, fontWeight:'bold', color:'gray'}}>Likes</Text>
+                        <Text style={{textAlign:'center', fontSize:14, fontWeight:'bold', color:'gray'}}>300</Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View style={{height:'60%',width:'100%', alignContent:'flex-start', flexWrap:'wrap', backgroundColor:'white', flexDirection:'row'}}>
+                    <View style={{padding:2, backgroundColor:'pink', width:'28%', margin:'2%',  height:'40%', borderRadius:20 , shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                      <Text style={{textAlign:'center', fontSize:13, color:'white'}}>●●系</Text>
+                    </View>
+                    <View style={{padding:2, backgroundColor:'pink', width:'28%', margin:'2%', height:'40%', borderRadius:20 , shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                      <Text style={{textAlign:'center', fontSize:13, color:'white'}}>●●系</Text>
+                    </View>
+                    <View style={{padding:2, backgroundColor:'pink', width:'28%', margin:'2%', height:'40%', borderRadius:20 , shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                      <Text style={{textAlign:'center', fontSize:13, color:'white'}}>●●系</Text>
+                    </View>
+                    <View style={{padding:2, backgroundColor:'pink', width:'28%', margin:'2%',  height:'40%', borderRadius:20 , shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                      <Text style={{textAlign:'center', fontSize:13, color:'white'}}>●●系</Text>
+                    </View>
+                    <View style={{padding:2, backgroundColor:'pink', width:'28%', margin:'2%', height:'40%', borderRadius:20 , shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                      <Text style={{textAlign:'center', fontSize:13, color:'white'}}>●●系</Text>
+                    </View>
+                    <View style={{padding:2, backgroundColor:'pink', width:'28%', margin:'2%', height:'40%', borderRadius:20 , shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                      <Text style={{textAlign:'center', fontSize:13, color:'white'}}>●●系</Text>
+                    </View>
+                  </View>
+                </View>
+                <View>
 
-            {/* <Story/> */}
+                </View>
+              </View>
 
-            <View style={{ }}>
-              {/* <Image  
-                style={{height:'50%',aspectRatio:1.0}}
-                source={require('./assets/insta-ex1.jpg')}>
-              </Image> */}
-              <Text>aaaa</Text>
-            </View>
-        </View>
+              <View style={{borderRadius: 20, alignSelf:'center', width:'35%', height:'4%', backgroundColor:'pink', position:'absolute', top:'43%',padding:'4%'}}>
+                <Text style={{color:'white', textAlign:'center', textAlignVertical:'center', fontWeight:'bold'}}>Lv. 120</Text>
+              </View>
+
+              {/* bot card */}
+              <View style={{ flexDirection:'row', alignItems: 'center', justifyContent: 'center',borderRadius: 30, alignSelf:'center', width:'86%', height:'10%',  position:'absolute' , bottom:'3%', shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+
+                  <TouchableOpacity style={{marginRight:'6%', alignItems: 'center', justifyContent: 'center', backgroundColor:'pink', width:'50%', height:'60%', borderRadius:300 , shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                    <Text style={{textAlign:'center', fontSize:16, color:'white', fontWeight:'bold'}}>メッセージを送る</Text>
+                  </TouchableOpacity>
+
+                <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center', backgroundColor:'pink', width:'30%', height:'60%', borderRadius:300 , shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}>
+                  <Text style={{textAlign:'center', fontSize:16, color:'white', fontWeight:'bold'}}>友達登録</Text>
+                </TouchableOpacity>
+              </View>
+
+
+          </View>
         </LinearGradient>
       );
     }
