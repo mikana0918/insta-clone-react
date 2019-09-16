@@ -1,5 +1,5 @@
 ## Screenshots
-<img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS1.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS2.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS3.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS4.png">
+<img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS1.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS2.png.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS3.png"><img width="20%" height="20%" style="width:20%, height:20%" src="https://github.com/mikana0918/insta-clone-react/blob/master/SS4.png">
 
 ## Install
 git clone https://github.com/mikana0918/insta-clone-react.git</br>
