@@ -65,15 +65,6 @@ class SearchScreen extends React.Component {
       colors={['#ddd6f3', '#faaca8']}
       style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
         <View>
-          {/* <Header
-            leftComponent={{ color: '#fff' }}
-            centerComponent={{ text: 'じょそすたぐらむ', style: { color: '#fff', fontSize:17,fontWeight:'bold' } }}
-            rightComponent={{ icon: 'send', color: '#fff' }}
-            containerStyle={{
-              backgroundColor: 'pink',
-              justifyContent: 'space-around',
-            }}
-          /> */}
     
           {/* //4Top Nav Tabs */}
           <View style={{marginTop:20,width:'100%',height:45,flexDirection:'row', borderBottomLeftRadius:20, borderBottomRightRadius:20}}>

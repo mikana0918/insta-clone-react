@@ -22,8 +22,8 @@ class Notification extends React.Component {
         message  : <NotificationMessage/>,
       };
 
-      this.navDefault = {width:'25%',height:'100%',padding:'3%'};
-      this.navSelect = {backgroundColor:'rgba(0,0,0,0.1)',width:'25%',height:'100%',padding:'3%',borderTopRightRadius:20, borderTopLeftRadius:20};
+      this.navDefault = {width:'33%',height:'100%',padding:'3%'};
+      this.navSelect = {backgroundColor:'rgba(0,0,0,0.1)',width:'33%',height:'100%',padding:'3%',borderTopRightRadius:20, borderTopLeftRadius:20};
   
       this.navDefaultText = {color:'white',fontSize:14,textAlign:'center', fontWeight:'bold'};
       this.navSelectText = {color:'white',fontSize:14,textAlign:'center'};
@@ -35,7 +35,7 @@ class Notification extends React.Component {
           <View>
             {/* //4Top Nav Tabs */}
             <View style={{marginTop:20,width:'100%',height:45,flexDirection:'row', borderBottomLeftRadius:20, borderBottomRightRadius:20, alignContent:'center'}}>
-            <TouchableOpacity 
+              <TouchableOpacity 
                 key = {0}
                 style={this.state.nav == 'default' ? this.navSelect : this.navDefault} 
                 onPress={() =>  {this.setState({nav: 'default'})}}>
@@ -55,7 +55,7 @@ class Notification extends React.Component {
               </TouchableOpacity>
             </View>
           
-            <ScrollView style={{width:'100%', height:'100%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
+            <ScrollView style={{width:'100%', height:'100%',paddingTop:'3%',paddingLeft:'3%',paddingRight:'3%',marginTop:5}}>
               {this.searchContents[this.state.nav]}
             </ScrollView> 
           </View>
