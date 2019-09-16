@@ -8,7 +8,7 @@
 	instagram like photo SNS - React Native
 </h3>
 
-## Screenshots
+
 <p align="center">
 	<img src="https://github.com/mikana0918/insta-clone-react/blob/master/SS1.png" width="300">
 	<img src="https://github.com/mikana0918/insta-clone-react/blob/master/SS2.png.png" width="300">
