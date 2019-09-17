@@ -2,11 +2,11 @@ import React ,{Component} from 'react';
 import { StyleSheet, Text, View, Image,Dimensions, Linking, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import { Header,Icon, SearchBar,Input,Button } from 'react-native-elements';
 import Story from "./Story";
-import Carousel from 'react-native-snap-carousel';
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator,createMaterialTopTabNavigator } from "react-navigation";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Asset } from 'expo-asset';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 class ProfileScreen extends React.Component {
 
@@ -19,7 +19,13 @@ class ProfileScreen extends React.Component {
       
         modalVisible: false,
         currentIndex: 0,
+        activeSlide: 0,
         stories: [
+          {
+            id: "WpIAu9by5iU",
+            story: require('./assets/mitsuaminagetemina_TP_V.jpg'),
+            title: "はじめての投稿🌟"
+          },
           {
             id: "WpIAc9by5iU",
             story: require('./assets/welcome1.jpg'),
@@ -60,6 +66,33 @@ class ProfileScreen extends React.Component {
     this._menu.show();
   };
 
+    //impl pagenation
+    get pagination () 
+    {
+      const { stories, activeSlide } = this.state;
+      return (
+          <Pagination
+            dotsLength={stories.length}
+            activeDotIndex={this.state.activeSlide}
+            containerStyle={{alignSelf:'center',position: 'absolute', bottom:-20 }}
+            dotStyle={
+              {
+                width: 10,
+                height: 10,
+                borderRadius: 10,
+                // marginHorizontal: 8,
+                backgroundColor: 'rgba(255, 255, 255, 0.9)'
+              }
+          }
+            inactiveDotStyle={{
+                // Define styles for inactive dots here
+            }}
+            inactiveDotOpacity={0.3}
+            inactiveDotScale={0.6}
+          />
+      );
+    }
+
 
     render() {
       const {navigate} = this.props.navigation;
@@ -68,11 +101,12 @@ class ProfileScreen extends React.Component {
           colors={['#ddd6f3', '#faaca8']}
           style={{}}>
           <View style={{height:'100%', width:'100%'}}>
-              <View style={{width:'100%', height:'60%', bordertRadius:50  }}>
-                <Image
+              <View style={{width:'100%', height:'60%', backgroundColor:'blie', flexDirection:'row'  }}>
+                <ImageBackground
                   source={require('./assets/mitsuaminagetemina_TP_V.jpg')}
-                  style={{width:'100%', height:'100%', alignItems:'flex-start', backgroundColor: 'red' }}
+                  style={{width:'100%', height:'100%', alignItems:'flex-start', backgroundColor: 'red' , opacity:0.8}}
                   resizeMode={'cover'}/>
+
               </View>
               {/* top card  */}
               <View style={{flexDirection: 'row-reverse', top:'5%', borderRadius: 20, alignSelf:'center', width:'86%', height:'8%',  position:'absolute' }}>

@@ -32,7 +32,7 @@ class RankingScreen extends React.Component {
       <View> 
 
           {/* //4Top Nav Tabs */}
-          <View style={{width:'100%',height:40,flexDirection:'row', borderRadius:20, paddingLeft:'5%', paddingRight:'5%', backgroundColor:'gray'}}>
+          <View style={{width:'100%',height:40,flexDirection:'row', borderRadius:20, paddingLeft:'5%', paddingRight:'5%', backgroundColor:'pink'}}>
             <TouchableOpacity 
               key = {0}
               style={this.state.nav == 'default' ? this.navSelect : this.navDefault} 
@@ -70,7 +70,7 @@ class RankingScreen extends React.Component {
   class RankingDefault extends React.Component{
     render(){
       return(
-        <View style={{ alignItems: 'center',justifyContent: 'center', width:'100%', height:'100%'}}>
+        <View style={{ alignItems: 'center',justifyContent: 'center', width:'100%', height:'100%', paddingTop:'5%'}}>
    
           <ScrollView style={{width:'100%'}}>
           <TouchableOpacity 
