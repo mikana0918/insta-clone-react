@@ -9,6 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
+
 // import App from './App';
 
 
@@ -86,17 +87,21 @@ class Timeline extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
+
       //TODO 背景をキラキラさせたい。
       <LinearGradient
       colors={['#ddd6f3', '#faaca8']}
       style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
 
       <View style ={{marginTop:20,}}>
+
         <View style={{height:Dimensions.get('window').width*0.27, borderRadius:20, }}> 
              <ScrollView 
               horizontal={true} 
               style={{marginTop: 5}}
               showsHorizontalScrollIndicator={false}>
+                {/* <ImageBackground source={require('./assets/giphy.gif')}>                </ImageBackground> */}
+
                 <TouchableOpacity 
                   style = {{height:'100%',padding:5,marginRight:4, shadowColor: 'pink', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}
                   onPress={() => {this.setModalVisible(true);}}>            
@@ -107,6 +112,7 @@ class Timeline extends React.Component {
                       </ImageBackground>
                       <Text style={{color:'white',fontSize:10,textAlign:'center', fontWeight:'bold'}}>Face Here</Text> 
                 </TouchableOpacity>
+
                 <TouchableOpacity 
                   style = {{height:'100%',padding:5,marginRight:4, shadowColor: 'pink', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2}}
                   onPress={() => {this.setModalVisible(true);}}>            

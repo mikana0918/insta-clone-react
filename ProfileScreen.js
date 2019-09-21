@@ -102,10 +102,11 @@ class ProfileScreen extends React.Component {
           style={{}}>
           <View style={{height:'100%', width:'100%'}}>
               <View style={{width:'100%', height:'60%', backgroundColor:'blie', flexDirection:'row'  }}>
-                <ImageBackground
+                <Image
                   source={require('./assets/mitsuaminagetemina_TP_V.jpg')}
-                  style={{width:'100%', height:'100%', alignItems:'flex-start', backgroundColor: 'red' , opacity:0.8}}
-                  resizeMode={'cover'}/>
+                  style={{borderBottomLeftRadius:120, borderBottomRightRadius:20, width:'100%', height:'100%', alignItems:'flex-start', backgroundColor: 'red' , opacity:0.8}}
+                  // resizeMode={'cover'}
+                  />
 
               </View>
               {/* top card  */}

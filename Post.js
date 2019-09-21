@@ -4,6 +4,7 @@ import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import Carousel from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator,createMaterialTopTabNavigator } from "react-navigation";
 import { LinearGradient } from 'expo-linear-gradient';
+import { RNCamera, FaceDetector } from 'react-native-camera';
 
 
 class Post extends React.Component {
@@ -13,11 +14,71 @@ class Post extends React.Component {
 
   render() {
     const {navigate} = this.props.navigation;
+    const displayHeight = Dimensions.get('window').height;
+    const displayWidth = Dimensions.get('window').width;
     return (
       <LinearGradient
       colors={['#ddd6f3', '#faaca8']}
-      style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
-      <View style={{height:'100%'}}></View>
+      style={{ dalignItems: 'center', borderRadius: 5 }}>
+      <View style={{height:'100%', width:'100%'}}>
+      {/* scroll wrapper */}
+      <View style={{height:'100%' ,}}> 
+             <ScrollView 
+              horizontal={true} 
+              style={{ }}
+              showsHorizontalScrollIndicator={false}>
+                
+              <TouchableOpacity style={{height:'100%', alignItems: 'center', justifyContent: 'center',}}>
+                <TouchableOpacity 
+                  style = {{ padding: '3%', backgroundColor:'white', opacity:0.9,   borderBottomLeftRadius: 100, height:'50%', width: displayWidth*0.90 , marginRight:displayWidth*0.03}}>    
+                  <Image
+                            source={require('./assets/selfie.jpg')}
+                            style={{width: '100%', height: '90%'}}
+                            resizeMode={'contain'}
+                            />
+                </TouchableOpacity> 
+                  <View style={{padding:'8%',height:'50%',  width: displayWidth*0.90}}>
+                    <Text style={{color:'white', fontSize:36, margin:10}}>カメラから</Text>
+                    <Text style={{color:'white', fontSize:20, margin:10}}>エフェクトカメラで可愛く撮影</Text>
+                  </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{height:'100%', alignItems: 'center', justifyContent: 'center',}}>
+                <TouchableOpacity 
+                  style = {{ backgroundColor:'white', opacity:0.9,  padding: '3%', height:'50%', width: displayWidth*0.90 , marginRight:displayWidth*0.03}}>    
+                  <Image
+                            source={require('./assets/upload.jpg')}
+                            style={{ width: '100%', height: '90%', borderBottomLeftRadius: 100}}
+                            resizeMode={'contain'}
+                            />
+                </TouchableOpacity> 
+                  <View style={{padding:'8%',height:'50%',  width: displayWidth*0.90}}>
+                    <Text style={{color:'white', fontSize:36, margin:10}}>ライブラリから</Text>
+                    <Text style={{color:'white', fontSize:20, margin:10}}>エフェクトカメラで可愛く撮影</Text>
+                  </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{height:'100%', alignItems: 'center', justifyContent: 'center',}}>
+                <TouchableOpacity 
+                  style = {{ backgroundColor:'white', opacity:0.9,  padding: '3%', height:'50%', width: displayWidth*0.90 , marginRight:displayWidth*0.03}}>    
+                  <Image
+                            source={require('./assets/live.jpg')}
+                            style={{ width: '100%', height: '90%', borderBottomLeftRadius: 100}}
+                            resizeMode={'contain'}
+                            />
+                </TouchableOpacity> 
+                  <View style={{padding:'8%',height:'50%',  width: displayWidth*0.90}}>
+                    <Text style={{color:'white', fontSize:36, margin:10}}>ライブを始める</Text>
+                    <Text style={{color:'white', fontSize:20, margin:10}}>エフェクトカメラで可愛く撮影</Text>
+                  </View>
+              </TouchableOpacity>
+              </ScrollView>
+          </View>
+        {/* <View style={{height:'100%', width:'60%', backgroundColor:'beige'}}> */}
+            {/* <View style={{height:'50%', width:'100%', backgroundColor:'white', zIndex:1}}></View>
+            <View style={{height:'50%', width:'100%',  backgroundColor:'pink', zIndex:1}}></View> */}
+        {/* </View> */}
+        </View>
       </LinearGradient>
       
     )
