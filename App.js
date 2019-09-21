@@ -14,6 +14,7 @@ import Following from './Following';
 import Followers from './Followers';
 import Notification from './Notification';
 import Post from './Post';
+import Camera from './CameraExample';
 // import Ionicons from '@expo/vector-icons';
 import { Icon } from 'react-native-elements';
 
@@ -30,7 +31,7 @@ class App extends React.Component {
 
 AppNavigator = createStackNavigator({ 
   bottomNavigation:{
-  screen: createBottomTabNavigator(
+  screen: createMaterialTopTabNavigator(
   {
       ホーム: {
         screen: Timeline,
@@ -40,7 +41,9 @@ AppNavigator = createStackNavigator({
           <Icon
           name='home'
           size={24}
-          color={tintColor}/>      
+          color={tintColor}
+          // color={'#7DA3B3'}
+          />      
         }    
       },
       検索: {
@@ -51,7 +54,9 @@ AppNavigator = createStackNavigator({
           <Icon
           name='search'
           size={24}
-          color={tintColor}/>      
+          color={tintColor}
+          // color={'#7DA3B3'}
+          />      
         }    
       },
       投稿: {
@@ -62,7 +67,9 @@ AppNavigator = createStackNavigator({
           <Icon
           name='add-to-photos'
           size={24}
-          color={tintColor}/>      
+          color={tintColor}
+          // color={'#7DA3B3'}
+          />      
         }   
       },
       通知: {
@@ -74,7 +81,9 @@ AppNavigator = createStackNavigator({
           name='notifications'
           size={24}
           color={tintColor}
-          type='Ionicons'/>      
+          // color={'#7DA3B3'}
+          type='Ionicons'
+          />      
         }
       },
     　プロフィール: {
@@ -87,6 +96,7 @@ AppNavigator = createStackNavigator({
         type= {'font-awesome'}
         size={22}
         color={tintColor}
+        // color={'#7DA3B3'}
         />      
       }  }
   },
@@ -98,10 +108,14 @@ AppNavigator = createStackNavigator({
     tabBarOptions:{
       showIcon: true,
       showLabel: false,
-      activeTintColor: 'white',
-      activeBackgroundColor:'pink',
+      activeTintColor: '#403032',
+      activeBackgroundColor:'#E6ACB6',
       style: {
-        backgroundColor: 'transparent',
+        backgroundColor: 'rgba(255, 255, 255, 0.6)',     
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0
       },
     },
   },
@@ -116,6 +130,8 @@ AppNavigator = createStackNavigator({
       MyPosts: MyPosts,
       Following: Following,
       Followers: Followers,
+      Camera: Camera,
+      post: Post,
 
   },
   {

@@ -4,18 +4,18 @@ import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import Carousel from 'react-native-snap-carousel';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator,createMaterialTopTabNavigator } from "react-navigation";
 import { LinearGradient } from 'expo-linear-gradient';
-import { RNCamera, FaceDetector } from 'react-native-camera';
+// import { RNCamera, FaceDetector } from 'react-native-camera';
+// import {CameraKitCamera} from 'react-native-camera-kit';
+import CameraExample from './CameraExample';
 
 
 class Post extends React.Component {
-
-
-  // TODO プロフィールからのみの遷移へ変更
 
   render() {
     const {navigate} = this.props.navigation;
     const displayHeight = Dimensions.get('window').height;
     const displayWidth = Dimensions.get('window').width;
+  
     return (
       <LinearGradient
       colors={['#ddd6f3', '#faaca8']}
@@ -23,13 +23,14 @@ class Post extends React.Component {
       <View style={{height:'100%', width:'100%'}}>
       {/* scroll wrapper */}
       <View style={{height:'100%' ,}}> 
-             <ScrollView 
+             <ScrollView   
               horizontal={true} 
               style={{ }}
               showsHorizontalScrollIndicator={false}>
                 
               <TouchableOpacity style={{height:'100%', alignItems: 'center', justifyContent: 'center',}}>
                 <TouchableOpacity 
+                 onPress={() => navigate('Camera')}
                   style = {{ padding: '3%', backgroundColor:'white', opacity:0.9,   borderBottomLeftRadius: 100, height:'50%', width: displayWidth*0.90 , marginRight:displayWidth*0.03}}>    
                   <Image
                             source={require('./assets/selfie.jpg')}
@@ -74,16 +75,13 @@ class Post extends React.Component {
               </TouchableOpacity>
               </ScrollView>
           </View>
-        {/* <View style={{height:'100%', width:'60%', backgroundColor:'beige'}}> */}
-            {/* <View style={{height:'50%', width:'100%', backgroundColor:'white', zIndex:1}}></View>
-            <View style={{height:'50%', width:'100%',  backgroundColor:'pink', zIndex:1}}></View> */}
-        {/* </View> */}
         </View>
       </LinearGradient>
       
     )
   }
   }
+
 
   
   const styles = StyleSheet.create({
