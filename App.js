@@ -120,7 +120,8 @@ AppNavigator = createStackNavigator({
     },
   },
    
-  )},
+  )
+},
   pageNavigation:{
   screen:createStackNavigator(
   {
@@ -131,13 +132,12 @@ AppNavigator = createStackNavigator({
       Following: Following,
       Followers: Followers,
       Camera: Camera,
-      post: Post,
 
   },
   {
     navigationOptions: {
       header: null,
-      headerMode: 'screen',
+      // headerMode: 'screen',
 
     }
   }

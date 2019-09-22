@@ -99,7 +99,7 @@ class Timeline extends React.Component {
              <ScrollView 
               horizontal={true} 
               style={{marginTop: 5}}
-              showsHorizontalScrollIndicator={false}>
+              showsVerticalScrollIndicator={false}>
                 {/* <ImageBackground source={require('./assets/giphy.gif')}>                </ImageBackground> */}
 
                 <TouchableOpacity 

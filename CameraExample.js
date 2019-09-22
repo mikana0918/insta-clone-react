@@ -4,6 +4,7 @@ import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 // import Permissions from 'react-native-permissions';
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
+import * as FaceDetector from 'expo-face-detector';
 
 export default class CameraExample extends React.Component {
     static navigationOptions = ({ navigate }) => 
@@ -16,33 +17,64 @@ export default class CameraExample extends React.Component {
     type: Camera.Constants.Type.back,
   };
 
-//   async componentDidMount() {
-//     const { status } = await Permissions.askAsync(Permissions.CAMERA);
-//     this.setState({ hasCameraPermission: status === 'granted' });
-//   }
+async componentDidMount() {
+const { status } = await Permissions.askAsync(Permissions.CAMERA);
+this.setState({ hasCameraPermission: status === 'granted' });
+}
 
     
-    async takePicture() {       
-        console.log('Button Pressed');
-        if (this.camera) {
-            const { status } = await Permissions.askAsync(Permissions.CAMERA);
-            this.setState({ hasCameraPermission: status === 'granted' });
-
-            console.log('Taking photo');
-            const options = { quality: 1, base64: true, fixOrientation: true, exif: true};
-            await this.camera.takePictureAsync(options).then((photo)=>{
-                console.log(photo.uri);
-                CameraRoll.saveToCameraRoll(photo.uri, 'photo')
-                console.log('save to cameraroll?');
-            });
-           
-            }
+async takePicture() {       
+    console.log('Button Pressed');
+    if (this.camera) {
+        console.log('Taking photo');
+        const options = { quality: 1, base64: true, fixOrientation: true, exif: true};
+        await this.camera.takePictureAsync(options).then((photo)=>{
+            console.log(photo.uri);
+            CameraRoll.saveToCameraRoll(photo.uri, 'photo')
+            console.log('save to cameraroll?');
+        });
+        
         }
+    }
+
+    handleFacesDetected = ({ faces }) => {
+
+        if(faces.length > 0){
+            this.setState({ faces });
+        }
+        console.log(faces);
+
+    };
+
+    snap = async (recognize) => {
+        try {
+            if (this.camera) {
+                let photo = await this.camera.takePictureAsync({ base64: true });
+                if(!faceDetected) {
+                    alert('No face detected!');
+                    return;
+                }
+    
+                const userId = makeId();
+                const { base64 } = photo;
+                this[recognize ? 'recognize' : 'enroll']({ userId, base64 });
+            }
+        } catch (e) {
+            console.log('error on snap: ', e)
+        }
+    };
         
 
   render() {
     const { hasCameraPermission } = this.state;
     const {navigate} = this.props.navigation;
+
+    // handleFacesDetected = ({ faces }) => {
+    //     if(faces.length > 0){
+    //         this.setState({ faces });
+    //     }
+    // };
+
     if (hasCameraPermission === null) {
       return <View />;
     } else if (hasCameraPermission === false) {
@@ -50,26 +82,61 @@ export default class CameraExample extends React.Component {
     } else {
       return (
         <View style={{ flex: 1 }}>
-            <View style={{height:'10%',backgroundColor:'pink', padding:10 }}>
-                <TouchableOpacity 
-                style={{ alignItems: 'center',  justifyContent: 'center',backgroundColor:'gray', height:'100%'}}
-                onPress={() => navigate('Post')} 
-                >
-                                <Icon
-                                    name='camera'
-                                    size={32}
-                                    color={'white'}
-                                    // color={'#7DA3B3'}
-                                />      
-                </TouchableOpacity>
-            </View>
-
           <Camera 
-          style={{ height:'80%',  bottom:0 }} type={this.state.type}
+        //   zoom = {1} //最大ズーム
+            faceDetectorSettings={{
+                mode: FaceDetector.Constants.Mode.fast,
+                detectLandmarks: FaceDetector.Constants.Landmarks.none,
+                runClassifications: FaceDetector.Constants.Classifications.none,
+                minDetectionInterval: 100,
+                tracking: true,
+            }}
+          onFacesDetected={this.handleFacesDetected} //顔認識トリガー
+          autoFocus = {'on'}
+          style={{ height:'100%',  bottom:0 }} type={this.state.type}
           ref={ref => {
             this.camera = ref;
           }}>
-            <View
+            <View style={{justifyContent: 'space-between', flexDirection:'row', position:'absolute', top:0, height:'10%', width:'100%', padding:20 , opacity:0.8, backgroundColor:'rgba(255, 255, 255, 0.3)', borderBottomLeftRadius: 50, borderBottomRightRadius: 50}}>
+                <TouchableOpacity 
+                style={{ alignItems: 'left',  
+                justifyContent: 'center', 
+                height:'100%', }}
+                onPress={() => navigate('投稿')} 
+                >
+                    <Icon
+                        name='ios-arrow-round-back'
+                        size={50}
+                        color={'white'}
+                        type='ionicon'
+                    />      
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                style={{
+                  alignSelf: 'right',
+                  alignItems: 'right',
+                  height:'100%'
+                }}
+                onPress={() => {
+                  this.setState({
+                    type:
+                      this.state.type === Camera.Constants.Type.back
+                        ? Camera.Constants.Type.front
+                        : Camera.Constants.Type.back,
+                  });
+                }}>
+
+                    <Icon
+                        name='ios-reverse-camera'
+                        size={40}
+                        color={'white'}
+                        type='ionicon'
+                    />      
+              </TouchableOpacity>
+            </View>
+
+            {/* <View
               style={{
                 flex: 1,
                 backgroundColor: 'transparent',
@@ -90,24 +157,22 @@ export default class CameraExample extends React.Component {
                   });
                 }}>
 
-  
                 <Text style={{ fontSize: 18, marginBottom: 10, color: 'white' }}> Flip </Text>
               </TouchableOpacity>
-            </View>
-          </Camera>
+            </View> */}
 
-          <View style={{height:'18%', padding:10, backgroundColor:'pink', flexDirection:'row', justifyContent: 'space-between', padding: '2%', }}>
+            <View style={{borderTopLeftRadius: 50, borderTopRightRadius: 50, position:'absolute', bottom:0, height:'10%', width:'100%', padding:10, opacity:0.8, backgroundColor:'rgba(255, 255, 255, 0.3)', flexDirection:'row', justifyContent: 'space-between', padding: '2%', }}>
                 <TouchableOpacity 
-                style={{backgroundColor:'gray', height:'100%'}}
+                style={{ height:'100%'}}
                 onPress={() => {
                     this.takePicture();
                   }}>
-                    <ImageBackground  style={{alignSelf:'center', width:32, height: 32, borderRadius: 32 / 2, borderColor:'white',borderWidth:3,padding:3, shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2 }}>
+                    <ImageBackground  style={{alignSelf:'center', width:40, height: 40, borderRadius: 40 / 2, borderColor:'white',borderWidth:3,padding:3, shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2 }}>
                             <Icon
-                                name='camera'
-                                size={32}
+                                name='logo-buffer'
+                                size={30}
                                 color={'white'}
-                                // color={'#7DA3B3'}
+                                type='ionicon'
                             />      
                     </ImageBackground>
                 </TouchableOpacity>
@@ -130,10 +195,10 @@ export default class CameraExample extends React.Component {
                  onPress={() => {
                     this.takePicture();
                   }}>
-                    <ImageBackground  style={{alignSelf:'right', width:32, height: 32, borderRadius: 32 / 2, borderColor:'white',borderWidth:3,padding:3, shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2 }}>
+                    <ImageBackground  style={{alignSelf:'right', width:40, height: 40, borderRadius: 40 / 2, borderColor:'white',borderWidth:3,padding:3, shadowColor: 'gray', shadowOffset: { width: 7, height: 9 }, shadowOpacity: 0.4, shadowRadius: 5, elevation: 2 }}>
                             <Icon
-                                name='camera'
-                                size={32}
+                                name='face-recognition'
+                                size={30}
                                 color={'white'}
                                 // color={'#7DA3B3'}
                             />      
@@ -141,6 +206,7 @@ export default class CameraExample extends React.Component {
                 </TouchableOpacity>
                 
             </View>
+          </Camera>
         </View>
       );
     }

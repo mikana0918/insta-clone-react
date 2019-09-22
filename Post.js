@@ -10,6 +10,10 @@ import CameraExample from './CameraExample';
 
 
 class Post extends React.Component {
+  static navigationOptions = ({ navigate }) => 
+  ({
+    header: null
+    })
 
   render() {
     const {navigate} = this.props.navigation;
