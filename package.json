@@ -8,8 +8,10 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.6.1",
     "expo": "^34.0.4",
-    "expo-camera": "~6.0.0",
+    "expo-camera": "^6.0.0",
+    "expo-file-system": "~6.0.0",
     "expo-linear-gradient": "~6.0.0",
     "native-base": "^2.13.8",
     "react": "16.8.3",
@@ -24,6 +26,7 @@
     "react-native-material-menu": "^1.0.0",
     "react-native-paper": "^2.16.0",
     "react-native-particles": "0.0.7",
+    "react-native-permissions": "^1.2.1",
     "react-native-reanimated": "~1.1.0",
     "react-native-router-flux": "^4.0.6",
     "react-native-sideswipe": "^1.5.0",
