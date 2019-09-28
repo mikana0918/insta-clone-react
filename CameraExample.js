@@ -1,21 +1,52 @@
 import React from 'react';
-import { CameraRoll, StyleSheet, Text, View, Image,Dimensions, Linking, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
+import { Animated, CameraRoll, StyleSheet, Text, View, Image,Dimensions, Linking, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 // import Permissions from 'react-native-permissions';
+
 import { Header,Icon,SearchBar,Input,Button } from 'react-native-elements';
 import * as FaceDetector from 'expo-face-detector';
+import {
+    PanGestureHandler,
+    PinchGestureHandler,
+    RotationGestureHandler,
+    State,
+  } from 'react-native-gesture-handler';
 
 export default class CameraExample extends React.Component {
+    pinchRef = React.createRef();
+
     static navigationOptions = ({ navigate }) => 
     ({
       header: null
       })
 
-  state = {
-    hasCameraPermission: null,
-    type: Camera.Constants.Type.back,
-  };
+      constructor(props) {
+        super(props);
+        this.state = {
+            hasCameraPermission: null,
+            type: Camera.Constants.Type.back,
+          }; 
+          /* Pinching */
+        this._baseScale = new Animated.Value(1);
+        this._pinchScale = new Animated.Value(1);
+        this._scale = Animated.multiply(this._baseScale, this._pinchScale);
+        this._lastScale = 1;
+        // this._onPinchGestureEvent = Animated.event(
+        // [{ nativeEvent: { scale: this._pinchScale } }],
+        // { useNativeDriver: USE_NATIVE_DRIVER }
+        // );
+      }
+
+      _onPinchHandlerStateChange = event => {
+        if (event.nativeEvent.oldState === State.ACTIVE) {
+          this._lastScale *= event.nativeEvent.scale;
+          this._baseScale.setValue(this._lastScale);
+          this._pinchScale.setValue(1);
+        }
+      };
+
+    
 
 async componentDidMount() {
 const { status } = await Permissions.askAsync(Permissions.CAMERA);
@@ -66,7 +97,7 @@ async takePicture() {
         
 
   render() {
-    const { hasCameraPermission } = this.state;
+    // const { hasCameraPermission } = this.state;
     const {navigate} = this.props.navigation;
 
     // handleFacesDetected = ({ faces }) => {
@@ -75,12 +106,16 @@ async takePicture() {
     //     }
     // };
 
-    if (hasCameraPermission === null) {
+    if (this.state.hasCameraPermission === null) {
       return <View />;
-    } else if (hasCameraPermission === false) {
+    } else if (this.state.hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     } else {
       return (
+        <PinchGestureHandler
+        onGestureEvent={this._onPinchGestureEvent}
+        onHandlerStateChange={this._onPinchHandlerStateChange}>
+
         <View style={{ flex: 1 }}>
           <Camera 
         //   zoom = {1} //最大ズーム
@@ -208,6 +243,7 @@ async takePicture() {
             </View>
           </Camera>
         </View>
+        </PinchGestureHandler>
       );
     }
   }
