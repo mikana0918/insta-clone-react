@@ -1,5 +1,5 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "Home.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -15,6 +15,7 @@
     "expo-face-detector": "~6.0.0",
     "expo-file-system": "~6.0.0",
     "expo-linear-gradient": "~6.0.0",
+    "firebase": "^7.0.0",
     "native-base": "^2.13.8",
     "react": "16.8.3",
     "react-dom": "^16.8.6",

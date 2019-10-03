@@ -93,7 +93,7 @@ class Timeline extends React.Component {
       colors={['#ddd6f3', '#faaca8']}
       style={{ padding: 15, alignItems: 'center', borderRadius: 5 }}>
 
-        <View>
+    <View>
     
       <View style ={{marginTop:20,}}>
 

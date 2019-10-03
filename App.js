@@ -4,7 +4,6 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator, cre
 import Timeline from './Timeline';
 import SearchScreen from './SearchScreen';
 import RankingScreen from './RankingScreen';
-import FavoriteScreen from './FavoriteScreen';
 import ProfilesScreen from './ProfileScreen';
 import MessageScreen from './MessageScreen';
 import SendScreen from './SendScreen';
@@ -17,6 +16,10 @@ import Post from './Post';
 import Camera from './CameraExample';
 // import Ionicons from '@expo/vector-icons';
 import { Icon } from 'react-native-elements';
+import * as firebase from "./utils/firebase";
+// import "firebase/auth";
+// import "firebase/firestore";
+// import LoginScreen from './Home';
 
 
 
@@ -29,7 +32,8 @@ class App extends React.Component {
   }
 }
 
-AppNavigator = createStackNavigator({ 
+AppNavigator = createStackNavigator(
+  { 
   bottomNavigation:{
   screen: createMaterialTopTabNavigator(
   {
@@ -98,13 +102,17 @@ AppNavigator = createStackNavigator({
         color={tintColor}
         // color={'#7DA3B3'}
         />      
-      }  }
+      }},
   },
+  // { 
+  //   initialRouteName: LoginScreen
+  // },
   {
     navigationOptions: {
       header: null,
       // headerMode: 'screen',
-    },
+  },
+
     tabBarOptions:{
       showIcon: true,
       showLabel: false,
@@ -138,11 +146,12 @@ AppNavigator = createStackNavigator({
     navigationOptions: {
       header: null,
       // headerMode: 'screen',
-
     }
-  }
-  )
-},
+  },
+  // { 
+  //   initialRouteName: LoginScreen
+  // }
+)},
 profileMessageNavigation:{
   screen:createStackNavigator
   (
@@ -161,8 +170,8 @@ profileMessageNavigation:{
     }
   )
 },
-
-});
+},
+);
 
 
 const styles = StyleSheet.create({

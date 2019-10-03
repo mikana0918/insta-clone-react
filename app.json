@@ -26,6 +26,21 @@
       "supportsTablet": true,
        "bundleIdentifier": "com.kronodev.josostagram"
     },
+    "extra": {
+      "firebase": {
+        "apiKey": "AIzaSyDv-NZHzvzE5xg43iPVQozUi8Ibw96ivyI",
+        "authDomain": "josostagram-5b997.firebaseapp.com",
+        "databaseURL": "https://josostagram-5b997.firebaseio.com",
+        "projectId": "josostagram-5b997",
+        "storageBucket": "",
+        "messagingSenderId": "1039903374275",
+        "appId": "1:1039903374275:web:e9ef7de91a3ff8a59fdb76",
+        "measurementId": "G-EYBYHJ5MM3"
+      },
+      "facebook": {
+        "appId": "xxxxxxxxxxxxxxx"
+      }
+    },
     "description": ""
   }
 }
