@@ -3,15 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   Dimensions,
-  StatusBar,
-  ScrollView,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  ImageBackground,
-  Modal,
-  TouchableHighlight,
 } from "react-native";
 import Carousel from "react-native-snap-carousel";
 

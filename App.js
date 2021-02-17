@@ -1,23 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   StyleSheet,
-  Text,
-  View,
-  Image,
   Dimensions,
-  StatusBar,
-  ScrollView,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  ImageBackground,
-  Modal,
-  TouchableHighlight,
 } from "react-native";
 import {
   createStackNavigator,
   createAppContainer,
   createBottomTabNavigator,
-  createMaterialTopTabNavigator,
 } from "react-navigation";
 import Timeline from "./Timeline";
 import SearchScreen from "./SearchScreen";

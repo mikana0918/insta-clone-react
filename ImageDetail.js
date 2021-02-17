@@ -1,26 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import {
-  StyleSheet,
   Text,
   View,
   Image,
-  Dimensions,
-  StatusBar,
-  ScrollView,
-  TouchableWithoutFeedback,
   TouchableOpacity,
-  ImageBackground,
-  Modal,
-  TouchableHighlight,
 } from "react-native";
-import { Header, Icon, SearchBar, Input, Button } from "react-native-elements";
-import Carousel from "react-native-snap-carousel";
-import {
-  createStackNavigator,
-  createAppContainer,
-  createBottomTabNavigator,
-  createMaterialTopTabNavigator,
-} from "react-navigation";
+import { Header} from "react-native-elements";
 
 class ImageDetail extends React.Component {
   static navigationOptions = ({ navigate }) => ({

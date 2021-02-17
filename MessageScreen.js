@@ -5,15 +5,10 @@ import {
   View,
   Image,
   Dimensions,
-  StatusBar,
   ScrollView,
-  TouchableWithoutFeedback,
   TouchableOpacity,
-  ImageBackground,
-  Modal,
-  TouchableHighlight,
 } from "react-native";
-import { Header, Icon, SearchBar, Input, Button } from "react-native-elements";
+import { Header } from "react-native-elements";
 
 class MessageScreen extends React.Component {
   static navigationOptions = {
