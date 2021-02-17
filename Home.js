@@ -1,6 +1,6 @@
 // log-in screen
-import React ,{Component} from 'react';
-import { StyleSheet, Text, View, Image,Dimensions, StatusBar, ScrollView,TouchableWithoutFeedback,TouchableOpacity,ImageBackground,Modal,TouchableHighlight } from 'react-native';
+import React from 'react';
+import { StyleSheet, Dimensions } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 
 const slides = [
